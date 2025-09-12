@@ -150,7 +150,9 @@ public class UI_GameScene : UI_Scene
                 StartCoroutine(SwitchAlarm(AlramType.Boss));
         }
 
-        GetText(typeof(Texts), (int)Texts.TimeLimitValueText).text = $"{_minute:D2} : {_second:D2}";
+        //TODO : 이거 지우던가, 수정하던가 하기(그냥 남은 시간만 표기하게 하는게 나을거같음)
+        //GetText(typeof(Texts), (int)Texts.TimeLimitValueText).text = $"{_minute:D2} : {_second:D2}";
+        GetText(typeof(Texts), (int)Texts.TimeLimitValueText).text = $"{_second:D2}";
 
         Refresh();
 

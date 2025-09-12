@@ -95,13 +95,13 @@ public class ProjectileController : SkillBase
                 break;
 
             case Define.SkillType.TimeStopBomb:
-                rigid.velocity = dir * speed;
+                //rigid.velocity = dir * speed;
                 StartCoroutine(CoExplosionTimeStopBomb());
 
                 break;
 
             case Define.SkillType.GravityBomb:
-                rigid.velocity = dir * speed;
+                //rigid.velocity = dir * speed;
                 StartCoroutine(CoExplosionGravityBomb());
                 break;
 
@@ -154,12 +154,13 @@ public class ProjectileController : SkillBase
   #region  GravityBomb
     IEnumerator CoExplosionGravityBomb()
     {
-        float timeOut =2f;
-        float timer =0f;
+        float timeOut = 2f;
+        float timer = 0f;
         while(Vector3.Distance(targetPos, transform.position) > 0.1f)
         {
-            if(timer > timeOut) break;
-            timer += Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
+            // if (timer > timeOut) break;
+            // timer += Time.deltaTime;
 
             yield return null;
         }
@@ -183,8 +184,9 @@ public class ProjectileController : SkillBase
         float timer = 0f;
         while(Vector3.Distance(targetPos, transform.position) > 0.1f)
         {
-            if(timer > timeOut) break;
-            timer += Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
+            // if (timer > timeOut) break;
+            // timer += Time.deltaTime;
             yield return null;
         }
         ExplosionTimeStopBomb();
@@ -206,45 +208,35 @@ public class ProjectileController : SkillBase
     IEnumerator CoStartSuicideDrone()
     {
         yield return new WaitForSeconds(1f);
-        if(!this.IsValid()) yield break;
+        if (!this.IsValid()) yield break;
 
-        float chaseTime = 1f;
-        float elapsedTIme = 0f;
-        float dist = 0f;
-        while (elapsedTIme < chaseTime)
-        {   
-            if(!this.IsValid()) yield break;
-            target = Utils.FindClosestMonster(transform.position);
-            
-            if(target != null && target.IsValid()) dist = Vector2.Distance(target.transform.position, transform.position);
+        target = Utils.FindClosestMonster(transform.position);
+        if (target == null || !target.IsValid())
+        {
+            isBoom = true;
+            HandleSuicideDrone();
+            yield break;
+        }
 
-            if(dist < 0.1f && target != null) break;
-        
+        while (target.IsValid() && Vector2.Distance(target.transform.position, transform.position) > 0.1f)
+        {
+            if (!this.IsValid() || !target.IsValid()) yield break;
 
-            if(target != null && target.IsValid())
+            transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
+
+            if (dir.x != 0)
             {
-                dir = (target.transform.position - transform.position).normalized;
-                rigid.velocity = dir * speed;
-                if (dir.x != 0) 
-                {
-                    Vector3 newScale= transform.localScale;
-                    newScale.x = Mathf.Abs(newScale.x) * (dir.x > 0 ? -1 : 1);
-                    transform.localScale = newScale;
-                }
-            }
-            else
-            {
-                rigid.velocity = Vector2.zero;
+                Vector3 newScale = transform.localScale;
+                newScale.x = Mathf.Abs(newScale.x) * (dir.x > 0 ? -1 : 1);
+                transform.localScale = newScale;
             }
 
-            elapsedTIme += Time.deltaTime;
             yield return null;
         }
 
-        //없으면 제자리 폭발.
         isBoom = true;
         HandleSuicideDrone();
-        
+
     }
 
     void HandleSuicideDrone()

@@ -24,7 +24,7 @@ public class Character
     public float MoveSpeed { get; set; } = 1;
     public float SpeedRate { get; set; } = 1;
     public float CriticalRate { get; set; } = 0;
-    public float CriticalDamage { get; set; } = 0;
+    public float CriticalDamage { get; set; } = 1;
     public float CoolTimeBouns { get; set; } = 0;
     public float DiaBouns { get; set; } = 0;
     public float GoldBonus { get; set; } = 0;
@@ -67,6 +67,7 @@ public class Character
     {
         Data = Manager.DataM.CreatureDic[DataId];
         CharacterLevelData = Manager.DataM.CharacterLevelDataDic[Level];
+        CriticalDamage = 1;
 
         MaxHp = Data.MaxHp + CharacterLevelData.HpUp;
         MaxHpRate = Data.HpRate + Evol_MaxHpRate;
@@ -77,7 +78,7 @@ public class Character
         MoveSpeed = Data.Speed + CharacterLevelData.SpeedUp;
         SpeedRate = Data.MoveSpeedRate + Evol_SpeedRate;
         CriticalRate = CharacterLevelData.CriticalUp + Evol_CriticalRate;
-        CriticalDamage = CharacterLevelData.CriticalDamageUp + Evol_CriticalDamage;
+        CriticalDamage += CharacterLevelData.CriticalDamageUp + Evol_CriticalDamage;
 
         int index = Manager.GameM.Characters.IndexOf(this);
         if(index >= 0)
