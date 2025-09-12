@@ -472,7 +472,7 @@ public class UI_MergePopup : UI_Popup
         GetImage(ImagesType, (int)Images.SelectedEquipGradeBackgroundImage).color = Define.EquipmentUIColors.EquipGradeStyles[equipmentGrade].BgColor;
         GetImage(ImagesType, (int)Images.SelectedEquipTypeBackgroundImage).color = Define.EquipmentUIColors.EquipGradeStyles[equipmentGrade].BorderColor;
 
-        GetText(TextsType, (int)Texts.BeforeGradeValueText).text = $"{equipmentGrade}";
+        GetText(TextsType, (int)Texts.BeforeGradeValueText).text = $"{equipment.EquipmentData.EquipmentGarde}";
         GetText(TextsType, (int)Texts.AfterGradeValueText).text = $"{Manager.DataM.EquipmentDic[mergeItemData].EquipmentGarde}";
 
 
