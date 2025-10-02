@@ -18,6 +18,10 @@ public class UI_GameScene : UI_Scene
         EliteInfoObject,
         MonsterAlarmObject,
         BossAlarmObject,
+
+        #region Test
+        DevMenu,
+        #endregion
     }
 
     enum Images
@@ -58,11 +62,12 @@ public class UI_GameScene : UI_Scene
     {
         PauseButton,
         HealButton,
-        // #region Test
-        // MonsterAllKillButton,
-        // NextWaveButton,
-        // LevelUpButton
-        // #endregion
+        #region Test
+        HiddenButton,
+        MonsterAllKillButton,
+        NextWaveButton,
+        LevelUpButton
+        #endregion
     }
 
     enum AlramType
@@ -100,15 +105,17 @@ public class UI_GameScene : UI_Scene
 
         GetButton(ButtonsType, (int)Buttons.PauseButton).gameObject.BindEvent(OnClickPauseButton);
         GetButton(ButtonsType, (int)Buttons.HealButton).gameObject.BindEvent(OnClickHealButton);
-        //#region Test
-        // GetButton(ButtonsType, (int)Buttons.MonsterAllKillButton).gameObject.BindEvent(OnClickMonsterAllKillButton);
-        // GetButton(ButtonsType, (int)Buttons.NextWaveButton).gameObject.BindEvent(OnClickNextWaveButton);
-        // GetButton(ButtonsType, (int)Buttons.LevelUpButton).gameObject.BindEvent(OnClickLevelUpButton);
-        // #endregion
+        #region Test
+        GetButton(ButtonsType, (int)Buttons.HiddenButton).gameObject.BindEvent(OnClickHiddenButton);
+        GetButton(ButtonsType, (int)Buttons.MonsterAllKillButton).gameObject.BindEvent(OnClickMonsterAllKillButton);
+        GetButton(ButtonsType, (int)Buttons.NextWaveButton).gameObject.BindEvent(OnClickNextWaveButton);
+        GetButton(ButtonsType, (int)Buttons.LevelUpButton).gameObject.BindEvent(OnClickLevelUpButton);
+        #endregion
         GetObject(gameObjectsType, (int)GameObjects.BossInfoObject).SetActive(false);
         GetObject(gameObjectsType, (int)GameObjects.EliteInfoObject).SetActive(false);
         GetObject(gameObjectsType, (int)GameObjects.MonsterAlarmObject).SetActive(false);
         GetObject(gameObjectsType, (int)GameObjects.BossAlarmObject).SetActive(false);
+        GetObject(gameObjectsType, (int)GameObjects.DevMenu).SetActive(false);
         OnPlayerDataUpdated();
 
         Manager.GameM.player.OnPlayerDataUpdated = OnPlayerDataUpdated;
@@ -311,10 +318,18 @@ public class UI_GameScene : UI_Scene
 
 
     #region Test
+
+    bool isDevMenuActive = false;
+    void OnClickHiddenButton()
+    {
+        GetObject(gameObjectsType, (int)GameObjects.DevMenu).SetActive(!isDevMenuActive);
+        isDevMenuActive = !isDevMenuActive;
+    }
+
     void OnClickMonsterAllKillButton()
     {
         Manager.ObjectM.KillAllMonsters();
-        Manager.UiM.ShowToast("모든 몬스터를 처치했습니다.(Test)");
+        //Manager.UiM.ShowToast("모든 몬스터를 처치했습니다.(Test)");
     }
 
     void OnClickNextWaveButton()
@@ -323,7 +338,7 @@ public class UI_GameScene : UI_Scene
         {
             GameScene gs = Manager.SceneM.CurrentScene as GameScene;
             gs.WaveEnd();
-            Manager.UiM.ShowToast("다음 웨이브로 넘어갑니다.(Test)");
+            //Manager.UiM.ShowToast("다음 웨이브로 넘어갑니다.(Test)");
         }
     }
     void OnClickLevelUpButton()
@@ -333,7 +348,7 @@ public class UI_GameScene : UI_Scene
         float needExp = CurrentLevelData.TotalExp - Manager.GameM.player.Exp;
 
         Manager.GameM.player.Exp += needExp;
-        Manager.UiM.ShowToast("레벨업 합니다.(Test)");
+        //Manager.UiM.ShowToast("레벨업 합니다.(Test)");
     }
     #endregion
 

@@ -24,7 +24,11 @@ public class UI_BattlePopup : UI_Popup
         SecondClearRewardCompleteObject,
         ThirdClearRedDotObject,
         ThirdClearRewardUnlockObject,
-        ThirdClearRewardCompleteObject
+        ThirdClearRewardCompleteObject,
+
+        #region TEST
+        DevMenu,
+        #endregion
     }
 
     public enum Buttons
@@ -39,11 +43,12 @@ public class UI_BattlePopup : UI_Popup
         ThirdClearRewardButton,
         GameStartButton,
         OfflineRewardButton,
-        // #region TEST
-        // TestDiaButton,
-        // TestLevelUpCouponButton,
-        // TestGoldKeyButton
-        // #endregion
+        #region TEST
+        TestDiaButton,
+        TestLevelUpCouponButton,
+        TestGoldKeyButton,
+        HiddenButton
+        #endregion
     }
 
     public enum Texts
@@ -121,6 +126,7 @@ public class UI_BattlePopup : UI_Popup
         GetObject(gameObjectsType, (int)GameObjects.MissionButtonRedDotObject).SetActive(false);
         GetObject(gameObjectsType, (int)GameObjects.OfflineRewardButtonRedDotObject).SetActive(false);
         GetObject(gameObjectsType, (int)GameObjects.SettingButtonRedDotObject).SetActive(false);
+        GetObject(gameObjectsType, (int)GameObjects.DevMenu).SetActive(false);
 
 
         GetButton(ButtonsType, (int)Buttons.SettingButton).gameObject.BindEvent(OnClickSettingButton);
@@ -134,11 +140,12 @@ public class UI_BattlePopup : UI_Popup
         GetButton(ButtonsType, (int)Buttons.GameStartButton).gameObject.BindEvent(OnClickGameStartButton);
         GetButton(ButtonsType, (int)Buttons.OfflineRewardButton).gameObject.BindEvent(OnClickOfflineRewardButton);
 
-        // #region TEST
-        // GetButton(ButtonsType, (int)Buttons.TestDiaButton).gameObject.BindEvent(OnClickTestDiaButton);
-        // GetButton(ButtonsType, (int)Buttons.TestLevelUpCouponButton).gameObject.BindEvent(OnClickTestLevelUpCouponButton);
-        // GetButton(ButtonsType, (int)Buttons.TestGoldKeyButton).gameObject.BindEvent(OnClickTestGoldKeyButton);
-        // #endregion
+        #region TEST
+        GetButton(ButtonsType, (int)Buttons.HiddenButton).gameObject.BindEvent(OnClickHiddenButton);
+        GetButton(ButtonsType, (int)Buttons.TestDiaButton).gameObject.BindEvent(OnClickTestDiaButton);
+        GetButton(ButtonsType, (int)Buttons.TestLevelUpCouponButton).gameObject.BindEvent(OnClickTestLevelUpCouponButton);
+        GetButton(ButtonsType, (int)Buttons.TestGoldKeyButton).gameObject.BindEvent(OnClickTestGoldKeyButton);
+        #endregion
 
         Manager.GameM.RefreshUI = RefreshUpsideGroup;
         OnChangedStageInfo = Refresh;
@@ -520,7 +527,12 @@ public class UI_BattlePopup : UI_Popup
     }
 
     #region TEST
-
+    bool isDevMenuActive = false;
+    void OnClickHiddenButton()
+    {
+        GetObject(gameObjectsType, (int)GameObjects.DevMenu).SetActive(!isDevMenuActive);
+        isDevMenuActive = !isDevMenuActive;
+    }
     void OnClickTestDiaButton()
     {
         Manager.GameM.Dia += 10000;
