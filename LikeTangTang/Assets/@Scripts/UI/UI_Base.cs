@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 using System;
 using Unity.VisualScripting;
 using DG.Tweening;
+using UnityEngine.AddressableAssets;
 
 public class UI_Base : MonoBehaviour
 {

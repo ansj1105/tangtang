@@ -23,22 +23,22 @@ public class EnergyRing : RepeatSkill, ITickable
 
     private void OnDestroy()
     {
-        Manager.UpdateM.Unregister(this);
+        if (Manager.UpdateM != null)
+            Manager.UpdateM.Unregister(this);
     }
-
     public override void ActivateSkill()
     {
-        if(SkillDatas == null) base.ActivateSkill();
+        if (SkillDatas == null) base.ActivateSkill();
         Manager.UpdateM.Register(this);
 
         gameObject.SetActive(true);
-        UpdateCurrentSpinner();  
+        UpdateCurrentSpinner();
         SetActiveSpinner(true);
         DoSkill();
     }
 
 
-   
+
 
     public override void OnChangedSkillData()
     {
@@ -54,11 +54,11 @@ public class EnergyRing : RepeatSkill, ITickable
 
     public void SetActiveSpinner(bool _isActive)
     {
-        foreach(GameObject go in spinner) go.SetActive(false);
-        foreach(GameObject go in evolutionSpinner) go.SetActive(false);
+        foreach (GameObject go in spinner) go.SetActive(false);
+        foreach (GameObject go in evolutionSpinner) go.SetActive(false);
 
-        foreach(GameObject go in currentSpinner) go.SetActive(_isActive);
-        
+        foreach (GameObject go in currentSpinner) go.SetActive(_isActive);
+
     }
     public void Tick(float _deltaTime)
     {
@@ -98,7 +98,7 @@ public class EnergyRing : RepeatSkill, ITickable
 
         timeAccumulator += _deltaTime;
         baseCoolTime = SkillDatas.CoolTime * (1 - Manager.GameM.CurrentCharacter.Evol_CoolTimeBouns);
-        if(timeAccumulator >= baseCoolTime)
+        if (timeAccumulator >= baseCoolTime)
         {
             DoSkill();
             timeAccumulator -= baseCoolTime;
@@ -118,9 +118,9 @@ public class EnergyRing : RepeatSkill, ITickable
     }
     public void BackEnergyRing()
     {
-        for(int i =0; i<currentSpinner.Length; i++)
+        for (int i = 0; i < currentSpinner.Length; i++)
         {
-            if(i <SkillDatas.ProjectileCount)
+            if (i < SkillDatas.ProjectileCount)
             {
                 currentSpinner[i].transform.DOScale(Vector3.zero, 0.3f).SetEase(Ease.InSine)
                     .OnComplete(() => currentSpinner[i].SetActive(false));
@@ -154,7 +154,7 @@ public class EnergyRing : RepeatSkill, ITickable
     {
         CreatureController cc = collision.transform.GetComponent<CreatureController>();
 
-        if(cc.IsValid() == false) return;
-        if(cc.IsMonster()) cc.OnDamaged(Manager.GameM.player, this);    
+        if (cc.IsValid() == false) return;
+        if (cc.IsMonster()) cc.OnDamaged(Manager.GameM.player, this);
     }
 }

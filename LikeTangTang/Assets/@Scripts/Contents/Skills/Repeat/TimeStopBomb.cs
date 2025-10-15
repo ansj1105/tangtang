@@ -19,7 +19,8 @@ public class TimeStopBomb : RepeatSkill, ITickable
 
     private void OnDestroy()
     {
-        Manager.UpdateM.Unregister(this);
+        if (Manager.UpdateM != null)
+            Manager.UpdateM.Unregister(this);
     }
 
     public override void ActivateSkill()
@@ -56,17 +57,17 @@ public class TimeStopBomb : RepeatSkill, ITickable
     void SpawnTimeStopBomb()
     {
 
-        if(projectileCount <= 0 || range <= 0) return;
-        
+        if (projectileCount <= 0 || range <= 0) return;
+
         Vector3 pos = Manager.GameM.player.transform.position;
-        for(int i =0; i<projectileCount; i++)
-        {   
+        for (int i = 0; i < projectileCount; i++)
+        {
             float angle = Random.Range(0f, 360f);
             Vector3 dir = Quaternion.Euler(0f, 0f, angle) * Vector3.right;
 
             float randRange = Random.Range(2f, SkillDatas.Range);
             Vector3 endPos = pos + dir.normalized * randRange;
-            GenerateProjectile(Manager.GameM.player, prefabName, pos, dir, endPos, _skill:this);
+            GenerateProjectile(Manager.GameM.player, prefabName, pos, dir, endPos, _skill: this);
         }
     }
 

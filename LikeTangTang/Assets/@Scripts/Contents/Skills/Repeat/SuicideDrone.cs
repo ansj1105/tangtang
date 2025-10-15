@@ -20,7 +20,8 @@ public class SuicideDrone : RepeatSkill, ITickable
 
     private void OnDestroy()
     {
-        Manager.UpdateM.Unregister(this);
+        if (Manager.UpdateM != null)
+            Manager.UpdateM.Unregister(this);
     }
     public override void ActivateSkill()
     {
@@ -40,12 +41,12 @@ public class SuicideDrone : RepeatSkill, ITickable
         prefabName = SkillDatas.PrefabName;
         range = SkillDatas.Range;
     }
-    
+
     void SpawnDrones()
     {
-        if(projectileCount <= 0 || range <= 0) return;
+        if (projectileCount <= 0 || range <= 0) return;
 
-        for(int i =0; i<projectileCount; i++)
+        for (int i = 0; i < projectileCount; i++)
         {
             float angle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
             float t = Mathf.Sqrt(Random.Range(0f, 1f));
@@ -53,7 +54,7 @@ public class SuicideDrone : RepeatSkill, ITickable
 
             Vector3 offset = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0f) * radius;
             Vector3 spawnPos = Manager.GameM.player.transform.position + offset;
-            GenerateProjectile(Manager.GameM.player, prefabName, spawnPos, _skill : this);
+            GenerateProjectile(Manager.GameM.player, prefabName, spawnPos, _skill: this);
         }
     }
 

@@ -30,7 +30,7 @@ public class BombController : DropItemController
 
     public override void CompleteGetItem()
     {
-        Manager.SoundM.Play(Define.Sound.Effect, "Bomb");
+        Manager.SoundM.Play(Define.Sound.Effect, "BombSound");
         Manager.ObjectM.KillAllMonsters();
         Manager.ObjectM.DeSpawn(this);
     }

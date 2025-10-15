@@ -29,14 +29,15 @@ public class ElectricShock : RepeatSkill, ITickable
     }
     private void OnDestroy()
     {
-        Manager.UpdateM.Unregister(this);
+        if (Manager.UpdateM != null)
+            Manager.UpdateM.Unregister(this);
     }
     public override void ActivateSkill()
     {
         base.ActivateSkill();
         OnChangedSkillData();
         Manager.UpdateM.Register(this);
-        
+
     }
 
     public override void OnChangedSkillData()
@@ -94,17 +95,17 @@ public class ElectricShock : RepeatSkill, ITickable
         var Monsters = new List<MonsterController>();
         var nearMonster = objectM.GetNearMonsters(SkillDatas.ProjectileCount);
 
-        if(nearMonster == null || nearMonster.Count == 0) return Monsters;
-        
-        int index = Mathf.Clamp(_index, 0, nearMonster.Count -1);
+        if (nearMonster == null || nearMonster.Count == 0) return Monsters;
+
+        int index = Mathf.Clamp(_index, 0, nearMonster.Count - 1);
         var first = nearMonster[index];
-        if(first == null || !first.IsValid())   return Monsters;
+        if (first == null || !first.IsValid()) return Monsters;
         Monsters.Add(first);
 
-        for(int i =1; i<_numTarget; i++)
+        for (int i = 1; i < _numTarget; i++)
         {
-            var next = GetElectricShockTarget(Monsters[i-1].transform.position, _minDist, _maxDist, Monsters);
-            if(next == null) break;
+            var next = GetElectricShockTarget(Monsters[i - 1].transform.position, _minDist, _maxDist, Monsters);
+            if (next == null) break;
             Monsters.Add(next);
         }
 

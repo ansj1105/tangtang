@@ -13,7 +13,8 @@ public class OrbitalBlades : RepeatSkill, ITickable
 
     private void OnDestroy()
     {
-        Manager.UpdateM.Unregister(this);
+        if (Manager.UpdateM != null)
+            Manager.UpdateM.Unregister(this);
     }
     public override void ActivateSkill()
     {
@@ -39,14 +40,14 @@ public class OrbitalBlades : RepeatSkill, ITickable
 
         float totalAngle = 30f;
         int count = projectileCount;
-        for(int i =0; i< count; i++)
+        for (int i = 0; i < count; i++)
         {
-            float angle = Mathf.Lerp(-totalAngle / 2f, totalAngle /2f, count == 1 ? 0.5f : (float)i / (count -1));
-            Quaternion offsetRot = Quaternion.Euler(0,0,angle);
+            float angle = Mathf.Lerp(-totalAngle / 2f, totalAngle / 2f, count == 1 ? 0.5f : (float)i / (count - 1));
+            Quaternion offsetRot = Quaternion.Euler(0, 0, angle);
             Vector3 finalDir = offsetRot * baseDir;
             Quaternion finalRot = offsetRot * baseRot;
-            
-            var obj =  GenerateProjectile(Manager.GameM.player, prefabName, pos, finalDir, _skill:this);
+
+            var obj = GenerateProjectile(Manager.GameM.player, prefabName, pos, finalDir, _skill: this);
             obj.transform.rotation = finalRot;
         }
     }

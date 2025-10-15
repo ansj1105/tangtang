@@ -22,9 +22,10 @@ public class PlasmaSpinner : RepeatSkill, ITickable
 
         baseCoolTime = 0f;
     }
-     private void OnDestroy()
+    private void OnDestroy()
     {
-        Manager.UpdateM.Unregister(this);
+        if (Manager.UpdateM != null)
+            Manager.UpdateM.Unregister(this);
     }
 
     public override void ActivateSkill()
@@ -40,18 +41,18 @@ public class PlasmaSpinner : RepeatSkill, ITickable
         baseCoolTime = SkillDatas.CoolTime * (1 - Manager.GameM.CurrentCharacter.Evol_CoolTimeBouns);
         projectileCount = SkillDatas.ProjectileCount;
     }
-    
+
     public override void DoSkill()
     {
         soundM.Play(Define.Sound.Effect, SkillDatas.CastingSoundLabel);
         List<MonsterController> targets = objectM.GetNearMonsters(projectileCount);
-        if(targets == null || targets.Count == 0) return;
+        if (targets == null || targets.Count == 0) return;
 
 
         var prefabName = SkillDatas.PrefabName;
         var player = gameM.player;
 
-        foreach(var monster in targets)
+        foreach (var monster in targets)
         {
             if (monster == null || !monster.IsValid()) return;
             Vector3 dir = (monster.transform.position - playerTransform.position).normalized;

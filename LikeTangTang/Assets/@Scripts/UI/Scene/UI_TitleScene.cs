@@ -35,7 +35,7 @@ public class UI_TitleScene : UI_Scene
         BindText(TextsType);
 
 
-        GetButton(typeof(Buttons), (int)Buttons.StartButton).gameObject.BindEvent(() => 
+        GetButton(typeof(Buttons), (int)Buttons.StartButton).gameObject.BindEvent(() =>
         {
             Manager.SceneM.LoadScene(Define.SceneType.LobbyScene);
         });
@@ -55,65 +55,78 @@ public class UI_TitleScene : UI_Scene
 
     void SetInfo()
     {
+        string alwaysKeepLabel = "AlwaysKeep";
+        string NeedReleaseLabel = "NeedRelease";
 
-        Manager.ResourceM.LoadAllAsync<Object>("PrevLoad", (key, loadCount, maxCount) =>
+        Manager.ResourceM.LoadAllAsync<Object>(alwaysKeepLabel, (key, count1, max1) =>
         {
-            GetSlider(typeof(Sliders), (int)Sliders.Slider).value = (float)loadCount / maxCount;
-            GetText(typeof(Texts), (int)Texts.CountText).text = $"{loadCount} / {maxCount}";
-
-            if(loadCount == maxCount)
+            if (count1 == max1)
             {
-                isLoadEnd = true;
-                GetButton(typeof(Buttons), (int)Buttons.StartButton).gameObject.SetActive(true);
-                GetText(typeof(Texts), (int)Texts.StartText).gameObject.SetActive(true);
+                Manager.ResourceM.LoadAllAsync<Object>(NeedReleaseLabel, (key, count2, max2) =>
+                    {
+                        int totalMax = max1 + max2;
+                        int totalCount = max1 + count2;
 
-                // 모든 초기화 작업 실행
-                Manager.DataM.Init();
-                Manager.GameM.Init();
-                Manager.TimeM.Init();
-                Manager.AdM.Init();
+                        GetSlider(typeof(Sliders), (int)Sliders.Slider).value = (float)totalCount / totalMax;
+                        GetText(typeof(Texts), (int)Texts.CountText).text = $"{totalCount} / {totalMax}";
 
-                StartAnim();
+                        if (count2 == max2)
+                        {
+                            isLoadEnd = true;
+                            GetButton(typeof(Buttons), (int)Buttons.StartButton).gameObject.SetActive(true);
+                            GetText(typeof(Texts), (int)Texts.StartText).gameObject.SetActive(true);
+
+                            // 모든 초기화 작업 실행
+                            Manager.DataM.Init();
+                            Manager.GameM.Init();
+                            Manager.TimeM.Init();
+                            Manager.AdM.Init();
+
+                            StartAnim();
+                        }
+                    });
             }
-
         });
-        //Manager.ResourceM.LoadAllAsync<Sprite>("Sprite", (key, loadCount, maxCount) =>
-        //{
-        //    if (loadCount == 1)
-        //    {
-        //        totalExpectedAssetCount += maxCount;
-        //    }
-        //    currentLoadedAssetCount++;
-        //    UpdateLoadingUI(currentLoadedAssetCount, totalExpectedAssetCount);
-
-        //    if (loadCount == maxCount)
-        //    {
-        //        completedLoadOperations++;
-        //        CheckAllLoadsCompleted();
-        //    }
-        //});
-
-        //// 2. 일반 Object 에셋 로드 시작
-        //// "PrevLoad" 라벨에 할당된 모든 Object 에셋을 로드합니다.
-        //Manager.ResourceM.LoadAllAsync<Object>("PrevLoad", (key, loadCount, maxCount) =>
-        //{
-        //    // 첫 번째 콜백에서 해당 라벨의 총 에셋 수를 totalExpectedAssetCount에 더해줍니다.
-        //    if (loadCount == 1)
-        //    {
-        //        totalExpectedAssetCount += maxCount;
-        //    }
-        //    // 현재 로드된 에셋 수를 증가시키고 UI를 업데이트합니다.
-        //    currentLoadedAssetCount++;
-        //    UpdateLoadingUI(currentLoadedAssetCount, totalExpectedAssetCount);
-
-        //    // 해당 라벨의 모든 에셋 로드가 완료되면 완료된 작업 수를 증가시키고 전체 완료 여부를 확인합니다.
-        //    if (loadCount == maxCount)
-        //    {
-        //        completedLoadOperations++;
-        //        CheckAllLoadsCompleted();
-        //    }
-        //});
     }
+
+
+    //Manager.ResourceM.LoadAllAsync<Sprite>("Sprite", (key, loadCount, maxCount) =>
+    //{
+    //    if (loadCount == 1)
+    //    {
+    //        totalExpectedAssetCount += maxCount;
+    //    }
+    //    currentLoadedAssetCount++;
+    //    UpdateLoadingUI(currentLoadedAssetCount, totalExpectedAssetCount);
+
+    //    if (loadCount == maxCount)
+    //    {
+    //        completedLoadOperations++;
+    //        CheckAllLoadsCompleted();
+    //    }
+    //});
+
+    //// 2. 일반 Object 에셋 로드 시작
+    //// "PrevLoad" 라벨에 할당된 모든 Object 에셋을 로드합니다.
+    //Manager.ResourceM.LoadAllAsync<Object>("PrevLoad", (key, loadCount, maxCount) =>
+    //{
+    //    // 첫 번째 콜백에서 해당 라벨의 총 에셋 수를 totalExpectedAssetCount에 더해줍니다.
+    //    if (loadCount == 1)
+    //    {
+    //        totalExpectedAssetCount += maxCount;
+    //    }
+    //    // 현재 로드된 에셋 수를 증가시키고 UI를 업데이트합니다.
+    //    currentLoadedAssetCount++;
+    //    UpdateLoadingUI(currentLoadedAssetCount, totalExpectedAssetCount);
+
+    //    // 해당 라벨의 모든 에셋 로드가 완료되면 완료된 작업 수를 증가시키고 전체 완료 여부를 확인합니다.
+    //    if (loadCount == maxCount)
+    //    {
+    //        completedLoadOperations++;
+    //        CheckAllLoadsCompleted();
+    //    }
+    //});
+
 
     void UpdateLoadingUI(int current, int total)
     {
@@ -127,7 +140,7 @@ public class UI_TitleScene : UI_Scene
         // 모든 LoadAllAsync 호출이 완료되었는지 확인
         if (completedLoadOperations == totalExpectedLoadOperations)
         {
-             isLoadEnd = true;
+            isLoadEnd = true;
             GetButton(typeof(Buttons), (int)Buttons.StartButton).gameObject.SetActive(true);
             GetText(typeof(Texts), (int)Texts.StartText).gameObject.SetActive(true);
 

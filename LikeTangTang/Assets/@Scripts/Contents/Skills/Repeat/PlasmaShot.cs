@@ -12,7 +12,8 @@ public class PlasmaShot : RepeatSkill, ITickable
     }
     private void OnDestroy()
     {
-        Manager.UpdateM.Unregister(this);
+        if (Manager.UpdateM != null)
+            Manager.UpdateM.Unregister(this);
     }
     public override void ActivateSkill()
     {
@@ -30,13 +31,13 @@ public class PlasmaShot : RepeatSkill, ITickable
     {
         Manager.SoundM.Play(Define.Sound.Effect, SkillDatas.CastingSoundLabel);
         Vector3 pos = Manager.GameM.player.transform.position;
-        
-        for(int i =0; i< projectileCount; i++)
+
+        for (int i = 0; i < projectileCount; i++)
         {
             float randRange = Random.Range(0f, 360f);
 
-            Vector3 dir = Quaternion.Euler(0f,0f, randRange) * Vector3.right;
-            GenerateProjectile(Manager.GameM.player, SkillDatas.PrefabName, pos, dir, _skill:this);
+            Vector3 dir = Quaternion.Euler(0f, 0f, randRange) * Vector3.right;
+            GenerateProjectile(Manager.GameM.player, SkillDatas.PrefabName, pos, dir, _skill: this);
         }
     }
 
@@ -51,5 +52,5 @@ public class PlasmaShot : RepeatSkill, ITickable
         }
     }
 
-    
+
 }

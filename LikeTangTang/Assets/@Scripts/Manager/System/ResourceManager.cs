@@ -11,6 +11,7 @@ using Object = UnityEngine.Object;
 public class ResourceManager
 {
     Dictionary<string, Object> resourceDic = new Dictionary<string, Object>();
+    Dictionary<string, string> keyToLabelDic = new Dictionary<string, string>();
     public Dictionary<string, Object> ResourceDic { get; }
 
 
@@ -53,75 +54,65 @@ public class ResourceManager
     #region 비동기 코드 로딩(Addressable)
     public void LoadAsync<T>(string _key, Action<T> _cb = null) where T : Object
     {
-        string loadKey = _key;
+
+        if (resourceDic.TryGetValue(_key, out Object resource))
+        {
+            _cb?.Invoke(resource as T);
+            return;
+        }
+
+
 
         if (_key.Contains(".sprite"))
-            loadKey = $"{_key}[{_key.Replace(".sprite", "")}]";
+        {
+
+            var spriteHandle = Addressables.LoadAssetAsync<Sprite>(_key);
+            spriteHandle.Completed += (oper) =>
+            {
+                if (oper.Status == AsyncOperationStatus.Succeeded)
+                {
+                    if (oper.Result != null)
+                    {
+                        resourceDic.Add(_key, oper.Result);
+                        _cb?.Invoke(oper.Result as T);
+                    }
+                    else
+                    {
+                        Debug.LogError($"LoadAsync 실패 : 에셋에 키값 없음 {_key}");
+                        _cb?.Invoke(null);
+                    }
+                }
+                else
+                {
+                    Debug.LogError($"LoadAsync 실패 : {_key} . Exception : {oper.OperationException}");
+                }
+            };
+
+            return;
+        }
+
 
         var asyncOperationHandle = Addressables.LoadAssetAsync<T>(_key);
         asyncOperationHandle.Completed += (oper) =>
         {
             if (oper.Status == AsyncOperationStatus.Succeeded)
             {
-                if (resourceDic.TryGetValue(_key, out Object resource))
+                if (oper.Result != null)
                 {
-                    _cb?.Invoke(oper.Result);
-                    return;
+                    resourceDic.Add(_key, oper.Result);
+                    _cb?.Invoke(oper.Result as T);
+                }
+                else
+                {
+                    Debug.LogError($"LoadAsync 실패 : 에셋에 키값 없음 {_key}");
+                    _cb?.Invoke(null);
                 }
             }
-            resourceDic.Add(_key, oper.Result);
-            _cb?.Invoke(oper.Result);
+            else
+            {
+                Debug.LogError($"LoadAsync 실패 : {_key} . Exception : {oper.OperationException}");
+            }
         };
-
-        //string loadKey = _key;
-
-        //if (_key.Contains("/"))
-        //{
-        //    string[] parts = _key.Split('/');
-        //    if (parts.Length == 2)
-        //    {
-        //        string parentTextureName = parts[0];
-        //        string spriteName = parts[1];
-        //        loadKey = $"{parentTextureName}[{spriteName}]";
-        //    }
-        //    else
-        //    {
-        //        Debug.LogWarning($"ResourceManager: Unexpected key format for sub-asset '{_key}'. Expected 'Parent/Child'. Using original key.");
-        //    }
-        //}
-        //else if (_key.EndsWith(".sprite", StringComparison.OrdinalIgnoreCase))
-        //{
-        //    string baseName = _key.Substring(0, _key.LastIndexOf(".sprite", StringComparison.OrdinalIgnoreCase));
-        //    loadKey = $"{baseName}[{baseName}]";
-        //}
-
-        //var asyncOperationHandle = Addressables.LoadAssetAsync<T>(loadKey);
-        //asyncOperationHandle.Completed += (oper) =>
-        //{
-        //    if (oper.Status == AsyncOperationStatus.Succeeded)
-        //    {
-        //        if (oper.Result != null)
-        //        {
-
-        //            if (!resourceDic.ContainsKey(_key))
-        //            {
-        //                resourceDic.Add(_key, oper.Result);
-        //            }
-        //            _cb?.Invoke(oper.Result);
-        //        }
-        //        else
-        //        {
-        //            Debug.LogError($"ResourceManager: Loaded asset is null for key '{_key}' (loadKey: {loadKey}).");
-        //            _cb?.Invoke(null); // 콜백 호출, null 전달
-        //        }
-        //    }
-        //    else
-        //    {
-        //        // 로드 실패 시
-        //        Debug.LogError($"ResourceManager: Failed to load asset for key '{_key}' (loadKey: {loadKey}). Exception: {oper.OperationException}");
-        //        _cb?.Invoke(null); // 콜백 호출, null 전달
-        //    }
-        //};
     }
 
     public void LoadAllAsync<T>(string _label, Action<string, int, int> _cb = null) where T : Object
@@ -129,57 +120,151 @@ public class ResourceManager
         var asyncOperationHandle = Addressables.LoadResourceLocationsAsync(_label, typeof(T));
         asyncOperationHandle.Completed += (oper) =>
         {
-            int loadcount = 0;
+            if (oper.Status != AsyncOperationStatus.Succeeded)
+            {
+                Debug.LogError("LoadResourceLocationAsync 실패 : {_label}에서");
+                return;
+            }
+
+            int loadCount = 0;
             int maxCount = oper.Result.Count;
+            if (maxCount == 0)
+            {
+                _cb?.Invoke("", 0, 0);
+                Addressables.Release(oper);
+                return;
+            }
+
 
             foreach (var result in oper.Result)
             {
-                if (result.PrimaryKey.Contains(".sprite"))
+                string key = result.PrimaryKey;
+
+
+                if (!keyToLabelDic.ContainsKey(key))
+                {
+                    keyToLabelDic.Add(key, _label);
+                }
+
+                if (key.Contains(".sprite"))
                 {
                     LoadAsync<Sprite>(result.PrimaryKey, (obj) =>
-                    {
-                        loadcount++;
-                        _cb?.Invoke(result.PrimaryKey, loadcount, maxCount);
-                    });
+                                        {
+                                            loadCount++;
+                                            _cb?.Invoke(key, loadCount, maxCount);
+                                            if (loadCount == maxCount)
+                                            {
+                                                Addressables.Release(oper);
+                                            }
+                                        });
                 }
                 else
                 {
-                    LoadAsync<T>(result.PrimaryKey, (oper) =>
+                    LoadAsync<T>(result.PrimaryKey, (obj) =>
                     {
-                        loadcount++;
-                        _cb?.Invoke(result.PrimaryKey, loadcount, maxCount);
+                        loadCount++;
+                        _cb?.Invoke(key, loadCount, maxCount);
+                        if (loadCount == maxCount)
+                        {
+                            Addressables.Release(oper);
+                        }
                     });
                 }
 
             }
         };
     }
-    //public void LoadAllAsync<T>(string _label, Action<string, int, int> _cb = null) where T : Object
-    //{
-    //    //// 1) 먼저 LoadResourceLocationsAsync로 위치 리스트를 구하고
-    //    //Addressables.LoadResourceLocationsAsync(_label, typeof(T))
-    //    //    .Completed += locsOp =>
-    //    //    {
-    //    //        int loadcount = 0;
-    //    //        int maxCount = locsOp.Result.Count;
-    //    //        var locs = locsOp.Result;
 
-    //    //        foreach (var loc in locs)
-    //    //        {
-    //    //            Addressables.LoadAssetAsync<T>(loc)
-    //    //                .Completed += op =>
-    //    //                    {
-    //    //                        if (op.Status == AsyncOperationStatus.Succeeded)
-    //    //                        {
-    //    //                            Debug.Log(op.Result.name);
-    //    //                            resourceDic[loc.PrimaryKey] = op.Result;
-    //    //                            loadcount++;
-    //    //                            _cb?.Invoke(loc.PrimaryKey, loadcount, maxCount);
-    //    //                        }
-    //    //                    };
-    //    //        }
-    //    //    };
-    //}
+    public void LoadGroupAsync<T>(string _label, Action<string, int, int> _cb = null) where T : Object
+    {
+        var asyncOperationHandle = Addressables.LoadResourceLocationsAsync(_label, typeof(T));
+        asyncOperationHandle.Completed += (oper) =>
+        {
+            if (oper.Status != AsyncOperationStatus.Succeeded)
+            {
+                Debug.LogError("LoadResourceLocationAsync 실패 : {_label}에서");
+                return;
+            }
+
+            int loadCount = 0;
+            int maxCount = oper.Result.Count;
+            if (maxCount == 0)
+            {
+                _cb?.Invoke("", 0, 0);
+                Addressables.Release(oper);
+                return;
+            }
+
+            foreach (var result in oper.Result)
+            {
+                string key = result.PrimaryKey;
+                if (!keyToLabelDic.ContainsKey(key))
+                {
+                    keyToLabelDic.Add(key, _label);
+                }
+
+                if (key.Contains(".sprite"))
+                {
+                    LoadAsync<Sprite>(result.PrimaryKey, (obj) =>
+                                        {
+                                            loadCount++;
+                                            _cb?.Invoke(key, loadCount, maxCount);
+                                            if (loadCount == maxCount)
+                                            {
+                                                Addressables.Release(oper);
+                                            }
+                                        });
+                }
+                else
+                {
+                    LoadAsync<T>(result.PrimaryKey, (obj) =>
+                    {
+                        loadCount++;
+                        _cb?.Invoke(key, loadCount, maxCount);
+                        if (loadCount == maxCount)
+                        {
+                            Addressables.Release(oper);
+                        }
+                    });
+                }
+
+            }
+        };
+    }
+
+
+    public void UnLoadGroup(string _label)
+    {
+        var keysToUnLoad = keyToLabelDic.Where(x => x.Value == _label).Select(x => x.Key).ToList();
+        if (keysToUnLoad.Count == 0) return;
+
+        foreach (var key in keysToUnLoad)
+        {
+            UnLoad(key);
+        }
+    }
+
+
+    public void UnLoad(string _key)
+    {
+        if (resourceDic.TryGetValue(_key, out Object resouce))
+        {
+            resourceDic.Remove(_key);
+            keyToLabelDic.Remove(_key);
+            Addressables.Release(resouce);
+        }
+    }
+
+    public void UnLoadAll()
+    {
+        List<string> keys = resourceDic.Keys.ToList();
+        foreach (var key in keys)
+        {
+            UnLoad(key);
+        }
+    }
     #endregion
 }
+
+
 

@@ -24,14 +24,29 @@ public class CustomSceneManager
 
     public void LoadScene(Define.SceneType _type, Transform _tr = null) //씬 이동 애니메이션()
     {
-        if(CurrentScene.SceneType == Define.SceneType.TitleScene)
+        if (CurrentScene.SceneType == Define.SceneType.TitleScene)
         {
             Manager.Clear();
             SceneManager.LoadScene(GetScene(_type));
             return;
         }
 
-        PlaySceneChangeAnimation(_type, _tr);
+        if (CurrentScene.SceneType == Define.SceneType.LobbyScene)
+        {
+            Manager.ResourceM.LoadGroupAsync<UnityEngine.Object>("NeedRelease", (key, loadCount, maxCount) =>
+            {
+                if (loadCount == maxCount)
+                {
+                    PlaySceneChangeAnimation(_type, _tr);
+                }
+
+            });
+        }
+        else if (CurrentScene.SceneType == Define.SceneType.GameScene)
+        {
+            Manager.ResourceM.UnLoadGroup("NeedRelease");
+            PlaySceneChangeAnimation(_type, _tr);
+        }
     }
 
     private void PlaySceneChangeAnimation(Define.SceneType _type, Transform _parent)
@@ -41,7 +56,7 @@ public class CustomSceneManager
         animGo.transform.SetParent(_parent, worldPositionStays: false);
 
         Time.timeScale = 1f;
-       
+
 
 
         anim.SetInfo(_type, () =>
@@ -64,7 +79,7 @@ public class CustomSceneManager
             //var op = SceneManager.LoadSceneAsync(GetScene(_type));
             //op.allowSceneActivation = true;
 
-            
+
 
         });
     }
