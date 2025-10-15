@@ -37,14 +37,17 @@ public class Manager : MonoBehaviour
     SoundManager soundM = new SoundManager();
     UIManager uiM = new UIManager();
     TimeManager timeM = new TimeManager();
-    
+    SpawnManager spawnM = new SpawnManager();
     UpdateManager updateM;
+
 
     public static DataManager DataM { get { return Instance?.dataM; } }
     public static ResourceManager ResourceM {get { return Instance?.resourceM; } }
     public static CustomSceneManager SceneM { get { return Instance?.sceneM; } }
     public static SoundManager SoundM { get { return Instance?.soundM; } }
     public static UIManager UiM { get { return Instance?.uiM; } }
+
+    public static SpawnManager SpawnM { get { return Instance?.spawnM; } }
     public static UpdateManager UpdateM {get {return Instance?.updateM;}}
     public static TimeManager TimeM {get {return Instance?.timeM;}}
 

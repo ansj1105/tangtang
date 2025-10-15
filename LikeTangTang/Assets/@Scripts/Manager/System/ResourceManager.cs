@@ -222,15 +222,21 @@ public class ResourceManager
     }
 
 
-    public void UnLoadGroup(string _label)
+    public async UniTask UnLoadGroup(string _label)
     {
-        var keysToUnLoad = keyToLabelDic.Where(x => x.Value == _label).Select(x => x.Key).ToList();
+        var keysToUnLoad = keyToLabelDic.
+            Where(x => x.Value == _label).
+            Select(x => x.Key).
+            ToList();
+
         if (keysToUnLoad.Count == 0) return;
 
         foreach (var key in keysToUnLoad)
         {
             UnLoad(key);
         }
+
+        await UniTask.Yield();
     }
 
 

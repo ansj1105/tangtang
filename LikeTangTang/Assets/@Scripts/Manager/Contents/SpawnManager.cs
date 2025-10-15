@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using Cysharp.Threading.Tasks;
 
 public class SpawnManager : MonoBehaviour
 {
     
     Coroutine coUpdateMonsterSpawn;
-
     public bool isStop {get; set;} = false;
 
     public void StartSpawn()
@@ -17,10 +17,21 @@ public class SpawnManager : MonoBehaviour
             coUpdateMonsterSpawn = StartCoroutine(CoUpdateSpawn());
         }
     }
+    
+    public void StopSpawn()
+    {
+        if(coUpdateMonsterSpawn != null)
+        {
+            StopCoroutine(CoUpdateSpawn());
+            coUpdateMonsterSpawn = null;
+        }
+    }
     IEnumerator CoUpdateSpawn()
     {
         while(true)
         {
+            if (Manager.GameM.player == null) yield break;
+
             if(Manager.GameM.CurrentWaveData.MonsterID.Count == 1)
             {
                 //ID가 하나면 하나만 소환.

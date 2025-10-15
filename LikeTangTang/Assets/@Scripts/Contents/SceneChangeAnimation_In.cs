@@ -2,25 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cysharp.Threading.Tasks;
 
 public class SceneChangeAnimation_In : UI_Popup
 {
-    Action action;
-    Define.SceneType nextScene;
 
- 
-
-    public void SetInfo(Define.SceneType _nextScene, Action _callback)
+    public async UniTask RunTimeAnimation(Define.SceneType _nextScene)
     {
         transform.localScale = Vector3.one;
-        action = _callback;
-        nextScene = _nextScene;
-        StartCoroutine(OnAnimationComplete());
+
+        await UniTask.Delay(TimeSpan.FromSeconds(1f), ignoreTimeScale: true);
     }
 
-    IEnumerator OnAnimationComplete()
-    {
-        yield return new WaitForSeconds(1f);
-        action.Invoke();
-    }
 }

@@ -44,9 +44,21 @@ public class CustomSceneManager
         }
         else if (CurrentScene.SceneType == Define.SceneType.GameScene)
         {
-            Manager.ResourceM.UnLoadGroup("NeedRelease");
+            if(Manager.SpawnM != null)
+            {
+                Manager.SpawnM.StopSpawn();
+            }
+
+            if(Manager.ObjectM.Player != null)
+            {
+                Manager.ObjectM.DeSpawn<PlayerController>(Manager.ObjectM.Player);
+            }
+            Manager.ObjectM.Clear();
+           
+            await Manager.ResourceM.UnLoadGroup("NeedRelease");
 
             await PlaySceneChangeAnimation(_type, _tr);
+
         }
         Manager.UpdateM.PauseTicking(false);
     }
@@ -86,25 +98,16 @@ public class CustomSceneManager
 
         Time.timeScale = 1f;
 
+        await anim.RunTimeAnimation(_type);
 
+        DOTween.KillAll();
+        DOTween.Clear();
+        Manager.UpdateM.Clear();
+        Manager.ResourceM.Destory(Manager.UiM.SceneUI.gameObject);
+        Manager.Clear();
 
-        anim.SetInfo(_type, () =>
-        {
-            DOTween.KillAll();
-            DOTween.Clear();
-            Manager.UpdateM.Clear();
-            Manager.ResourceM.Destory(Manager.UiM.SceneUI.gameObject);
-            Manager.Clear();
-            switch (_type)
-            {
-                case Define.SceneType.LobbyScene:
-                    break;
+        await SceneManager.LoadSceneAsync(GetScene(_type));
 
-                case Define.SceneType.GameScene:
-                    break;
-            }
-            SceneManager.LoadSceneAsync(GetScene(_type));
-        });
     }
 
     public string GetScene(Define.SceneType _type)

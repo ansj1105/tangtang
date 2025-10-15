@@ -97,7 +97,7 @@ public class UI_TitleScene : UI_Scene
         }
         catch (System.Exception e)
         {
-            Debug.LogError("SetInfo중 비동기 에러 발생");
+            Debug.LogError($"SetInfo중 비동기 에러 발생 {e.Message}");
         }
 
     }

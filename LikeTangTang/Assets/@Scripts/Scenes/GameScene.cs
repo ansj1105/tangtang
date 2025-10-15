@@ -100,7 +100,7 @@ public class GameScene : BaseScene, ITickable
     {
         if(spawnManager == null) 
             spawnManager = gameObject.AddComponent<SpawnManager>();
-
+        
         Manager.ObjectM.LoadMap(Manager.GameM.CurrentStageData.MapName);
         
 

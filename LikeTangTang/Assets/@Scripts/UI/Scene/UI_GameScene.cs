@@ -79,12 +79,13 @@ public class UI_GameScene : UI_Scene
     private void Awake()
     {
         Init();
+        Manager.GameM.player.Skills.UpdateSkillUI -= OnLevelUpSkillUI;
         Manager.GameM.player.Skills.UpdateSkillUI += OnLevelUpSkillUI;
     }
 
     private void OnDestroy()
     {
-        Manager.GameM.player.Skills.UpdateSkillUI -= OnLevelUpSkillUI;
+        
     }
 
     public override bool Init()

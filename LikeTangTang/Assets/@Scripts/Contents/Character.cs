@@ -67,7 +67,7 @@ public class Character
     {
         Data = Manager.DataM.CreatureDic[DataId];
         CharacterLevelData = Manager.DataM.CharacterLevelDataDic[Level];
-        CriticalDamage = 1;
+        CriticalDamage = 1.5f;
 
         MaxHp = Data.MaxHp + CharacterLevelData.HpUp;
         MaxHpRate = Data.HpRate + Evol_MaxHpRate;

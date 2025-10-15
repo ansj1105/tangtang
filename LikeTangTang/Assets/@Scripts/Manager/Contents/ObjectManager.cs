@@ -114,8 +114,8 @@ public class ObjectManager
 
         if (type == playerType)
         {
-            //어차피 게임끝나서 안해줘도 될듯
-
+            Manager.ResourceM.Destory(_obj.gameObject);
+            Player = null;
         }
         else if (monsterType.IsAssignableFrom(type))
         {

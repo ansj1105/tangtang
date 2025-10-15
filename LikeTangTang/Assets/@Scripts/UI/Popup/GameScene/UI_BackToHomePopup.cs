@@ -55,7 +55,7 @@ public class UI_BackToHomePopup : UI_Popup
         Manager.SoundM.PlayButtonClick();
 
         Manager.GameM.isGameEnd = true;
-        Manager.GameM.player.StopAllCoroutines();
+        //Manager.GameM.player.StopAllCoroutines();
 
         StageClearInfoData info;
         if (Manager.GameM.StageClearInfoDic.TryGetValue(Manager.GameM.CurrentStageData.StageIndex, out info))

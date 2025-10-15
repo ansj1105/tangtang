@@ -17,7 +17,7 @@ class Pool
             {
                 GameObject go = new GameObject() { name = $"{prefab.name}Root" };
                 root = go.transform;
-            }
+            } 
 
             return root;
         } 

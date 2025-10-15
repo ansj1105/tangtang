@@ -265,9 +265,48 @@ public class PlayerController : CreatureController, ITickable
             }
         }
 
-
     }
 
+    public override void LoadSkil()
+    {
+        base.LoadSkil();
+
+        Equipment item;
+        Manager.GameM.EquipedEquipments.TryGetValue(Define.EquipmentType.Weapon, out item);
+
+        if (item != null)
+        {
+            string str = Manager.DataM.EquipmentDic[item.key].SpriteName;
+            string result = str.Replace(".sprite", "");
+
+            EquipmentDic[result].gameObject.SetActive(true);
+        }
+
+        foreach (Equipment equip in Manager.GameM.EquipedEquipments.Values)
+        {
+            int[] SpecialSkills = new int[]
+            {
+                    equip.EquipmentData.UnCommonGradeAbility,
+                    equip.EquipmentData.RareGradeAbility,
+                    equip.EquipmentData.EpicGradeAbility,
+                    equip.EquipmentData.UniqueGradeAbility
+            };
+
+            int grade = Define.GetGradeNum(equip.EquipmentData.EquipmentGarde);
+            Data.SpecialSkillData Skill;
+
+            for (int i = 0; i <= grade; i++)
+            {
+                if (Manager.DataM.SpecialSkillDic.TryGetValue(SpecialSkills[i], out Skill))
+                    Skills.AddSpecialSkill(Skill);
+            }
+        }
+    }
+
+    public void ApplyEquipments()
+    {
+
+    }
     #endregion
 
     #region 이동

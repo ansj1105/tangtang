@@ -115,9 +115,9 @@ public class CreatureController : BaseController, ITickable
     }
 
 
-    public void LoadSkil()
+    public virtual void LoadSkil()
     {
-        foreach(KeyValuePair<SkillType, int> pair in Manager.GameM.ContinueDatas.SavedBattleSkill.ToList())
+        foreach (KeyValuePair<SkillType, int> pair in Manager.GameM.ContinueDatas.SavedBattleSkill.ToList())
         {
             Skills.LoadSkill(pair.Key, pair.Value);
         }
