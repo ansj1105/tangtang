@@ -14,10 +14,10 @@ public class ObjectManager
     public HashSet<MonsterController> mcSet { get; } = new HashSet<MonsterController>();
     public HashSet<ProjectileController> pjSet { get; } = new HashSet<ProjectileController>();
     public HashSet<GemController> gemSet { get; } = new HashSet<GemController>();
-    public HashSet<DropItemController> dropItemSet {get;} = new HashSet<DropItemController>();
+    public HashSet<DropItemController> dropItemSet { get; } = new HashSet<DropItemController>();
 
 
-#region 미리 선언해서 사용  
+    #region 미리 선언해서 사용  
     Type playerType = typeof(PlayerController);
     Type monsterType = typeof(MonsterController);
     Type eliteMonsterType = typeof(EliteMonsterController);
@@ -27,8 +27,8 @@ public class ObjectManager
     Type gridType = typeof(GridController);
     Type projectileType = typeof(ProjectileController);
     Type skillType = typeof(SkillBase);
-#endregion
-    
+    #endregion
+
     public T Spawn<T>(Vector3 _pos, int _templateID = 0, string _prefabName = "") where T : BaseController
     {
         Type type = typeof(T);
@@ -41,17 +41,17 @@ public class ObjectManager
             PlayerController pc = go.GetComponent<PlayerController>();
             Player = pc;
             pc.SetInfo(_templateID);
-            
+
             return pc as T;
         }
 
-        if(monsterType.IsAssignableFrom(type))
+        if (monsterType.IsAssignableFrom(type))
         {
             CreatureData cd = Manager.DataM.CreatureDic[_templateID];
             GameObject go = Manager.ResourceM.Instantiate(cd.prefabName, _pooling: true);
             T mc = go.GetOrAddComponent<T>();
             go.transform.position = _pos;
-            if(mc is MonsterController monster)
+            if (mc is MonsterController monster)
             {
                 monster.SetInfo(_templateID);
                 mc.name = cd.prefabName;
@@ -60,8 +60,8 @@ public class ObjectManager
             return mc as T;
         }
 
-       
-        if(dropItemType.IsAssignableFrom(type))
+
+        if (dropItemType.IsAssignableFrom(type))
         {
             GameObject go = Manager.ResourceM.Instantiate(_prefabName, null, true);
             T dropItem = go.GetOrAddComponent<T>();
@@ -74,7 +74,7 @@ public class ObjectManager
             return dropItem;
         }
 
-        if(projectileType.IsAssignableFrom(type))
+        if (projectileType.IsAssignableFrom(type))
         {
             var go = Manager.ResourceM.Instantiate(_prefabName, _pooling: true);
             var proj = go.GetOrAddComponent<ProjectileController>();
@@ -87,7 +87,7 @@ public class ObjectManager
         }
 
 
-        if(skillType.IsAssignableFrom(type))
+        if (skillType.IsAssignableFrom(type))
         {
             if (!Manager.DataM.SkillDic.TryGetValue(_templateID, out var skillData)) return null;
 
@@ -99,42 +99,42 @@ public class ObjectManager
 
             return skill;
         }
-       
-            
+
+
         return null;
     }
 
     public void DeSpawn<T>(T _obj) where T : BaseController
     {
 
-        if (_obj == null ||  !_obj.IsValid()) return;
+        if (_obj == null || !_obj.IsValid()) return;
 
 
         Type type = typeof(T);
 
-        if(type == playerType)
+        if (type == playerType)
         {
-           //어차피 게임끝나서 안해줘도 될듯
+            //어차피 게임끝나서 안해줘도 될듯
 
         }
-        else if(monsterType.IsAssignableFrom(type))
+        else if (monsterType.IsAssignableFrom(type))
         {
             mcSet.Remove(_obj as MonsterController);
             Manager.ResourceM.Destory(_obj.gameObject);
         }
-        else if(dropItemType.IsAssignableFrom(type))
+        else if (dropItemType.IsAssignableFrom(type))
         {
             var drop = _obj as DropItemController;
 
             dropItemSet.Remove(drop);
             Manager.ResourceM.Destory(_obj.gameObject);
         }
-        else if(projectileType.IsAssignableFrom(type))
+        else if (projectileType.IsAssignableFrom(type))
         {
             pjSet.Remove(_obj as ProjectileController);
             Manager.ResourceM.Destory(_obj.gameObject);
         }
-        else if(skillType.IsAssignableFrom(type))
+        else if (skillType.IsAssignableFrom(type))
         {
             Manager.ResourceM.Destory(_obj.gameObject);
         }
@@ -171,7 +171,7 @@ public class ObjectManager
     public void ShowFont(Vector2 _pos, float _damage, float _heal, Transform _parent, bool _isCritical = false)
     {
         string prefabName;
-        prefabName = _isCritical == true ?  Define.CRITICAL_DAMANGEFONT : Define.DAMAGEFONT;
+        prefabName = _isCritical == true ? Define.CRITICAL_DAMANGEFONT : Define.DAMAGEFONT;
 
         GameObject go = Manager.ResourceM.Instantiate(prefabName, _pooling: true);
         DamageFont damageFont = go.GetOrAddComponent<DamageFont>();
@@ -234,7 +234,7 @@ public class ObjectManager
     {
         UI_GameScene scene = Manager.UiM.SceneUI as UI_GameScene;
 
-        if(scene != null) scene.WhiteFlash();
+        if (scene != null) scene.WhiteFlash();
 
         var snapshot = new List<MonsterController>(mcSet);
         foreach (MonsterController monster in snapshot)
@@ -247,9 +247,9 @@ public class ObjectManager
     public void ColletAllItem()
     {
         var snapshot = new List<DropItemController>(dropItemSet);
-        foreach(var item in snapshot)
+        foreach (var item in snapshot)
         {
-            if(item is GemController gem)
+            if (item is GemController gem)
             {
                 gem.GetItem();
             }

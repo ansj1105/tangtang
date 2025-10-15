@@ -21,47 +21,47 @@ MonoBehaviour:
     m_Address: Player_Alpha_Anim
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - NeedRelease
   - m_GUID: cf4b5367c8f8d49cca57e92a9425223a
     m_Address: Normal_Potion_Anim
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - NeedRelease
   - m_GUID: a93cbcb5876504cd4b9c4f5fc67ec9e9
     m_Address: Good_Potion_Anim
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - NeedRelease
   - m_GUID: e599f20b8cadc4dd586ac2c67f86bf23
     m_Address: Best_Potion_Anim
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - NeedRelease
   - m_GUID: 9fe555eeea2b6436db9911ce9d5e0646
     m_Address: Character_Epsilon
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - NeedRelease
   - m_GUID: d0ba6d4005e88494089d6bc2bd3eecd9
     m_Address: Character_Delta
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - NeedRelease
   - m_GUID: b009699a4330b466ea19cf850c037e0c
     m_Address: Character_Gamma
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - NeedRelease
   - m_GUID: dcb15bed9e7ba44e488bfdf3b89e897a
     m_Address: Character_Beta
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - NeedRelease
   - m_GUID: 873cefde9bc4e402fbff3780425c768c
     m_Address: Character_Alpha
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - NeedRelease
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 58fc61992768249fdab8acc891732a43, type: 2}
   m_SchemaSet:

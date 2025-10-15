@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
 using DG.Tweening;
+using Cysharp.Threading.Tasks;
 
 public class UI_TitleScene : UI_Scene
 {
@@ -35,15 +36,15 @@ public class UI_TitleScene : UI_Scene
         BindText(TextsType);
 
 
-        GetButton(typeof(Buttons), (int)Buttons.StartButton).gameObject.BindEvent(() =>
+        GetButton(typeof(Buttons), (int)Buttons.StartButton).gameObject.BindEvent(async () =>
         {
-            Manager.SceneM.LoadScene(Define.SceneType.LobbyScene);
+            await Manager.SceneM.LoadSceneAsync(Define.SceneType.LobbyScene);
         });
         GetButton(typeof(Buttons), (int)Buttons.StartButton).gameObject.SetActive(false);
 
         GetText(typeof(Texts), (int)Texts.StartText).gameObject.SetActive(false);
 
-        SetInfo();
+        SetInfo().Forget();
         return true;
     }
 
@@ -53,40 +54,52 @@ public class UI_TitleScene : UI_Scene
     private int currentLoadedAssetCount = 0; // 현재까지 로드된 총 에셋 수
     private int totalExpectedAssetCount = 0; // 로드할 총 에셋 수
 
-    void SetInfo()
+    async UniTask SetInfo()
     {
-        string alwaysKeepLabel = "AlwaysKeep";
-        string NeedReleaseLabel = "NeedRelease";
-
-        Manager.ResourceM.LoadAllAsync<Object>(alwaysKeepLabel, (key, count1, max1) =>
+        try
         {
-            if (count1 == max1)
+            string alwaysKeepLabel = "AlwaysKeep";
+            string NeedReleaseLabel = "NeedRelease";
+
+
+            int max = 0;
+            await Manager.ResourceM.LoadGroupAsync<Object>(alwaysKeepLabel, (key, count1, max1) =>
             {
-                Manager.ResourceM.LoadAllAsync<Object>(NeedReleaseLabel, (key, count2, max2) =>
-                    {
-                        int totalMax = max1 + max2;
-                        int totalCount = max1 + count2;
+                max = max1;
+            });
 
-                        GetSlider(typeof(Sliders), (int)Sliders.Slider).value = (float)totalCount / totalMax;
-                        GetText(typeof(Texts), (int)Texts.CountText).text = $"{totalCount} / {totalMax}";
+            int max2 = 0;
+            int max1LoadCount = max;
 
-                        if (count2 == max2)
-                        {
-                            isLoadEnd = true;
-                            GetButton(typeof(Buttons), (int)Buttons.StartButton).gameObject.SetActive(true);
-                            GetText(typeof(Texts), (int)Texts.StartText).gameObject.SetActive(true);
+            await Manager.ResourceM.LoadGroupAsync<Object>(NeedReleaseLabel, (key, count2, max2) =>
+            {
+                int totalMax = max1LoadCount + max2;
+                int totalCount = max1LoadCount + count2;
 
-                            // 모든 초기화 작업 실행
-                            Manager.DataM.Init();
-                            Manager.GameM.Init();
-                            Manager.TimeM.Init();
-                            Manager.AdM.Init();
+                GetSlider(typeof(Sliders), (int)Sliders.Slider).value = (float)totalCount / totalMax;
+                GetText(typeof(Texts), (int)Texts.CountText).text = $"{totalCount} / {totalMax}";
 
-                            StartAnim();
-                        }
-                    });
-            }
-        });
+                if (count2 == max2)
+                {
+                    isLoadEnd = true;
+                    GetButton(typeof(Buttons), (int)Buttons.StartButton).gameObject.SetActive(true);
+                    GetText(typeof(Texts), (int)Texts.StartText).gameObject.SetActive(true);
+
+                    // 모든 초기화 작업 실행
+                    Manager.DataM.Init();
+                    Manager.GameM.Init();
+                    Manager.TimeM.Init();
+                    Manager.AdM.Init();
+
+                    StartAnim();
+                }
+            });
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError("SetInfo중 비동기 에러 발생");
+        }
+
     }
 
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Cysharp.Threading.Tasks;
 
 
 public class UI_GameResultPopup : UI_Popup
@@ -26,7 +27,7 @@ public class UI_GameResultPopup : UI_Popup
         ResultKillValueText,
         ConfirmButtonText
     }
-    
+
     enum Buttons
     {
         StatisticsButton,
@@ -51,8 +52,11 @@ public class UI_GameResultPopup : UI_Popup
         BindButton(ButtonsType);
 
         GetButton(typeof(Buttons), (int)Buttons.StatisticsButton).gameObject.BindEvent(OnClickStatisticsButton);
-        GetButton(typeof(Buttons), (int)Buttons.ConfirmButton).gameObject.BindEvent(OnClickConfirmButton);
 
+        GetButton(typeof(Buttons), (int)Buttons.ConfirmButton).gameObject.BindEvent(() =>
+        {
+            OnClickConfirmButton().Forget();
+        });
 
         return true;
     }
@@ -66,18 +70,18 @@ public class UI_GameResultPopup : UI_Popup
     {
         GetText(typeof(Texts), (int)Texts.ResultStageValueText).text = $"{Manager.GameM.CurrentStageData.StageIndex} STAGE";
         int second = (int)(Manager.GameM.ElapsedTime % 60);
-        GetText(typeof(Texts), (int)Texts.ResultSurvivalTimeValueText).text = $"{Manager.GameM.minute:D2} : { second:D2}";
+        GetText(typeof(Texts), (int)Texts.ResultSurvivalTimeValueText).text = $"{Manager.GameM.minute:D2} : {second:D2}";
         GetText(typeof(Texts), (int)Texts.ResultGoldValueText).text = $"{Manager.GameM.CurrentStageData.ClearGold}";
         GetText(typeof(Texts), (int)Texts.ResultKillValueText).text = $"{Manager.GameM.player.KillCount}";
-        
-            
+
+
         Manager.GameM.Gold += (int)(Manager.GameM.CurrentStageData.ClearGold * Manager.GameM.CurrentCharacter.Evol_GoldBonus);
         Manager.GameM.ExchangeMaterial(Manager.DataM.MaterialDic[Define.ID_RandomScroll], 10);
         Manager.GameM.ExchangeMaterial(Manager.DataM.MaterialDic[Define.ID_LevelUpCoupon], Manager.GameM.CurrentStageData.StageIndex);
 
         Transform cont = GetObject(gameObjectsType, (int)GameObjects.ResultRewardScrollContentObject).transform;
         cont.gameObject.DestroyChilds();
-         
+
         UI_MaterialItem gold = Manager.UiM.MakeSubItem<UI_MaterialItem>(cont);
         gold.SetInfo(Manager.DataM.MaterialDic[Define.ID_GOLD].SpriteName, Manager.GameM.CurrentStageData.ClearGold);
 
@@ -112,10 +116,10 @@ public class UI_GameResultPopup : UI_Popup
         Manager.UiM.ShowPopup<UI_TotalDamagePopup>().SetInfo();
     }
 
-    public void OnClickConfirmButton()
+    public async UniTask OnClickConfirmButton()
     {
         Manager.SoundM.PlayButtonClick();
         Manager.GameM.ClearContinueData();
-        Manager.SceneM.LoadScene(Define.SceneType.LobbyScene, transform);
+        await Manager.SceneM.LoadSceneAsync(Define.SceneType.LobbyScene, transform);
     }
 }

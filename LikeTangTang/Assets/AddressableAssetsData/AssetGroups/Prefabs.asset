@@ -21,127 +21,127 @@ MonoBehaviour:
     m_Address: Boss
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: a8517281985073a49901c62cfd290fa5
     m_Address: Player
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 67c97c05dc52b4114a302af4438a8013
     m_Address: Map_02
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 3088bf7d2ecb04b8e91b98f844a58d28
     m_Address: Map_03
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 9021aa33122994ec09710ccce2e31179
     m_Address: Map_04
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: bd4f29db6c6fb493395e60802560b642
     m_Address: Map_05
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 9b2ce8bd705814402b9818ccf82edd94
     m_Address: Monster
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 15e4b43b54d2fcd45b126ed2a75619c8
     m_Address: DropBox_Effect_Unique
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: ccc7a45cd4207984db88f91da69c61be
     m_Address: DropBox_Effect_Normal
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: ec6b063d902582d47a439041f5d4370f
     m_Address: DropBox_Effect_Rare
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 1c11469bf0b694d64987008f1bf68819
     m_Address: DropItem
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: c70bdf2fe2aa04319b6620bc96849e00
     m_Address: Map_01
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 74844a3cbde96dd4ea0d6d43ce518da5
     m_Address: HealEffect
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 76ab356a8f729ae468b567e14b21b614
     m_Address: Revival
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 2ef93401a097fc84ab30ae2d81d7120a
     m_Address: DamageFont
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 2d0c1abb18f0ebb44943b8e52d6b6086
     m_Address: CriticalDamageFont
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: c56eefb2240dd3645b08e656ac626fa3
     m_Address: EliteMonster
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 4dc4e8c058ac38c42b40ec4716b44810
     m_Address: SkillRange
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: db777e5a207ad754aa4ed7029488e149
     m_Address: BossSkill
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 42f0b2260d863c5469007dede0db7603
     m_Address: BossSkillHitEffect
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: f1c3a9225cac7504ca5ca746b0fc2e40
     m_Address: SlimeFall
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: b1fb732af79c9d84a98a089a5b1e686f
     m_Address: SceneChangeAnimation_Out
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: a636334d3d769a44da455f8d0424afb3
     m_Address: SceneChangeAnimation_In
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 123eabf60e3db3b478db12bdd50ab084
     m_Address: MagneticField
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 545a695a4f9ed40098896d4772f46c4b
     m_Address: UI_BattlePopup
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 58fc61992768249fdab8acc891732a43, type: 2}
   m_SchemaSet:

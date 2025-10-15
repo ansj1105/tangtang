@@ -21,87 +21,87 @@ MonoBehaviour:
     m_Address: LevelData.json
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 754bdea94613940d991628086c7b4ef6
     m_Address: CreatureData.json
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: d61fa843814064423b8f3ead91c7c755
     m_Address: StageData.json
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: e5b005fcd6f7449ab89d41f0ba47bd9e
     m_Address: SkillData.json
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: c24f0c7178c61c1449aec7973a39dfaf
     m_Address: DropItemData.json
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 89e23a1a136353c44aad216e51a1683b
     m_Address: SkillEvolutionData.json
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: d0a722b20a58d8549abe5ff53b47327d
     m_Address: SpecialSkillData.json
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 8f0b15f0df7940f46afa7758f9380807
     m_Address: MaterialData.json
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: ecc8be74dd1dd2b4ab5387f773fe82a1
     m_Address: EquipmentData.json
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 916551cc32d1bb542ab473cc9e1705a8
     m_Address: EquipmentLevelData.json
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 935d09248bbfd644eac7cb2d700303b9
     m_Address: GachaData.json
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 4ed8f04d3cbeafa429cb17d7f0e6aaba
     m_Address: AttendanceCheckData.json
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: ae64077c7cc10444b8b670e17aa2c106
     m_Address: MissionData.json
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 21f35a89bc8e7834a9ca20cccd10952a
     m_Address: AchievementData.json
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: b4df2cb7d5f52d247b2f89a70110109b
     m_Address: OfflineRewardData.json
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: f78f0499bd4ada644a4a921207710fd5
     m_Address: CharacterLevelData.json
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 4945d8d8a47165845b0a6cdb4b2ac16c
     m_Address: EvolutionData.json
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 58fc61992768249fdab8acc891732a43, type: 2}
   m_SchemaSet:

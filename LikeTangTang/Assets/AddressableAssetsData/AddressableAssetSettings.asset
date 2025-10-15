@@ -42,10 +42,10 @@ MonoBehaviour:
   m_overridePlayerVersion: 
   m_GroupAssets:
   - {fileID: 11400000, guid: 86a8af5b1f5ee484ba33c92df4554f4c, type: 2}
+  - {fileID: 11400000, guid: a8371a2a953154248a892b24fec8077a, type: 2}
   - {fileID: 11400000, guid: ca2a282a89625f145b16c6e469ba3b3a, type: 2}
   - {fileID: 11400000, guid: f9ba46d68e4e66e4589aa01d26b04cd7, type: 2}
   - {fileID: 11400000, guid: 3e091e07fd596684b99d22bdd4097600, type: 2}
-  - {fileID: 11400000, guid: a8371a2a953154248a892b24fec8077a, type: 2}
   - {fileID: 11400000, guid: 62d005abec8d2ec479929bc34d1873aa, type: 2}
   - {fileID: 11400000, guid: a7108dc21695e724da69085628cf5e70, type: 2}
   - {fileID: 11400000, guid: 95139398e7006e34196cbd7cafc3bcfb, type: 2}
@@ -96,6 +96,8 @@ MonoBehaviour:
     - Prefabs
     - Data
     - Sprite
+    - NeedRelease
+    - NoNeedRelease
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 26f3654b216d245f6bc38fa5485054a9, type: 2}
@@ -126,11 +128,11 @@ MonoBehaviour:
           m_Key: HostingServiceUploadSpeed
         - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
           m_ClassName: System.String
-          m_Data: Library/com.unity.addressables/aa/Android/Android
+          m_Data: Library/com.unity.addressables/aa/iOS/iOS
           m_Key: ContentRoot
         - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
           m_ClassName: System.Boolean
-          m_Data: True
+          m_Data: False
           m_Key: IsEnabled
         - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
           m_ClassName: System.String

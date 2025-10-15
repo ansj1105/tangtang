@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Cysharp.Threading.Tasks;
+using System.Threading.Tasks;
 public class UI_BackToHomePopup : UI_Popup
 {
     enum GameObjects
@@ -22,7 +23,7 @@ public class UI_BackToHomePopup : UI_Popup
     }
     private void OnEnable()
     {
-        PopupOpenAnim(GetObject(gameObjectsType, (int)GameObjects.ContentObject));    
+        PopupOpenAnim(GetObject(gameObjectsType, (int)GameObjects.ContentObject));
     }
 
     public override bool Init()
@@ -35,19 +36,21 @@ public class UI_BackToHomePopup : UI_Popup
         BindButton(ButtonsType);
 
         GetButton(ButtonsType, (int)Buttons.ResumeButton).gameObject.BindEvent(OnClickResumButton);
-        GetButton(ButtonsType, (int)Buttons.QuitButton).gameObject.BindEvent(OnClickQuitButton);
+        GetButton(ButtonsType, (int)Buttons.QuitButton).gameObject.BindEvent(() =>
+        {
+            OnClickQuitButton().Forget();
 
-
+        });
         return true;
     }
-     
+
     void OnClickResumButton()
     {
         Manager.SoundM.PlayButtonClick();
         Manager.UiM.ClosePopup(this);
     }
 
-    void OnClickQuitButton()
+    async UniTask OnClickQuitButton()
     {
         Manager.SoundM.PlayButtonClick();
 
@@ -55,9 +58,9 @@ public class UI_BackToHomePopup : UI_Popup
         Manager.GameM.player.StopAllCoroutines();
 
         StageClearInfoData info;
-        if(Manager.GameM.StageClearInfoDic.TryGetValue(Manager.GameM.CurrentStageData.StageIndex, out info))
+        if (Manager.GameM.StageClearInfoDic.TryGetValue(Manager.GameM.CurrentStageData.StageIndex, out info))
         {
-            if(Manager.GameM.CurrentWaveIndex > info.MaxWaveIndex)
+            if (Manager.GameM.CurrentWaveIndex > info.MaxWaveIndex)
             {
                 info.MaxWaveIndex = Manager.GameM.CurrentWaveIndex;
                 Manager.GameM.StageClearInfoDic[Manager.GameM.CurrentStageData.StageIndex] = info;
@@ -65,6 +68,6 @@ public class UI_BackToHomePopup : UI_Popup
         }
 
         Manager.GameM.ClearContinueData();
-        Manager.SceneM.LoadScene(Define.SceneType.LobbyScene, transform);
+        await Manager.SceneM.LoadSceneAsync(Define.SceneType.LobbyScene, transform);
     }
 }

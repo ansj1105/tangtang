@@ -21,262 +21,262 @@ MonoBehaviour:
     m_Address: UI_JoyStick
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 84d073433a833014e8e99ba50adee07a
     m_Address: UI_SkillSelectPopup
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: a9e7dde11dd3895419edde18324d648d
     m_Address: UI_SkillCardItem
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: cdf16d0632ae6794894ec27860c3af21
     m_Address: UI_GameScene
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: a5c87303402c9f84f968437f95bdce6d
     m_Address: UI_EquipmentPopup
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 1b6783c779a4348fd9250d8007fd3927
     m_Address: UI_LobbyScene
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 29a22acaeac8b4fe5848f41794632d68
     m_Address: UI_TitleScene
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 45167f71314ce42409f560a609924e98
     m_Address: UI_GameResultPopup
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: bd5baa2131254d14fbb305ae4c6dbdaa
     m_Address: UI_ShopPopup
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: d70cfb68c693d5b4c945321314dcbe5f
     m_Address: UI_MaterialItem
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: aab35252266fa2944be3715a8ef4cb94
     m_Address: UI_GachaResultsPopup
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 2f89d00a5e7684247878a4f8ddfb9ee8
     m_Address: UI_EquipmentInfoPopup
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: b3334937219623f4e893cab79c429060
     m_Address: UI_EquipItem
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: e950282f8bf05934b87c2eab2c49b783
     m_Address: UI_Toast
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 3f818e9ed5ac12b4cb7f67da8eaf7b04
     m_Address: UI_MergePopup
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 77fa737f90ce6f04fa613ec04e8a2d69
     m_Address: UI_MergeEquipItem
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 5c5515883eb246246a75f1be7d2db756
     m_Address: UI_MergeResultPopup
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 554cc1ae797654246ab45c9a2336dab0
     m_Address: UI_MergeAllResultPopup
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 438b8f0830b5bfc45865d82f6cf7836f
     m_Address: UI_PausePopup
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 3dd13cb4456f86745a5b14b4de4146ab
     m_Address: UI_UserInfoItem
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 1202137c78b18be4ab89bda97f448af9
     m_Address: UI_EquipmentResetPopup
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 018d167f9bdeb4848a3ab2a1d152ed86
     m_Address: UI_RewardPopup
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 7dee9c03c24fd114dba0fbbd966e45e2
     m_Address: UI_ToolTipItem
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: e2ca5d463fd0f428a923cf9ccad16aa8
     m_Address: UI_BuyItemPopup
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 653b52a4225762c43adfd19249dec287
     m_Address: UI_GachaRateItem
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 7055ac6a233509846b82244b2f8ad975
     m_Address: UI_GachaListPopup
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 0ec2f604b9932e84486a1ab7bab4fd29
     m_Address: UI_DiaChargePopup
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 2b14852868d18b048b85397843fd2cfe
     m_Address: UI_TotalDamagePopup
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 2e2b9a226de729f4fb466fa84e418690
     m_Address: UI_AchievementPopup
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 2f9dc4c96e4177a4e8e66895ca9893c9
     m_Address: UI_SkillDamageItem
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 4bc28aff48a3fde4486519f0414d4dea
     m_Address: UI_CheckOutPopup
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 4bfcc44a71e1c8342befcc11600c3e43
     m_Address: UI_OfflineRewardPopup
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 6e72e5eb9329eed4aab88702c18c2703
     m_Address: UI_MissionPopup
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 746dbc1875202d341aa23e219700aa27
     m_Address: UI_StaminaChargePopup
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 8416074f15f1b2d4ea5fc88615185d9f
     m_Address: UI_StageSelectPopup
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: c4c28b880563818428bb5015cea74879
     m_Address: UI_BackToHomePopup
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: ae59e12054fe72b40a4e00c89f91cea1
     m_Address: UI_BackToBattlePopup
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: c2509251ea8132f4b8f87d5da048d8a4
     m_Address: UI_SettingPopup
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 261cb1405f377124f973d2490a703c5e
     m_Address: UI_CheckOutItem
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 0f99db18f2fc9ea41a72ec13c541b47f
     m_Address: UI_MissionItem
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 26aa75d8ef652d34c8b3baaf6fe47c72
     m_Address: UI_AchievementItem
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: c564f965d312e384b8e816c8220069d2
     m_Address: UI_BeginnerSupportRewardPopup
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: ba0f56b5f0aaa714f9966604682aff6f
     m_Address: UI_MonsterInfoItem
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 292f5acbea17bd74fbe775126aaee332
     m_Address: UI_StageInfoItem
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: d92e422dd24fe5e4aa04f5209ed6f3f5
     m_Address: UI_GameoverPopup
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 21d675466d595a245b05c6ac12bae705
     m_Address: UI_ContinuePopup
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 3d356158ac9e6e744aa7c6b88af2290f
     m_Address: UI_FastRewardPopup
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: d7a3863a3835a6345a47f8eedbc37507
     m_Address: UI_EvolutionPopup
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: b597d3103559c4ba0b9520f56025acac
     m_Address: UI_CharacterLevelupPopup
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 042d0bed28c1a2f468a9d402034a428d
     m_Address: UI_CharacterSelectPopup
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: ff22531651dccc04ca6934a3bb778a90
     m_Address: UI_CharacterItem
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: 6c8084fcfec1d9a4db8afea7afd148e4
     m_Address: UI_EvolutioninfoPopup
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 58fc61992768249fdab8acc891732a43, type: 2}
   m_SchemaSet:

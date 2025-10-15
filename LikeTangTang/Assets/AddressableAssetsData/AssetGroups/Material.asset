@@ -21,12 +21,12 @@ MonoBehaviour:
     m_Address: CreatureDefaultMat
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   - m_GUID: ca800ba2b7bc272429cf4ddee6a52b3b
     m_Address: DamagedEffectMat
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - AlwaysKeep
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 58fc61992768249fdab8acc891732a43, type: 2}
   m_SchemaSet:

@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
+using Cysharp.Threading.Tasks;
+using Unity.VisualScripting;
 
 public class CustomSceneManager
 {
@@ -22,34 +24,61 @@ public class CustomSceneManager
 
     }
 
-    public void LoadScene(Define.SceneType _type, Transform _tr = null) //씬 이동 애니메이션()
+    public async UniTask LoadSceneAsync(Define.SceneType _type, Transform _tr = null)
     {
+        Manager.UpdateM.PauseTicking(true);
+        await UniTask.Yield();
+
         if (CurrentScene.SceneType == Define.SceneType.TitleScene)
         {
             Manager.Clear();
-            SceneManager.LoadScene(GetScene(_type));
+            await SceneManager.LoadSceneAsync(GetScene(_type));
+
+            Manager.UpdateM.PauseTicking(false);
             return;
         }
-
-        if (CurrentScene.SceneType == Define.SceneType.LobbyScene)
+        else if (CurrentScene.SceneType == Define.SceneType.LobbyScene)
         {
-            Manager.ResourceM.LoadGroupAsync<UnityEngine.Object>("NeedRelease", (key, loadCount, maxCount) =>
-            {
-                if (loadCount == maxCount)
-                {
-                    PlaySceneChangeAnimation(_type, _tr);
-                }
-
-            });
+            await Manager.ResourceM.LoadGroupAsync<UnityEngine.Object>("NeedRelease");
+            await PlaySceneChangeAnimation(_type, _tr);
         }
         else if (CurrentScene.SceneType == Define.SceneType.GameScene)
         {
             Manager.ResourceM.UnLoadGroup("NeedRelease");
-            PlaySceneChangeAnimation(_type, _tr);
+
+            await PlaySceneChangeAnimation(_type, _tr);
         }
+        Manager.UpdateM.PauseTicking(false);
     }
 
-    private void PlaySceneChangeAnimation(Define.SceneType _type, Transform _parent)
+    // public void LoadScene(Define.SceneType _type, Transform _tr = null) //씬 이동 애니메이션()
+    // {
+    //     if (CurrentScene.SceneType == Define.SceneType.TitleScene)
+    //     {
+    //         Manager.Clear();
+    //         SceneManager.LoadScene(GetScene(_type));
+    //         return;
+    //     }
+
+    //     if (CurrentScene.SceneType == Define.SceneType.LobbyScene)
+    //     {
+    //         Manager.ResourceM.LoadGroupAsync<UnityEngine.Object>("NeedRelease", (key, loadCount, maxCount) =>
+    //         {
+    //             if (loadCount == maxCount)
+    //             {
+    //                 PlaySceneChangeAnimation(_type, _tr);
+    //             }
+
+    //         });
+    //     }
+    //     else if (CurrentScene.SceneType == Define.SceneType.GameScene)
+    //     {
+    //         Manager.ResourceM.UnLoadGroup("NeedRelease");
+    //         PlaySceneChangeAnimation(_type, _tr);
+    //     }
+    // }
+
+    private async UniTask PlaySceneChangeAnimation(Define.SceneType _type, Transform _parent)
     {
         var animGo = Manager.ResourceM.Instantiate("SceneChangeAnimation_In");
         var anim = animGo.GetOrAddComponent<SceneChangeAnimation_In>();
@@ -75,12 +104,6 @@ public class CustomSceneManager
                     break;
             }
             SceneManager.LoadSceneAsync(GetScene(_type));
-
-            //var op = SceneManager.LoadSceneAsync(GetScene(_type));
-            //op.allowSceneActivation = true;
-
-
-
         });
     }
 
@@ -95,3 +118,4 @@ public class CustomSceneManager
         CurrentScene.Clear();
     }
 }
+

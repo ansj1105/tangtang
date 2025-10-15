@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Cysharp.Threading.Tasks;
 
 public class UI_BattlePopup : UI_Popup
 {
@@ -137,7 +138,11 @@ public class UI_BattlePopup : UI_Popup
         GetButton(ButtonsType, (int)Buttons.FirstClearRewardButton).gameObject.BindEvent(OnClickFirstClearRewardButton);
         GetButton(ButtonsType, (int)Buttons.SecondClearRewardButton).gameObject.BindEvent(OnClickSecondClearRewardButton);
         GetButton(ButtonsType, (int)Buttons.ThirdClearRewardButton).gameObject.BindEvent(OnClickThirdClearRewardButton);
-        GetButton(ButtonsType, (int)Buttons.GameStartButton).gameObject.BindEvent(OnClickGameStartButton);
+        GetButton(ButtonsType, (int)Buttons.GameStartButton).gameObject.BindEvent(() =>
+        {
+            OnClickGameStartButton().Forget();
+        });
+
         GetButton(ButtonsType, (int)Buttons.OfflineRewardButton).gameObject.BindEvent(OnClickOfflineRewardButton);
 
         #region TEST
@@ -484,7 +489,7 @@ public class UI_BattlePopup : UI_Popup
 
     }
 
-    void OnClickGameStartButton()
+    async UniTask OnClickGameStartButton()
     {
         Manager.SoundM.PlayButtonClick();
         Manager.GameM.isGameEnd = false;
@@ -504,7 +509,7 @@ public class UI_BattlePopup : UI_Popup
         }
 
 
-        Manager.SceneM.LoadScene(Define.SceneType.GameScene, transform);
+        await Manager.SceneM.LoadSceneAsync(Define.SceneType.GameScene, transform);
 
     }
 

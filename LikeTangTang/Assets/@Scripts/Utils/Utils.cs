@@ -13,6 +13,7 @@ public static class Utils
     //Get을 해본다음 없으면 추가, 있으면 리턴
     public static T GetOrAddComponent<T>(this GameObject go) where T : Component
     {
+        if (go == null) return null;
         T component = go.GetComponent<T>();
         if (component == null)
             component = go.AddComponent<T>();
@@ -34,12 +35,12 @@ public static class Utils
     {
         if (go == null) return null;
 
-        if(recursive == false)
+        if (recursive == false)
         {
-            for(int i =0; i<go.transform.childCount; i++)
+            for (int i = 0; i < go.transform.childCount; i++)
             {
                 Transform tr = go.transform.GetChild(i);
-                if(string.IsNullOrEmpty(name) || tr.name == name)
+                if (string.IsNullOrEmpty(name) || tr.name == name)
                 {
                     T component = tr.GetComponent<T>();
                     if (component != null) return component;
@@ -48,9 +49,9 @@ public static class Utils
         }
         else
         {
-            foreach(T component in go.GetComponentsInChildren<T>())
+            foreach (T component in go.GetComponentsInChildren<T>())
             {
-                if(string.IsNullOrEmpty(name) || component.name == name)
+                if (string.IsNullOrEmpty(name) || component.name == name)
                 {
                     return component;
                 }
@@ -59,7 +60,7 @@ public static class Utils
 
         return null;
     }
-    
+
     public static bool IsValid(this GameObject _go)
     {
         return _go != null && _go.activeSelf;
@@ -86,14 +87,14 @@ public static class Utils
 
     public static void BindEvent(this GameObject _go, Action _action = null, Action<BaseEventData> _dragAction = null, Define.UIEvent _type = Define.UIEvent.Click)
     {
-        UI_Base.BindEvent(_go, _action, _dragAction, _type); 
+        UI_Base.BindEvent(_go, _action, _dragAction, _type);
     }
 
     public static Vector2 CreateObjectAroundPlayer(Vector3 _pos, float _minDist = 6f, float _maxDist = 10f)
     {
         float angle = UnityEngine.Random.Range(0f, 360f);
         float radius = angle * Mathf.Deg2Rad;
-        
+
         float dist = UnityEngine.Random.Range(_minDist, _maxDist);
 
 
@@ -106,12 +107,12 @@ public static class Utils
     //NOTE : SKillType 통일 시키려고
     public static Define.SkillType GetSkillTypeFromInt(int _value)
     {
-        foreach(Define.SkillType type in Enum.GetValues(typeof(Define.SkillType)))
+        foreach (Define.SkillType type in Enum.GetValues(typeof(Define.SkillType)))
         {
             int minValue = (int)type;
-            int maxValue = minValue+5;
+            int maxValue = minValue + 5;
 
-            if(_value >= minValue && _value <= maxValue)
+            if (_value >= minValue && _value <= maxValue)
             {
                 return type;
             }
@@ -135,14 +136,14 @@ public static class Utils
         float closestDist = Mathf.Infinity;
         MonsterController closestMC = null;
 
-        foreach(MonsterController monster in Manager.ObjectM.mcSet)
+        foreach (MonsterController monster in Manager.ObjectM.mcSet)
         {
-            if(!monster.IsValid()) continue;
-            if(_prevTargets!= null && _prevTargets.Contains(monster)) continue;
+            if (!monster.IsValid()) continue;
+            if (_prevTargets != null && _prevTargets.Contains(monster)) continue;
 
 
             float dist = Vector3.Distance(_origin, monster.transform.position);
-            if(dist < closestDist)
+            if (dist < closestDist)
             {
                 closestDist = dist;
                 closestMC = monster;
@@ -156,12 +157,12 @@ public static class Utils
     {
         Transform[] children = new Transform[_go.transform.childCount];
 
-        for(int i =0; i<_go.transform.childCount; i++)
+        for (int i = 0; i < _go.transform.childCount; i++)
         {
             children[i] = _go.transform.GetChild(i);
         }
 
-        foreach(Transform child in children)
+        foreach (Transform child in children)
         {
             Manager.ResourceM.Destory(child.gameObject);
         }
@@ -174,10 +175,10 @@ public static class Utils
     {
         int count = _list.Count;
 
-        while(count > 1)
+        while (count > 1)
         {
             count--;
-            int randNum = UnityEngine.Random.Range(0, count+1);
+            int randNum = UnityEngine.Random.Range(0, count + 1);
             T value = _list[randNum];
             _list[randNum] = _list[count];
             _list[count] = value;

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public class UI_BackToBattlePopup : UI_Popup
@@ -10,7 +11,7 @@ public class UI_BackToBattlePopup : UI_Popup
     }
 
     enum Buttons
-    { 
+    {
         CancelButton,
         ConfirmButton,
         AlreadyDieConfirmButton
@@ -39,7 +40,10 @@ public class UI_BackToBattlePopup : UI_Popup
 
 
         GetButton(ButtonsType, (int)Buttons.CancelButton).gameObject.BindEvent(OnClickBackButton);
-        GetButton(ButtonsType, (int)Buttons.ConfirmButton).gameObject.BindEvent(OnClickConfirmButton);
+        GetButton(ButtonsType, (int)Buttons.ConfirmButton).gameObject.BindEvent(() =>
+        {
+            OnClickConfirmButton().Forget();
+        });
         GetButton(ButtonsType, (int)Buttons.AlreadyDieConfirmButton).gameObject.BindEvent(OnClickAlreadyDieConfirmButton);
 
         GetButton(ButtonsType, (int)Buttons.CancelButton).gameObject.SetActive(false);
@@ -62,13 +66,13 @@ public class UI_BackToBattlePopup : UI_Popup
             GetButton(ButtonsType, (int)Buttons.CancelButton).gameObject.SetActive(true);
             GetButton(ButtonsType, (int)Buttons.ConfirmButton).gameObject.SetActive(true);
         }
-            
+
     }
 
-    void OnClickConfirmButton()
+    async UniTask OnClickConfirmButton()
     {
         Manager.SoundM.PlayPopupClose();
-        Manager.SceneM.LoadScene(Define.SceneType.GameScene, transform);
+        await Manager.SceneM.LoadSceneAsync(Define.SceneType.GameScene, transform);
     }
 
     void OnClickBackButton()

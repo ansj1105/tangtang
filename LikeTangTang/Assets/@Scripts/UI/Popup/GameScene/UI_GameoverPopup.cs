@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public class UI_GameoverPopup : UI_Popup
@@ -48,7 +49,10 @@ public class UI_GameoverPopup : UI_Popup
         BindText(TextsType);
 
         GetButton(ButtonsType, (int)Buttons.StatisticsButton).gameObject.BindEvent(OnClickStatisticsButton);
-        GetButton(ButtonsType, (int)Buttons.ConfirmButton).gameObject.BindEvent(OnClickConfirmButton);
+        GetButton(ButtonsType, (int)Buttons.ConfirmButton).gameObject.BindEvent(() =>
+        {
+            OnClickConfirmButton().Forget();
+        });
 
         Refresh();
 
@@ -63,7 +67,7 @@ public class UI_GameoverPopup : UI_Popup
     void Refresh()
     {
         GetText(TextsType, (int)Texts.GameoverStageValueText).text = $"{Manager.GameM.CurrentStageData.StageIndex} STAGE";
-        GetText(TextsType, (int)Texts.GameoverLastWaveValueText).text = $"{Manager.GameM.CurrentWaveIndex + 1 }";
+        GetText(TextsType, (int)Texts.GameoverLastWaveValueText).text = $"{Manager.GameM.CurrentWaveIndex + 1}";
         GetText(TextsType, (int)Texts.GameoverKillValueText).text = $"{Manager.GameM.player.KillCount}";
     }
 
@@ -73,14 +77,14 @@ public class UI_GameoverPopup : UI_Popup
         Manager.UiM.ShowPopup<UI_TotalDamagePopup>().SetInfo();
     }
 
-    void OnClickConfirmButton()
+    public async UniTask OnClickConfirmButton()
     {
         Manager.SoundM.PlayButtonClick();
 
         StageClearInfoData info;
-        if(Manager.GameM.StageClearInfoDic.TryGetValue(Manager.GameM.CurrentStageData.StageIndex, out info))
+        if (Manager.GameM.StageClearInfoDic.TryGetValue(Manager.GameM.CurrentStageData.StageIndex, out info))
         {
-            if(Manager.GameM.CurrentWaveIndex > info.MaxWaveIndex)
+            if (Manager.GameM.CurrentWaveIndex > info.MaxWaveIndex)
             {
                 info.MaxWaveIndex = Manager.GameM.CurrentWaveIndex;
                 Manager.GameM.StageClearInfoDic[Manager.GameM.CurrentStageData.StageIndex] = info;
@@ -88,6 +92,6 @@ public class UI_GameoverPopup : UI_Popup
         }
 
         Manager.GameM.ClearContinueData();
-        Manager.SceneM.LoadScene(Define.SceneType.LobbyScene, transform);
+        await Manager.SceneM.LoadSceneAsync(Define.SceneType.LobbyScene, transform);
     }
 }

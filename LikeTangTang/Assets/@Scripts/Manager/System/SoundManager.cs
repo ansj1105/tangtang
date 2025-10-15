@@ -14,7 +14,7 @@ public class SoundManager
     {
         if (soundRoot != null) return;
         soundRoot = GameObject.Find("@SoundRoot");
-        if(soundRoot == null)
+        if (soundRoot == null)
         {
             soundRoot = new GameObject { name = "@SoundRoot" };
             UnityEngine.Object.DontDestroyOnLoad(soundRoot);
@@ -29,7 +29,7 @@ public class SoundManager
         }
         audioSources[(int)Define.Sound.Bgm].loop = true;
         audioSources[(int)Define.Sound.SubBgm].loop = true;
-       
+
     }
     public void Clear()
     {
@@ -48,28 +48,28 @@ public class SoundManager
 
     private void PlayInternal(Define.Sound _sound, string _key, float _pitch, AudioSource _source)
     {
-        if(audioClips.TryGetValue(_key, out var clip) && clip != null)
+        if (audioClips.TryGetValue(_key, out var clip) && clip != null)
         {
             DoPlay(_sound, _source, clip, _pitch);
             return;
         }
 
-        Manager.ResourceM.LoadAsync<AudioClip>(_key, loadedClip =>
-        {
-            if(loadedClip == null)
-            {
-                Debug.LogError($"SoundManger : »ç¿îµå ·Îµå ½ÇÆÐ {_key}");
-                return;
-            }
-            audioClips[_key] = loadedClip;
-            DoPlay(_sound, _source, loadedClip, _pitch);
-        });
+        // Manager.ResourceM.LoadAsync<AudioClip>(_key, loadedClip =>
+        // {
+        //     if(loadedClip == null)
+        //     {
+        //         Debug.LogError($"SoundManger : ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½ ï¿½ï¿½ï¿½ï¿½ {_key}");
+        //         return;
+        //     }
+        //     audioClips[_key] = loadedClip;
+        //     DoPlay(_sound, _source, loadedClip, _pitch);
+        // });
     }
 
     private void DoPlay(Define.Sound _sound, AudioSource _source, AudioClip _clip, float _pitch)
     {
         _source.pitch = _pitch;
-        switch(_sound)
+        switch (_sound)
         {
             case Define.Sound.Bgm:
                 if (_source.isPlaying) _source.Stop();
@@ -91,13 +91,13 @@ public class SoundManager
     }
     public void PlayButtonClick() => Play(Define.Sound.Effect, "ButtonClick");
     public void PlayPopupClose() => Play(Define.Sound.Effect, "PopupClose");
-    
 
-    
+
+
     public void Stop(Define.Sound _sound)
     {
         AudioSource audio = audioSources[(int)_sound];
-        if(audio.isPlaying) audio.Stop();
+        if (audio.isPlaying) audio.Stop();
     }
 
 

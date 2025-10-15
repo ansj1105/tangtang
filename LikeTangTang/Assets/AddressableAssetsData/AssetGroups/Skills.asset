@@ -21,102 +21,102 @@ MonoBehaviour:
     m_Address: SuicideDrone
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - NeedRelease
   - m_GUID: 95882028e0c868b4f8a0528a02f24fa6
     m_Address: TimeStopBomb
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - NeedRelease
   - m_GUID: 37653322751364dfbba9dd024dded5d6
     m_Address: GravityBomb
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - NeedRelease
   - m_GUID: e2f2966bd49df4de181c8d05ae886ee7
     m_Address: GravityBombZone
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - NeedRelease
   - m_GUID: aa762a0eb272442bd89f41d0dd10f2f9
     m_Address: ElectronicField_Evolutoin
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - NeedRelease
   - m_GUID: be65551eecc7ea64589c7932ed258169
     m_Address: SpectralSlash
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - NeedRelease
   - m_GUID: fb3a1b5a6208147c18045e94c97e7768
     m_Address: ElectronicField
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - NeedRelease
   - m_GUID: 7ebb60f20785f44bc8103853935620dc
     m_Address: ElectronicField_Normal
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - NeedRelease
   - m_GUID: 317c6ded4b29c488b89c419af6b3176a
     m_Address: PlasmaSpinner
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - NeedRelease
   - m_GUID: 5e21d42c31c0340649a4c6f9b18854c0
     m_Address: PlasmaShot
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - NeedRelease
   - m_GUID: 75c6808dce3064e91868bec5111e9d2c
     m_Address: ElectricShock
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - NeedRelease
   - m_GUID: 8d1423bbe53d13d4fa74d492091e28ac
     m_Address: EnergyRing
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - NeedRelease
   - m_GUID: 31e04113d6d25449abb60a66f6db0e24
     m_Address: ExplosionEffect
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - NeedRelease
   - m_GUID: 861449f41d0423046b195ecb85ec0042
     m_Address: OrbitalBlades_Evolution
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - NeedRelease
   - m_GUID: 432cb5b4d3dbe2043a519ab012338719
     m_Address: OrbitalBlades
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - NeedRelease
   - m_GUID: 98be4a981d007465ca776851d08654af
     m_Address: ElectricShock_Evolution
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - NeedRelease
   - m_GUID: 308038cb40d3e4aedaefd98e8c8555dc
     m_Address: PlasmaSpinner_Evolution
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - NeedRelease
   - m_GUID: 50ecb27564ad648aeb977a2b34c1b646
     m_Address: SuicideDrone_Evolution
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - NeedRelease
   - m_GUID: d51d297148b2ce84ab2b7a9be55de48e
     m_Address: TimeStopBombZone
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - NeedRelease
   - m_GUID: 57d550108094548e388c44cd7fa2203e
     m_Address: PlasmaShot_Evolution
     m_ReadOnly: 0
     m_SerializedLabels:
-    - PrevLoad
+    - NeedRelease
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 58fc61992768249fdab8acc891732a43, type: 2}
   m_SchemaSet:
