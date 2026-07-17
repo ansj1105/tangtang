@@ -36,9 +36,9 @@ public class UI_TitleScene : UI_Scene
         BindText(TextsType);
 
 
-        GetButton(typeof(Buttons), (int)Buttons.StartButton).gameObject.BindEvent(async () =>
+        GetButton(typeof(Buttons), (int)Buttons.StartButton).gameObject.BindEvent(() =>
         {
-            await Manager.SceneM.LoadSceneAsync(Define.SceneType.LobbyScene);
+            OnClickStartButton().Forget();
         });
         GetButton(typeof(Buttons), (int)Buttons.StartButton).gameObject.SetActive(false);
 
@@ -175,6 +175,21 @@ public class UI_TitleScene : UI_Scene
         GetText(typeof(Texts), (int)Texts.StartText).transform.DOScale(OriginPos * 1.5f, 0.5f)
         .SetLoops(-1, LoopType.Yoyo)
         .SetEase(Ease.InOutSine);
+    }
+
+    private async UniTaskVoid OnClickStartButton()
+    {
+        try
+        {
+            GetButton(typeof(Buttons), (int)Buttons.StartButton).interactable = false;
+            Debug.Log("TitleScene StartButton clicked. Loading LobbyScene.");
+            await Manager.SceneM.LoadSceneAsync(Define.SceneType.LobbyScene);
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"Failed to load LobbyScene from title: {e}");
+            GetButton(typeof(Buttons), (int)Buttons.StartButton).interactable = true;
+        }
     }
 
 }

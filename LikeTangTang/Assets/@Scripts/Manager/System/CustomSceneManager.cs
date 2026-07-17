@@ -27,40 +27,44 @@ public class CustomSceneManager
     public async UniTask LoadSceneAsync(Define.SceneType _type, Transform _tr = null)
     {
         Manager.UpdateM.PauseTicking(true);
-        await UniTask.Yield();
-
-        if (CurrentScene.SceneType == Define.SceneType.TitleScene)
+        try
         {
-            Manager.Clear();
-            await SceneManager.LoadSceneAsync(GetScene(_type));
+            await UniTask.Yield();
 
+            if (CurrentScene.SceneType == Define.SceneType.TitleScene)
+            {
+                Manager.Clear();
+                await SceneManager.LoadSceneAsync(GetScene(_type));
+                return;
+            }
+            else if (CurrentScene.SceneType == Define.SceneType.LobbyScene)
+            {
+                await Manager.ResourceM.LoadGroupAsync<UnityEngine.Object>("NeedRelease");
+                await PlaySceneChangeAnimation(_type, _tr);
+            }
+            else if (CurrentScene.SceneType == Define.SceneType.GameScene)
+            {
+                if(Manager.SpawnM != null)
+                {
+                    Manager.SpawnM.StopSpawn();
+                }
+
+                if(Manager.ObjectM.Player != null)
+                {
+                    Manager.ObjectM.DeSpawn<PlayerController>(Manager.ObjectM.Player);
+                }
+                Manager.ObjectM.Clear();
+               
+                await Manager.ResourceM.UnLoadGroup("NeedRelease");
+
+                await PlaySceneChangeAnimation(_type, _tr);
+
+            }
+        }
+        finally
+        {
             Manager.UpdateM.PauseTicking(false);
-            return;
         }
-        else if (CurrentScene.SceneType == Define.SceneType.LobbyScene)
-        {
-            await Manager.ResourceM.LoadGroupAsync<UnityEngine.Object>("NeedRelease");
-            await PlaySceneChangeAnimation(_type, _tr);
-        }
-        else if (CurrentScene.SceneType == Define.SceneType.GameScene)
-        {
-            if(Manager.SpawnM != null)
-            {
-                Manager.SpawnM.StopSpawn();
-            }
-
-            if(Manager.ObjectM.Player != null)
-            {
-                Manager.ObjectM.DeSpawn<PlayerController>(Manager.ObjectM.Player);
-            }
-            Manager.ObjectM.Clear();
-           
-            await Manager.ResourceM.UnLoadGroup("NeedRelease");
-
-            await PlaySceneChangeAnimation(_type, _tr);
-
-        }
-        Manager.UpdateM.PauseTicking(false);
     }
 
     // public void LoadScene(Define.SceneType _type, Transform _tr = null) //씬 이동 애니메이션()
@@ -121,4 +125,3 @@ public class CustomSceneManager
         CurrentScene.Clear();
     }
 }
-
