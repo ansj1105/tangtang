@@ -25,6 +25,10 @@ public class UI_TitleScene : UI_Scene
         CountText
     }
     bool isLoadEnd = false;
+    private GameObject loadingIndicatorObject;
+    private TextMeshProUGUI loadingStatusText;
+    private Tween loadingSpinnerTween;
+    private Tween startTextTween;
 
     public override bool Init()
     {
@@ -45,6 +49,7 @@ public class UI_TitleScene : UI_Scene
         GetButton(typeof(Buttons), (int)Buttons.StartButton).gameObject.SetActive(false);
 
         GetText(typeof(Texts), (int)Texts.StartText).gameObject.SetActive(false);
+        ShowLoadingIndicator();
 
         SetInfo().Forget();
         return true;
@@ -89,6 +94,7 @@ public class UI_TitleScene : UI_Scene
             Manager.AdM.Init();
 
             isLoadEnd = true;
+            HideLoadingIndicator();
             GetButton(typeof(Buttons), (int)Buttons.StartButton).gameObject.SetActive(true);
             GetText(typeof(Texts), (int)Texts.StartText).gameObject.SetActive(true);
             StartAnim();
@@ -113,6 +119,107 @@ public class UI_TitleScene : UI_Scene
 
         if (countText != null)
             countText.text = $"{current} / {total}";
+
+        if (loadingStatusText != null)
+            loadingStatusText.text = $"로딩중입니다\n{current} / {total}";
+    }
+
+    private void ShowLoadingIndicator()
+    {
+        Slider slider = GetSlider(typeof(Sliders), (int)Sliders.Slider);
+        TextMeshProUGUI countText = GetText(typeof(Texts), (int)Texts.CountText);
+
+        if (slider != null)
+            slider.gameObject.SetActive(false);
+
+        if (countText != null)
+            countText.gameObject.SetActive(false);
+
+        if (loadingIndicatorObject == null)
+        {
+            loadingIndicatorObject = new GameObject("LoadingIndicator", typeof(RectTransform));
+            loadingIndicatorObject.transform.SetParent(transform, false);
+
+            RectTransform indicatorRect = loadingIndicatorObject.GetComponent<RectTransform>();
+            indicatorRect.anchorMin = new Vector2(0.5f, 0f);
+            indicatorRect.anchorMax = new Vector2(0.5f, 0f);
+            indicatorRect.pivot = new Vector2(0.5f, 0.5f);
+            indicatorRect.anchoredPosition = new Vector2(0f, 260f);
+            indicatorRect.sizeDelta = new Vector2(360f, 140f);
+
+            Image sourceImage = null;
+            if (slider != null && slider.fillRect != null)
+                sourceImage = slider.fillRect.GetComponent<Image>();
+
+            GameObject spinnerObject = new GameObject("LoadingSpinner", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
+            spinnerObject.transform.SetParent(loadingIndicatorObject.transform, false);
+
+            RectTransform spinnerRect = spinnerObject.GetComponent<RectTransform>();
+            spinnerRect.anchorMin = new Vector2(0.5f, 0.5f);
+            spinnerRect.anchorMax = new Vector2(0.5f, 0.5f);
+            spinnerRect.pivot = new Vector2(0.5f, 0.5f);
+            spinnerRect.anchoredPosition = new Vector2(0f, 36f);
+            spinnerRect.sizeDelta = new Vector2(72f, 72f);
+
+            Image spinnerImage = spinnerObject.GetComponent<Image>();
+            if (sourceImage != null)
+            {
+                spinnerImage.sprite = sourceImage.sprite;
+                spinnerImage.color = sourceImage.color;
+            }
+            spinnerImage.type = Image.Type.Filled;
+            spinnerImage.fillMethod = Image.FillMethod.Radial360;
+            spinnerImage.fillAmount = 0.72f;
+            spinnerImage.raycastTarget = false;
+
+            GameObject textObject = new GameObject("LoadingStatusText", typeof(RectTransform), typeof(CanvasRenderer), typeof(TextMeshProUGUI));
+            textObject.transform.SetParent(loadingIndicatorObject.transform, false);
+
+            RectTransform textRect = textObject.GetComponent<RectTransform>();
+            textRect.anchorMin = new Vector2(0.5f, 0.5f);
+            textRect.anchorMax = new Vector2(0.5f, 0.5f);
+            textRect.pivot = new Vector2(0.5f, 0.5f);
+            textRect.anchoredPosition = new Vector2(0f, -42f);
+            textRect.sizeDelta = new Vector2(360f, 72f);
+
+            loadingStatusText = textObject.GetComponent<TextMeshProUGUI>();
+            loadingStatusText.text = "로딩중입니다";
+            loadingStatusText.fontSize = 30f;
+            loadingStatusText.alignment = TextAlignmentOptions.Center;
+            loadingStatusText.raycastTarget = false;
+
+            if (countText != null)
+            {
+                loadingStatusText.font = countText.font;
+                loadingStatusText.fontSharedMaterial = countText.fontSharedMaterial;
+                loadingStatusText.color = countText.color;
+            }
+        }
+
+        loadingIndicatorObject.SetActive(true);
+        loadingSpinnerTween?.Kill();
+        loadingSpinnerTween = loadingIndicatorObject.transform.Find("LoadingSpinner")
+            .DOLocalRotate(new Vector3(0f, 0f, -360f), 0.9f, RotateMode.FastBeyond360)
+            .SetEase(Ease.Linear)
+            .SetLoops(-1, LoopType.Restart);
+    }
+
+    private void HideLoadingIndicator()
+    {
+        loadingSpinnerTween?.Kill();
+        loadingSpinnerTween = null;
+
+        if (loadingIndicatorObject != null)
+            loadingIndicatorObject.SetActive(false);
+
+        Slider slider = GetSlider(typeof(Sliders), (int)Sliders.Slider);
+        TextMeshProUGUI countText = GetText(typeof(Texts), (int)Texts.CountText);
+
+        if (slider != null)
+            slider.gameObject.SetActive(false);
+
+        if (countText != null)
+            countText.gameObject.SetActive(false);
     }
 
     private async UniTask EnsureRequiredTitleResourcesLoaded()
@@ -428,7 +535,8 @@ public class UI_TitleScene : UI_Scene
     {
         Vector3 OriginPos = GetText(typeof(Texts), (int)Texts.StartText).transform.localScale;
 
-        GetText(typeof(Texts), (int)Texts.StartText).transform.DOScale(OriginPos * 1.5f, 0.5f)
+        startTextTween?.Kill();
+        startTextTween = GetText(typeof(Texts), (int)Texts.StartText).transform.DOScale(OriginPos * 1.5f, 0.5f)
         .SetLoops(-1, LoopType.Yoyo)
         .SetEase(Ease.InOutSine);
     }
