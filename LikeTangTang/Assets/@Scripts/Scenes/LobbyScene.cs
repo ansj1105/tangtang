@@ -8,33 +8,76 @@ public class LobbyScene : BaseScene
     Animator anim;
     public override void Init()
     {
+        Debug.Log("LobbyScene.Init begin");
         base.Init();
 
         SceneType = Define.SceneType.LobbyScene;
-        Manager.UiM.ShowSceneUI<UI_LobbyScene>();
+        if (Manager.UiM.ShowSceneUI<UI_LobbyScene>() == null)
+            Debug.LogError("LobbyScene failed to create UI_LobbyScene.");
 
         Screen.sleepTimeout = SleepTimeout.SystemSetting;
 
         RenderTexture rt = new RenderTexture(512, 512, 16);
-        var cam = GameObject.Find("PreviewCamera").GetComponent<Camera>();
+        GameObject previewCameraObject = GameObject.Find("PreviewCamera");
+        if (previewCameraObject == null || !previewCameraObject.TryGetComponent(out Camera cam))
+        {
+            Debug.LogError("LobbyScene missing PreviewCamera.");
+            return;
+        }
+
         cam.targetTexture = rt;
         var target = cam.targetTexture;
-        anim = GameObject.Find("Character").GetComponent<Animator>();
+        GameObject characterObject = GameObject.Find("Character");
+        if (characterObject == null || !characterObject.TryGetComponent(out anim))
+        {
+            Debug.LogError("LobbyScene missing Character animator.");
+            return;
+        }
 
-        int id = Manager.GameM.CurrentCharacter.DataId;
-        string anim_name = Manager.DataM.CreatureDic[id].CharacterAnimName;
-        anim.runtimeAnimatorController = Manager.ResourceM.Load<RuntimeAnimatorController>(anim_name);
+        Character currentCharacter = Manager.GameM.CurrentCharacter;
+        if (currentCharacter == null)
+        {
+            Debug.LogError("LobbyScene has no current character.");
+            return;
+        }
+
+        int id = currentCharacter.DataId;
+        if (!Manager.DataM.CreatureDic.TryGetValue(id, out Data.CreatureData creatureData))
+        {
+            Debug.LogError($"LobbyScene missing creature data id: {id}");
+            return;
+        }
+
+        string anim_name = creatureData.CharacterAnimName;
+        RuntimeAnimatorController controller = Manager.ResourceM.Load<RuntimeAnimatorController>(anim_name);
+        if (controller == null)
+        {
+            Debug.LogError($"LobbyScene missing animator controller: {anim_name}");
+            return;
+        }
+
+        anim.runtimeAnimatorController = controller;
         Manager.SceneM.Setup(cam, target, this);
 
         Manager.SoundM.Play(Define.Sound.Bgm, "Bgm_Lobby");
+        Debug.Log("LobbyScene.Init complete");
         
     }
 
     public void ChangeCharacter()
     {
-        int id = Manager.GameM.CurrentCharacter.DataId;
-        string anim_name = Manager.DataM.CreatureDic[id].CharacterAnimName;
-        anim.runtimeAnimatorController = Manager.ResourceM.Load<RuntimeAnimatorController>(anim_name);
+        Character currentCharacter = Manager.GameM.CurrentCharacter;
+        if (currentCharacter == null || anim == null)
+            return;
+
+        int id = currentCharacter.DataId;
+        if (!Manager.DataM.CreatureDic.TryGetValue(id, out Data.CreatureData creatureData))
+            return;
+
+        string anim_name = creatureData.CharacterAnimName;
+        RuntimeAnimatorController controller = Manager.ResourceM.Load<RuntimeAnimatorController>(anim_name);
+        if (controller != null)
+            anim.runtimeAnimatorController = controller;
     }
 
     public override void Clear()

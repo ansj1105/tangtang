@@ -50,7 +50,7 @@ public class UI_Base : MonoBehaviour
     {
         string[] names = Enum.GetNames(_type);
         UnityEngine.Object[] objs = new UnityEngine.Object[names.Length];
-        objs_Dic.Add(_type, objs);
+        objs_Dic[_type] = objs;
 
         for(int i =0 ; i<names.Length; i++)
         {

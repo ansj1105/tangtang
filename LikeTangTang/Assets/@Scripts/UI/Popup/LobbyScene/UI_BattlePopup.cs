@@ -218,7 +218,10 @@ public class UI_BattlePopup : UI_Popup
         else
             GetText(TextsType, (int)Texts.SurvivalWaveValueText).text = "기록 없음";
 
-        GetImage(ImagesType, (int)Images.StageImage).sprite = Manager.ResourceM.Load<Sprite>(Manager.GameM.CurrentStageData.StageImage);
+        Sprite stageSprite = Manager.ResourceM.Load<Sprite>(Manager.GameM.CurrentStageData.StageImage);
+        if (stageSprite == null)
+            Debug.LogError($"Missing stage sprite: {Manager.GameM.CurrentStageData.StageImage}");
+        GetImage(ImagesType, (int)Images.StageImage).sprite = stageSprite;
 
 
 
@@ -500,6 +503,8 @@ public class UI_BattlePopup : UI_Popup
             return;
         }
 
+        await Manager.SceneM.LoadSceneAsync(Define.SceneType.GameScene, transform);
+
         Manager.GameM.Stamina -= Define.GAMESTART_NEED_STAMINA;
 
         if (Manager.GameM.MissionDic.TryGetValue(Define.MissionTarget.StageEnter, out MissionInfo mission))
@@ -507,10 +512,6 @@ public class UI_BattlePopup : UI_Popup
             mission.Progress++;
             Manager.GameM.SaveGame();
         }
-
-
-        await Manager.SceneM.LoadSceneAsync(Define.SceneType.GameScene, transform);
-
     }
 
     void OnClickOfflineRewardButton()

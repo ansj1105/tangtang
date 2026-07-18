@@ -31,10 +31,18 @@ public class UIManager
         if(string.IsNullOrEmpty(_name)) _name = typeof(T).Name;
 
         GameObject go = Manager.ResourceM.Instantiate($"{_name}", _parent, _pooling);
+        if (go == null)
+        {
+            Debug.LogError($"Failed to create UI sub item. Missing prefab: {_name}");
+            return null;
+        }
+
         if (_parent != null)
             go.transform.SetParent(_parent);
         
-        return Utils.GetOrAddComponent<T>(go);
+        T ui = Utils.GetOrAddComponent<T>(go);
+        ui.Init();
+        return ui;
     }
 
 
@@ -54,8 +62,14 @@ public class UIManager
             _name = typeof(T).Name;
 
         GameObject go = Manager.ResourceM.Instantiate(_name);
+        if (go == null)
+        {
+            Debug.LogError($"Failed to show scene UI. Missing prefab: {_name}");
+            return null;
+        }
 
         T ui = go.GetOrAddComponent<T>();
+        ui.Init();
         sceneUI = ui;
 
         go.transform.SetParent(Root.transform);
@@ -71,7 +85,14 @@ public class UIManager
             _name = typeof(T).Name;
 
         GameObject go = Manager.ResourceM.Instantiate($"{_name}");
+        if (go == null)
+        {
+            Debug.LogError($"Failed to show popup. Missing prefab: {_name}");
+            return null;
+        }
+
         T popup = go.GetOrAddComponent<T>();
+        popup.Init();
         popupStack.Push(popup);
         go.transform.SetParent(Root.transform);
 
@@ -84,7 +105,14 @@ public class UIManager
     {
         string name = typeof(UI_Toast).Name;
         GameObject go = Manager.ResourceM.Instantiate(name, _pooling : true);
+        if (go == null)
+        {
+            Debug.LogError($"Failed to show toast. Missing prefab: {name}");
+            return null;
+        }
+
         UI_Toast toast = go.GetOrAddComponent<UI_Toast>();
+        toast.Init();
         toast.SetInfo(_detail);
         go.transform.SetParent(Root.transform);
 

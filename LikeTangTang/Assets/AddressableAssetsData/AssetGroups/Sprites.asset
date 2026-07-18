@@ -822,6 +822,31 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - AlwaysKeep
+  - m_GUID: 83669ad259d236b43be9d27ce056b9b0
+    m_Address: Normal_Potion.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysKeep
+  - m_GUID: 4505c2460fb22164c9792187629765ce
+    m_Address: Good_Potion.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysKeep
+  - m_GUID: bdb22d4f5f3a61441b3cb652cade0b0c
+    m_Address: Best_Potion.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysKeep
+  - m_GUID: d8c248615bf233b4ba4c241760cdc1e3
+    m_Address: Exp.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysKeep
+  - m_GUID: 70d42024920991a47a6f691d38e16f67
+    m_Address: EqptBox_Icon.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AlwaysKeep
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 58fc61992768249fdab8acc891732a43, type: 2}
   m_SchemaSet:

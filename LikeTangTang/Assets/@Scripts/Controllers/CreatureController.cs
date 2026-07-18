@@ -94,7 +94,11 @@ public class CreatureController : BaseController, ITickable
 
         isStartDamageAnim = false;
         if (DefaultMat != null) CreatureSprite.material = DefaultMat;
-        CreatureSprite.sprite = Manager.ResourceM.Load<Sprite>(creatureData.Image_Name);
+        Sprite sprite = Manager.ResourceM.Load<Sprite>(creatureData.Image_Name);
+        if (sprite == null)
+            Debug.LogError($"Missing creature sprite: {creatureData.Image_Name}");
+
+        CreatureSprite.sprite = sprite;
         Rigid.simulated = true;
     }
 
@@ -239,12 +243,17 @@ public class CreatureController : BaseController, ITickable
         if (!isStartDamageAnim)
         {
             isStartDamageAnim = true;
-            DefaultMat = Manager.ResourceM.Load<Material>("CreatureDefaultMat");
-            HitEffectmat = Manager.ResourceM.Load<Material>("DamagedEffectMat");
+            Material originMat = CreatureSprite.material;
+            Color originColor = CreatureSprite.color;
 
-            CreatureSprite.material = HitEffectmat;
+            CreatureSprite.color = new Color(1f, 0.35f, 0.35f, originColor.a);
             yield return new WaitForSeconds(0.1f);
-            CreatureSprite.material = DefaultMat;
+
+            if (CreatureSprite != null)
+            {
+                CreatureSprite.material = originMat;
+                CreatureSprite.color = originColor;
+            }
 
             if (Hp <= 0)
             {

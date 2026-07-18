@@ -2,6 +2,8 @@ using System;
 using System.IO;
 using System.Linq;
 using UnityEditor;
+using UnityEditor.AddressableAssets;
+using UnityEditor.AddressableAssets.Settings;
 using UnityEditor.Build.Reporting;
 using UnityEditor.Android;
 using UnityEngine;
@@ -25,6 +27,8 @@ public static class CommandLineBuild
         PlayerSettings.Android.useCustomKeystore = false;
         PlayerSettings.Android.targetArchitectures = GetAndroidArchitectures();
 
+        BuildAddressables();
+
         var scenes = EditorBuildSettings.scenes
             .Where(scene => scene.enabled)
             .Select(scene => scene.path)
@@ -35,7 +39,7 @@ public static class CommandLineBuild
             scenes = scenes,
             locationPathName = outputPath,
             target = BuildTarget.Android,
-            options = BuildOptions.None
+            options = GetBuildOptions()
         });
 
         if (report.summary.result != BuildResult.Succeeded)
@@ -44,6 +48,39 @@ public static class CommandLineBuild
         }
 
         Debug.Log($"Android APK built: {Path.GetFullPath(outputPath)}");
+    }
+
+    private static BuildOptions GetBuildOptions()
+    {
+        bool development = HasArg("-developmentBuild")
+            || string.Equals(Environment.GetEnvironmentVariable("UNITY_DEVELOPMENT_BUILD"), "1", StringComparison.OrdinalIgnoreCase);
+
+        if (!development)
+            return BuildOptions.None;
+
+        EditorUserBuildSettings.development = true;
+        EditorUserBuildSettings.allowDebugging = true;
+        EditorUserBuildSettings.waitForManagedDebugger = false;
+        return BuildOptions.Development | BuildOptions.AllowDebugging;
+    }
+
+    private static void BuildAddressables()
+    {
+        AddressableAssetSettings settings = AddressableAssetSettingsDefaultObject.Settings;
+        if (settings == null)
+        {
+            throw new Exception("AddressableAssetSettings not found.");
+        }
+
+        var serverDataPath = Path.Combine(Directory.GetCurrentDirectory(), "ServerData", "Android");
+        if (Directory.Exists(serverDataPath))
+        {
+            Directory.Delete(serverDataPath, true);
+        }
+
+        AddressableAssetSettings.CleanPlayerContent(settings.ActivePlayerDataBuilder);
+        AddressableAssetSettings.BuildPlayerContent();
+        Debug.Log("Addressables Android content rebuilt for player build.");
     }
 
     private static AndroidArchitecture GetAndroidArchitectures()
@@ -111,5 +148,10 @@ public static class CommandLineBuild
             }
         }
         return null;
+    }
+
+    private static bool HasArg(string name)
+    {
+        return Environment.GetCommandLineArgs().Any(arg => arg == name);
     }
 }

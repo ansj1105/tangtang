@@ -59,6 +59,9 @@ public class DataManager
     Loader LoadJson<Loader, key, value>(string _path) where Loader : ILoader<key, value>
     {
         TextAsset textAsset = Manager.ResourceM.Load<TextAsset>($"{_path}");
+        if (textAsset == null)
+            throw new Exception($"Data json not loaded: {_path}");
+
         return JsonConvert.DeserializeObject<Loader>(textAsset.text);
     }
 }

@@ -19,7 +19,7 @@ public class GameManager
 {
     public PlayerController player { get { return Manager.ObjectM?.Player; } }
 
-    public Character CurrentCharacter {get { return Characters.Find(c => c.isCurrentCharacter == true); } }
+    public Character CurrentCharacter {get { return Characters?.Find(c => c != null && c.isCurrentCharacter == true); } }
     public CameraController Camera { get; set; }
     public GameData gameData = new GameData();
     public float TimeRemaining = 60;
@@ -402,6 +402,8 @@ public class GameManager
         path = Application.persistentDataPath + "/SaveData.json";
         if (LoadGame()) return;
 
+        gameData = new GameData();
+        gameData.Init();
         PlayerPrefs.SetInt("ISFIRST", 1);
         for (int i = DEFAULT_PLAYER_ID; i <= PlAYER_NUM; i++)
         {
@@ -510,26 +512,98 @@ public class GameManager
 
         if (File.Exists(path) == false) return false;
 
-        string jsonStr = File.ReadAllText(path);
-        GameData data = JsonConvert.DeserializeObject<GameData>(jsonStr);
-        if (data != null)
+        try
         {
+            string jsonStr = File.ReadAllText(path);
+            GameData data = JsonConvert.DeserializeObject<GameData>(jsonStr);
+            if (data == null)
+            {
+                Debug.LogWarning("SaveData.json is empty or invalid. Creating new save data.");
+                return false;
+            }
+
             data.Init();
+            if (!EnsureSaveDataCompatible(data, out string reason))
+            {
+                Debug.LogWarning($"SaveData.json is incompatible: {reason}. Creating new save data.");
+                return false;
+            }
+
             gameData = data;
+
+            CurrentCharacter.SetInfo(CurrentCharacter.DataId);
+
+            Manager.AchievementM.Init();
+            EquipedEquipments = new Dictionary<EquipmentType, Equipment>();
+            for(int i =0; i< OwnedEquipment.Count; i++)
+            {
+                if(OwnedEquipment[i].IsEquiped)
+                {
+                    EquipItem(OwnedEquipment[i].EquipmentData.EquipmentType, OwnedEquipment[i]);
+                }
+            }
+            isLoaded = true;
+            return true;
+        }
+        catch (Exception e)
+        {
+            Debug.LogWarning($"Failed to load SaveData.json. Creating new save data. {e}");
+            return false;
+        }
+    }
+
+    private bool EnsureSaveDataCompatible(GameData data, out string reason)
+    {
+        reason = null;
+
+        if (data.Characters == null || data.Characters.Count == 0)
+        {
+            reason = "no characters";
+            return false;
         }
 
-        CurrentCharacter.SetInfo(CurrentCharacter.DataId);
-
-        Manager.AchievementM.Init();
-        EquipedEquipments = new Dictionary<EquipmentType, Equipment>();
-        for(int i =0; i< OwnedEquipment.Count; i++)
+        Character current = data.Characters.Find(c => c != null && c.isCurrentCharacter);
+        if (current == null)
         {
-            if(OwnedEquipment[i].IsEquiped)
+            current = data.Characters.Find(c => c != null);
+            if (current == null)
             {
-                EquipItem(OwnedEquipment[i].EquipmentData.EquipmentType, OwnedEquipment[i]);
+                reason = "no usable character";
+                return false;
+            }
+
+            foreach (Character character in data.Characters)
+            {
+                if (character != null)
+                    character.isCurrentCharacter = false;
+            }
+            current.isCurrentCharacter = true;
+        }
+
+        if (!Manager.DataM.CreatureDic.ContainsKey(current.DataId))
+        {
+            reason = $"missing creature data id {current.DataId}";
+            return false;
+        }
+
+        if (data.CurrentStageData == null || !Manager.DataM.StageDic.ContainsKey(data.CurrentStageData.StageIndex))
+            data.CurrentStageData = Manager.DataM.StageDic[1];
+
+        foreach (Data.StageData stage in Manager.DataM.StageDic.Values)
+        {
+            if (!data.StageClearInfoDic.ContainsKey(stage.StageIndex))
+            {
+                data.StageClearInfoDic[stage.StageIndex] = new StageClearInfoData
+                {
+                    StageIndex = stage.StageIndex,
+                    MaxWaveIndex = 0,
+                    isOpenFirstBox = false,
+                    isOpenSecondBox = false,
+                    isOpenThirdBox = false
+                };
             }
         }
-        isLoaded = true;
+
         return true;
     }
 
@@ -828,4 +902,3 @@ public class GameManager
         return result;
     }
 }
-

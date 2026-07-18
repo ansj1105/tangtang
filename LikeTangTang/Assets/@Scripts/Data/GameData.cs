@@ -70,6 +70,23 @@ public class GameData
 
     public void Init()
     {
+        if (Achievements == null) Achievements = new List<AchievementData>();
+        if (AttendanceReceived == null) AttendanceReceived = new bool[30];
+        if (ContinueDatas == null) ContinueDatas = new ContinueData();
+        if (CurrentStageData == null) CurrentStageData = new StageData();
+        if (Characters == null) Characters = new List<Character>();
+        if (OwnedEquipments == null) OwnedEquipments = new List<Equipment>();
+        if (EquipedEquipments == null) EquipedEquipments = new Dictionary<Define.EquipmentType, Equipment>();
+        if (ItemDictionary == null) ItemDictionary = new Dictionary<int, int>();
+        if (StageClearInfoDic == null) StageClearInfoDic = new Dictionary<int, StageClearInfoData>();
+        if (MissionDic == null) MissionDic = new Dictionary<Define.MissionTarget, MissionInfo>();
+
+        foreach (Define.MissionTarget target in Enum.GetValues(typeof(Define.MissionTarget)))
+        {
+            if (!MissionDic.ContainsKey(target))
+                MissionDic[target] = new MissionInfo() { Progress = 0, isRewarded = false };
+        }
+
         foreach (var e in OwnedEquipments)
             e?.Init();
 

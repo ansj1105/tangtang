@@ -47,8 +47,8 @@ android {
 
 buildTypes {
         release {
-            // 릴리즈 빌드에선 난독화(on) + ProGuard/R8 규칙 적용
-            minifyEnabled true
+            // Keep ad-hoc APK builds debuggable and avoid Android plugin stripping.
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-user.txt'
         }
         debug {

@@ -65,7 +65,11 @@ public class UI_UserInfoItem : UI_Base
     public void Refresh()
     {
         transform.localScale = Vector3.one;
-        GetImage(ImagesType, (int)Images.UserIconImage).sprite = Manager.ResourceM.Load<Sprite>($"{Manager.DataM.CreatureDic[Manager.GameM.CurrentCharacter.DataId].Image_Name}");
+        string iconKey = Manager.DataM.CreatureDic[Manager.GameM.CurrentCharacter.DataId].Image_Name;
+        Sprite icon = Manager.ResourceM.Load<Sprite>(iconKey);
+        if (icon == null)
+            Debug.LogError($"Missing user icon sprite: {iconKey}");
+        GetImage(ImagesType, (int)Images.UserIconImage).sprite = icon;
         //if(Manager.DataM.CharacterLevelDataDic.TryGetValue(Manager.GameM.CurrentCharacter.Level, out var Coupon))
         //{
         //    GetSlider(SlidersType, (int)Sliders.UserExpSliderObject).value = Manager.GameM.CurrentCharacter.UseCoupon / Coupon.NeedCouponCount;

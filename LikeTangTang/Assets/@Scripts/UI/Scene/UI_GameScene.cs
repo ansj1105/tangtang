@@ -253,13 +253,23 @@ public class UI_GameScene : UI_Scene
 
     void SetCurrentSkill(int _num, SkillBase _skill)
     {
-        GetImage(ImagesType, (int)Images.BattleSkilI_Icon_1 + _num).sprite = Manager.ResourceM.Load<Sprite>(_skill.SkillDatas.SkillIcon);
+        string iconKey = _skill.SkillDatas.SkillIcon;
+        Sprite icon = Manager.ResourceM.Load<Sprite>(iconKey);
+        if (icon == null)
+            Debug.LogError($"Missing battle skill icon sprite: {iconKey}");
+
+        GetImage(ImagesType, (int)Images.BattleSkilI_Icon_1 + _num).sprite = icon;
         GetImage(ImagesType, (int)Images.BattleSkilI_Icon_1 + _num).enabled = true;
     }
 
     void SetEvolutionItem(int _num, int _evolutionItemID)
     {
-        GetImage(ImagesType, (int)Images.EvolutionItem_Icon_1 + _num).sprite = Manager.ResourceM.Load<Sprite>(Manager.DataM.SkillEvolutionDic[_evolutionItemID].EvolutionItemIcon);
+        string iconKey = Manager.DataM.SkillEvolutionDic[_evolutionItemID].EvolutionItemIcon;
+        Sprite icon = Manager.ResourceM.Load<Sprite>(iconKey);
+        if (icon == null)
+            Debug.LogError($"Missing evolution item icon sprite: {iconKey}");
+
+        GetImage(ImagesType, (int)Images.EvolutionItem_Icon_1 + _num).sprite = icon;
         GetImage(ImagesType, (int)Images.EvolutionItem_Icon_1 + _num).enabled = true;
     }
 

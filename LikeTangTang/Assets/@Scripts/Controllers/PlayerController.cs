@@ -498,6 +498,7 @@ public class PlayerController : CreatureController, ITickable
         totalDamage *= 1 - DamageReduction;
         Manager.GameM.Camera.Shake();
         base.OnDamaged(_attacker, _skill, totalDamage);
+        OnPlayerDamaged?.Invoke();
         //base.OnDamaged(_attacker, null, 0); // 현재 테스트용 데미지 0
     }
 

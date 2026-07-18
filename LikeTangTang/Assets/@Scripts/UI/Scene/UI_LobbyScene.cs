@@ -80,6 +80,9 @@ public class UI_LobbyScene : UI_Scene
 
     public override bool Init()
     {
+        if (!base.Init()) return false;
+
+        Debug.Log("UI_LobbyScene.Init begin");
         gameObjectsType = typeof(GameObjects);
         TogglesType = typeof(Toggles);
         TextsType = typeof(Texts);
@@ -126,6 +129,7 @@ public class UI_LobbyScene : UI_Scene
         Manager.GameM.OnResourcesChanged += Refresh;
         Refresh();
 
+        Debug.Log("UI_LobbyScene.Init complete");
         return true;
     }
 

@@ -6,6 +6,7 @@ param(
     [string]$AndroidNdk = "C:\work\android-ndk-r21d",
     [string]$JavaHome = "C:\work\jdk8",
     [string]$Architectures = "ARM64",
+    [switch]$DevelopmentBuild,
     [switch]$StopGradleDaemon
 )
 
@@ -24,15 +25,23 @@ $env:ANDROID_SDK_ROOT = $AndroidSdk
 $env:ANDROID_NDK_ROOT = $AndroidNdk
 $env:JAVA_HOME = $JavaHome
 $env:UNITY_ANDROID_ARCHITECTURES = $Architectures
+$env:UNITY_DEVELOPMENT_BUILD = if ($DevelopmentBuild) { "1" } else { "0" }
 $env:Path = "$JavaHome\bin;$AndroidSdk\tools\bin;$AndroidSdk\platform-tools;$env:Path"
 
-& $UnityPath `
-    -batchmode `
-    -nographics `
-    -quit `
-    -projectPath $ProjectPath `
-    -executeMethod CommandLineBuild.BuildAndroidApk `
-    -buildOutput $OutputPath `
-    -logFile "C:\work\likeTangTang-unity-build.log"
+$unityArgs = @(
+    "-batchmode",
+    "-nographics",
+    "-quit",
+    "-projectPath", $ProjectPath,
+    "-executeMethod", "CommandLineBuild.BuildAndroidApk",
+    "-buildOutput", $OutputPath,
+    "-logFile", "C:\work\likeTangTang-unity-build.log"
+)
+
+if ($DevelopmentBuild) {
+    $unityArgs += "-developmentBuild"
+}
+
+& $UnityPath @unityArgs
 
 exit $LASTEXITCODE

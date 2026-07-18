@@ -26,6 +26,8 @@ public class UI_JoyStick : UI_Scene
 
     public override bool Init()
     {
+        if (!base.Init()) return false;
+
         Bind<GameObject>(typeof(GameObjects));
         
         touchBG = GetObject(typeof(GameObjects), (int)GameObjects.TouchBG);
