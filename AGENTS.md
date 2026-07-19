@@ -3,7 +3,7 @@
 ## Android APK Build Path
 
 - Use Unity `2021.3.19f1` from `C:\work\Unity\Hub\Editor\2021.3.19f1\Editor\Unity.exe`.
-- Windows build source is `C:\work\likeTangTang-build-src\LikeTangTang`; final copied APK is `C:\work\LikeTangTang.apk`.
+- Windows build source is `C:\work\likeTangTang-build-src\LikeTangTang`; default build APK is `C:\work\likeTangTang-build-src\LikeTangTang\Builds\Android\NyaonHunter.apk`; final convenience copy is `C:\work\NyaonHunter.apk`.
 - Keep the Windows Unity `Library/` cache. First IL2CPP builds are slow; cached rebuilds are much faster.
 - For source replacement from downloaded Unity folders, use incremental sync that skips unchanged files and excludes `Library/`, `Temp/`, `Logs/`, `Builds/`, `UserSettings/`, and `ServerData/`.
 - Do not send Telegram artifacts unless the latest user message explicitly requests it.

@@ -1,7 +1,7 @@
 param(
     [string]$UnityPath = "C:\work\Unity\Hub\Editor\2021.3.19f1\Editor\Unity.exe",
     [string]$ProjectPath = "C:\work\likeTangTang-build-src\LikeTangTang",
-    [string]$OutputPath = "C:\work\likeTangTang-build-src\LikeTangTang\Builds\Android\LikeTangTang.apk",
+    [string]$OutputPath = "C:\work\likeTangTang-build-src\LikeTangTang\Builds\Android\NyaonHunter.apk",
     [string]$AndroidSdk = "C:\work\android-sdk",
     [string]$AndroidNdk = "C:\work\android-ndk-r21d",
     [string]$JavaHome = "C:\work\jdk8",
@@ -35,7 +35,7 @@ $unityArgs = @(
     "-projectPath", $ProjectPath,
     "-executeMethod", "CommandLineBuild.BuildAndroidApk",
     "-buildOutput", $OutputPath,
-    "-logFile", "C:\work\likeTangTang-unity-build.log"
+    "-logFile", "C:\work\NyaonHunter-unity-build.log"
 )
 
 if ($DevelopmentBuild) {
