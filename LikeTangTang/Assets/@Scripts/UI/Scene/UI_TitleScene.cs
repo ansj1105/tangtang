@@ -26,6 +26,7 @@ public class UI_TitleScene : UI_Scene
     }
     bool isLoadEnd = false;
     private GameObject loadingIndicatorObject;
+    private Image loadingProgressFillImage;
     private TextMeshProUGUI loadingStatusText;
     private Tween loadingSpinnerTween;
     private Tween startTextTween;
@@ -68,22 +69,32 @@ public class UI_TitleScene : UI_Scene
             string alwaysKeepLabel = "AlwaysKeep";
             string NeedReleaseLabel = "NeedRelease";
 
-            int alwaysKeepMax = 0;
+            ResetLoadingProgress();
+
+            totalExpectedAssetCount =
+                await Manager.ResourceM.CountGroupAsync(alwaysKeepLabel) +
+                await Manager.ResourceM.CountGroupAsync(NeedReleaseLabel) +
+                await Manager.ResourceM.CountGroupByTypeAsync<Sprite>(alwaysKeepLabel) +
+                await Manager.ResourceM.CountGroupByTypeAsync<Sprite>(NeedReleaseLabel) +
+                await Manager.ResourceM.CountGroupByTypeAsync<RuntimeAnimatorController>(alwaysKeepLabel) +
+                await Manager.ResourceM.CountGroupByTypeAsync<RuntimeAnimatorController>(NeedReleaseLabel);
+
+            UpdateLoadingProgress(currentLoadedAssetCount, totalExpectedAssetCount);
+
             await Manager.ResourceM.LoadGroupAsync<Object>(alwaysKeepLabel, (key, count, max) =>
             {
-                alwaysKeepMax = max;
-                UpdateLoadingProgress(count, max);
+                AdvanceLoadingProgress();
             });
 
             await Manager.ResourceM.LoadGroupAsync<Object>(NeedReleaseLabel, (key, count, max) =>
             {
-                UpdateLoadingProgress(alwaysKeepMax + count, alwaysKeepMax + max);
+                AdvanceLoadingProgress();
             });
 
-            await Manager.ResourceM.LoadGroupByTypeAsync<Sprite>(alwaysKeepLabel);
-            await Manager.ResourceM.LoadGroupByTypeAsync<Sprite>(NeedReleaseLabel);
-            await Manager.ResourceM.LoadGroupByTypeAsync<RuntimeAnimatorController>(alwaysKeepLabel);
-            await Manager.ResourceM.LoadGroupByTypeAsync<RuntimeAnimatorController>(NeedReleaseLabel);
+            await Manager.ResourceM.LoadGroupByTypeAsync<Sprite>(alwaysKeepLabel, (key, count, max) => AdvanceLoadingProgress());
+            await Manager.ResourceM.LoadGroupByTypeAsync<Sprite>(NeedReleaseLabel, (key, count, max) => AdvanceLoadingProgress());
+            await Manager.ResourceM.LoadGroupByTypeAsync<RuntimeAnimatorController>(alwaysKeepLabel, (key, count, max) => AdvanceLoadingProgress());
+            await Manager.ResourceM.LoadGroupByTypeAsync<RuntimeAnimatorController>(NeedReleaseLabel, (key, count, max) => AdvanceLoadingProgress());
 
             await EnsureRequiredTitleResourcesLoaded();
 
@@ -106,16 +117,42 @@ public class UI_TitleScene : UI_Scene
 
     }
 
+    private void ResetLoadingProgress()
+    {
+        currentLoadedAssetCount = 0;
+        totalExpectedAssetCount = 0;
+        UpdateLoadingProgress(0, 1);
+    }
+
+    private void AddLoadingTotal(int count)
+    {
+        if (count <= 0)
+            return;
+
+        totalExpectedAssetCount += count;
+        UpdateLoadingProgress(currentLoadedAssetCount, totalExpectedAssetCount);
+    }
+
+    private void AdvanceLoadingProgress()
+    {
+        currentLoadedAssetCount++;
+        UpdateLoadingProgress(currentLoadedAssetCount, totalExpectedAssetCount);
+    }
+
     private void UpdateLoadingProgress(int current, int total)
     {
         if (total <= 0)
             return;
 
+        float progress = Mathf.Clamp01((float)current / total);
         Slider slider = GetSlider(typeof(Sliders), (int)Sliders.Slider);
         TextMeshProUGUI countText = GetText(typeof(Texts), (int)Texts.CountText);
 
         if (slider != null)
-            slider.value = (float)current / total;
+            slider.value = progress;
+
+        if (loadingProgressFillImage != null)
+            loadingProgressFillImage.fillAmount = progress;
 
         if (countText != null)
             countText.text = $"{current} / {total}";
@@ -145,7 +182,7 @@ public class UI_TitleScene : UI_Scene
             indicatorRect.anchorMax = new Vector2(0.5f, 0f);
             indicatorRect.pivot = new Vector2(0.5f, 0.5f);
             indicatorRect.anchoredPosition = new Vector2(0f, 260f);
-            indicatorRect.sizeDelta = new Vector2(360f, 140f);
+            indicatorRect.sizeDelta = new Vector2(420f, 180f);
 
             Image sourceImage = null;
             if (slider != null && slider.fillRect != null)
@@ -158,7 +195,7 @@ public class UI_TitleScene : UI_Scene
             spinnerRect.anchorMin = new Vector2(0.5f, 0.5f);
             spinnerRect.anchorMax = new Vector2(0.5f, 0.5f);
             spinnerRect.pivot = new Vector2(0.5f, 0.5f);
-            spinnerRect.anchoredPosition = new Vector2(0f, 36f);
+            spinnerRect.anchoredPosition = new Vector2(0f, 50f);
             spinnerRect.sizeDelta = new Vector2(72f, 72f);
 
             Image spinnerImage = spinnerObject.GetComponent<Image>();
@@ -179,7 +216,7 @@ public class UI_TitleScene : UI_Scene
             textRect.anchorMin = new Vector2(0.5f, 0.5f);
             textRect.anchorMax = new Vector2(0.5f, 0.5f);
             textRect.pivot = new Vector2(0.5f, 0.5f);
-            textRect.anchoredPosition = new Vector2(0f, -42f);
+            textRect.anchoredPosition = new Vector2(0f, -24f);
             textRect.sizeDelta = new Vector2(360f, 72f);
 
             loadingStatusText = textObject.GetComponent<TextMeshProUGUI>();
@@ -194,9 +231,42 @@ public class UI_TitleScene : UI_Scene
                 loadingStatusText.fontSharedMaterial = countText.fontSharedMaterial;
                 loadingStatusText.color = countText.color;
             }
+
+            GameObject progressBackObject = new GameObject("LoadingProgressBack", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
+            progressBackObject.transform.SetParent(loadingIndicatorObject.transform, false);
+
+            RectTransform progressBackRect = progressBackObject.GetComponent<RectTransform>();
+            progressBackRect.anchorMin = new Vector2(0.5f, 0.5f);
+            progressBackRect.anchorMax = new Vector2(0.5f, 0.5f);
+            progressBackRect.pivot = new Vector2(0.5f, 0.5f);
+            progressBackRect.anchoredPosition = new Vector2(0f, -80f);
+            progressBackRect.sizeDelta = new Vector2(360f, 18f);
+
+            Image progressBackImage = progressBackObject.GetComponent<Image>();
+            progressBackImage.color = new Color(0f, 0f, 0f, 0.42f);
+            progressBackImage.raycastTarget = false;
+
+            GameObject progressFillObject = new GameObject("LoadingProgressFill", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
+            progressFillObject.transform.SetParent(progressBackObject.transform, false);
+
+            RectTransform progressFillRect = progressFillObject.GetComponent<RectTransform>();
+            progressFillRect.anchorMin = new Vector2(0f, 0f);
+            progressFillRect.anchorMax = new Vector2(1f, 1f);
+            progressFillRect.pivot = new Vector2(0.5f, 0.5f);
+            progressFillRect.offsetMin = Vector2.zero;
+            progressFillRect.offsetMax = Vector2.zero;
+
+            loadingProgressFillImage = progressFillObject.GetComponent<Image>();
+            loadingProgressFillImage.color = sourceImage != null ? sourceImage.color : new Color(1f, 0.82f, 0.25f, 1f);
+            loadingProgressFillImage.type = Image.Type.Filled;
+            loadingProgressFillImage.fillMethod = Image.FillMethod.Horizontal;
+            loadingProgressFillImage.fillOrigin = (int)Image.OriginHorizontal.Left;
+            loadingProgressFillImage.fillAmount = 0f;
+            loadingProgressFillImage.raycastTarget = false;
         }
 
         loadingIndicatorObject.SetActive(true);
+        UpdateLoadingProgress(currentLoadedAssetCount, totalExpectedAssetCount <= 0 ? 1 : totalExpectedAssetCount);
         loadingSpinnerTween?.Kill();
         loadingSpinnerTween = loadingIndicatorObject.transform.Find("LoadingSpinner")
             .DOLocalRotate(new Vector3(0f, 0f, -360f), 0.9f, RotateMode.FastBeyond360)
@@ -310,11 +380,6 @@ public class UI_TitleScene : UI_Scene
             "MagneticField",
         };
 
-        foreach (string key in requiredPrefabKeys)
-        {
-            await LoadRequiredAsset<GameObject>(key);
-        }
-
         string[] requiredDataKeys =
         {
             "SkillData.json",
@@ -335,11 +400,6 @@ public class UI_TitleScene : UI_Scene
             "CharacterLevelData.json",
             "EvolutionData.json",
         };
-
-        foreach (string key in requiredDataKeys)
-        {
-            await LoadRequiredAsset<TextAsset>(key);
-        }
 
         string[] requiredSpriteKeys =
         {
@@ -363,11 +423,6 @@ public class UI_TitleScene : UI_Scene
             "GoldGem.sprite",
         };
 
-        foreach (string key in requiredSpriteKeys)
-        {
-            await LoadRequiredAsset<Sprite>(key);
-        }
-
         string[] requiredAnimatorKeys =
         {
             "Player_Alpha_Anim",
@@ -385,10 +440,23 @@ public class UI_TitleScene : UI_Scene
             "Best_Potion_Anim",
         };
 
+        AddLoadingTotal(
+            requiredPrefabKeys.Length +
+            requiredDataKeys.Length +
+            requiredSpriteKeys.Length +
+            requiredAnimatorKeys.Length);
+
+        foreach (string key in requiredPrefabKeys)
+            await LoadRequiredAssetWithProgress<GameObject>(key);
+
+        foreach (string key in requiredDataKeys)
+            await LoadRequiredAssetWithProgress<TextAsset>(key);
+
+        foreach (string key in requiredSpriteKeys)
+            await LoadRequiredAssetWithProgress<Sprite>(key);
+
         foreach (string key in requiredAnimatorKeys)
-        {
-            await LoadRequiredAsset<RuntimeAnimatorController>(key);
-        }
+            await LoadRequiredAssetWithProgress<RuntimeAnimatorController>(key);
 
         foreach (string key in requiredPrefabKeys)
         {
@@ -421,6 +489,12 @@ public class UI_TitleScene : UI_Scene
             return;
 
         await Manager.ResourceM.LoadAsync<T>(key);
+    }
+
+    private async UniTask LoadRequiredAssetWithProgress<T>(string key) where T : Object
+    {
+        await LoadRequiredAsset<T>(key);
+        AdvanceLoadingProgress();
     }
 
     private async UniTask EnsureDataDrivenSpritesLoaded()
@@ -456,9 +530,12 @@ public class UI_TitleScene : UI_Scene
         AddSpriteKey(spriteKeys, "BlueGem.sprite");
         AddSpriteKey(spriteKeys, "GoldGem.sprite");
 
+        AddLoadingTotal(spriteKeys.Count);
+
         foreach (string key in spriteKeys)
         {
             await LoadRequiredAsset<Sprite>(key);
+            AdvanceLoadingProgress();
 
             if (Manager.ResourceM.Load<Sprite>(key) == null)
                 Debug.LogError($"Data-driven sprite missing after preload: {key}");

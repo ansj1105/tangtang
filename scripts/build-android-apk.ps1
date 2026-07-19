@@ -42,6 +42,6 @@ if ($DevelopmentBuild) {
     $unityArgs += "-developmentBuild"
 }
 
-& $UnityPath @unityArgs
+$unityProcess = Start-Process -FilePath $UnityPath -ArgumentList $unityArgs -Wait -PassThru
 
-exit $LASTEXITCODE
+exit $unityProcess.ExitCode

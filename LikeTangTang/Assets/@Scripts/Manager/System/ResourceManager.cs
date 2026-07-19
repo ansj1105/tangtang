@@ -247,6 +247,26 @@ public class ResourceManager
         Addressables.Release(locationHandle);
     }
 
+    public async UniTask<int> CountGroupAsync(string _label)
+    {
+        var locationHandle = Addressables.LoadResourceLocationsAsync(_label);
+
+        try
+        {
+            IList<IResourceLocation> locations = await locationHandle.ToUniTask();
+            return locations?.Count ?? 0;
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"LoadResourceLocationsAsync 카운트 실패 : {_label}. : {e.Message}");
+            return 0;
+        }
+        finally
+        {
+            Addressables.Release(locationHandle);
+        }
+    }
+
     public async UniTask LoadGroupByTypeAsync<T>(string _label, Action<string, int, int> _cb = null) where T : Object
     {
         var locationHandle = Addressables.LoadResourceLocationsAsync(_label, typeof(T));
@@ -292,6 +312,26 @@ public class ResourceManager
 
         await UniTask.WhenAll(loadTasks);
         Addressables.Release(locationHandle);
+    }
+
+    public async UniTask<int> CountGroupByTypeAsync<T>(string _label) where T : Object
+    {
+        var locationHandle = Addressables.LoadResourceLocationsAsync(_label, typeof(T));
+
+        try
+        {
+            IList<IResourceLocation> locations = await locationHandle.ToUniTask();
+            return locations?.Count ?? 0;
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"LoadResourceLocationsAsync 타입 카운트 실패 : {_label} ({typeof(T).Name}). : {e.Message}");
+            return 0;
+        }
+        finally
+        {
+            Addressables.Release(locationHandle);
+        }
     }
 
     private async UniTask LoadKeyWithProgressAsync<T>(string key, Action onLoaded) where T : Object
