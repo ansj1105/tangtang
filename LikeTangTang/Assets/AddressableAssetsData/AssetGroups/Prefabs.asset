@@ -142,6 +142,30 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - AlwaysKeep
+  - m_GUID: 005ea7a529932eb4296c4e3b9363fe49
+    m_Address: NH_BasicAlien
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f104c727c6f41724ea62c05e2b9b8fb0
+    m_Address: NH_KongKongi
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f7a505de70744974f8cece2fd2473aff
+    m_Address: NH_KkuBeogi
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b1bf875838f39474584b46c432ddeabe
+    m_Address: NH_MeongAli
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 07b5627e3d40d8f4e8b3392b4f0479b4
+    m_Address: NH_SaengseonPpyeoByeong
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 27354750a1fe3b84095a8082f030e972
+    m_Address: NH_PokeByeong
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 58fc61992768249fdab8acc891732a43, type: 2}
   m_SchemaSet:

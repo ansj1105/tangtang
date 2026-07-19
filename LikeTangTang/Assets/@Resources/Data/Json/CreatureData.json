@@ -1,1336 +1,1336 @@
 {
-  "creatureData": [
-    {
-      "DataID": 1,
-      "Name": "Alpha",
-      "NameKR": "알파",
-      "Description": null,
-      "prefabName": "Player",
-      "Type": 1,
-      "MaxHp": 200.0,
-      "MaxHpUpForIncreasStage": 2.0,
-      "Attack": 10.0,
-      "AttackUpForIncreasStage": 2.0,
-      "Def": 1.0,
-      "Speed": 4.0,
-      "HpRate": 1.0,
-      "AttackRate": 1.0,
-      "DefRate": 1.0,
-      "MoveSpeedRate": 1.0,
-      "Image_Name": "Alpha.sprite",
-      "CreatureAnimName": "Player_Alpha_Anim",
-      "CharacterAnimName": "Character_Alpha",
-      "UnLockStage": 1,
-      "SkillTypeList": [
-        20000,
-        20100,
-        20200,
-        20300,
-        20400,
-        20500,
-        20600,
-        20700,
-        20800,
-        20900
-      ],
-      "EvolutionTypeList": [
-        21000,
-        21100,
-        21200,
-        21300,
-        21400,
-        21500,
-        21600,
-        21700,
-        21800,
-        21900
-      ]
-    },
-    {
-      "DataID": 2,
-      "Name": "Beta",
-      "NameKR": "베타",
-      "Description": null,
-      "prefabName": "Player",
-      "Type": 1,
-      "MaxHp": 220.0,
-      "MaxHpUpForIncreasStage": 3.0,
-      "Attack": 11.0,
-      "AttackUpForIncreasStage": 2.0,
-      "Def": 2.0,
-      "Speed": 4.2,
-      "HpRate": 1.1,
-      "AttackRate": 1.1,
-      "DefRate": 1.1,
-      "MoveSpeedRate": 1.1,
-      "Image_Name": "Beta.sprite",
-      "CreatureAnimName": "Player_Beta_Anim",
-      "CharacterAnimName": "Character_Beta",
-      "UnLockStage": 2,
-      "SkillTypeList": [
-        20000,
-        20100,
-        20200,
-        20300,
-        20400,
-        20500,
-        20600,
-        20700,
-        20800,
-        20900
-      ],
-      "EvolutionTypeList": [
-        21000,
-        21100,
-        21200,
-        21300,
-        21400,
-        21500,
-        21600,
-        21700,
-        21800,
-        21900
-      ]
-    },
-    {
-      "DataID": 3,
-      "Name": "Gamma",
-      "NameKR": "감마",
-      "Description": null,
-      "prefabName": "Player",
-      "Type": 1,
-      "MaxHp": 250.0,
-      "MaxHpUpForIncreasStage": 4.0,
-      "Attack": 13.0,
-      "AttackUpForIncreasStage": 3.0,
-      "Def": 3.0,
-      "Speed": 4.4,
-      "HpRate": 1.2,
-      "AttackRate": 1.3,
-      "DefRate": 1.3,
-      "MoveSpeedRate": 1.3,
-      "Image_Name": "Gamma.sprite",
-      "CreatureAnimName": "Player_Gamma_Anim",
-      "CharacterAnimName": "Character_Gamma",
-      "UnLockStage": 3,
-      "SkillTypeList": [
-        20000,
-        20100,
-        20200,
-        20300,
-        20400,
-        20500,
-        20600,
-        20700,
-        20800,
-        20900
-      ],
-      "EvolutionTypeList": [
-        21000,
-        21100,
-        21200,
-        21300,
-        21400,
-        21500,
-        21600,
-        21700,
-        21800,
-        21900
-      ]
-    },
-    {
-      "DataID": 4,
-      "Name": "Delta",
-      "NameKR": "델타",
-      "Description": null,
-      "prefabName": "Player",
-      "Type": 1,
-      "MaxHp": 280.0,
-      "MaxHpUpForIncreasStage": 5.0,
-      "Attack": 15.0,
-      "AttackUpForIncreasStage": 4.0,
-      "Def": 4.0,
-      "Speed": 4.6,
-      "HpRate": 1.4,
-      "AttackRate": 1.4,
-      "DefRate": 1.4,
-      "MoveSpeedRate": 1.4,
-      "Image_Name": "Delta.sprite",
-      "CreatureAnimName": "Player_Delta_Anim",
-      "CharacterAnimName": "Character_Delta",
-      "UnLockStage": 4,
-      "SkillTypeList": [
-        20000,
-        20100,
-        20200,
-        20300,
-        20400,
-        20500,
-        20600,
-        20700,
-        20800,
-        20900
-      ],
-      "EvolutionTypeList": [
-        21000,
-        21100,
-        21200,
-        21300,
-        21400,
-        21500,
-        21600,
-        21700,
-        21800,
-        21900
-      ]
-    },
-    {
-      "DataID": 5,
-      "Name": "Epsilon",
-      "NameKR": "앱실론",
-      "Description": null,
-      "prefabName": "Player",
-      "Type": 1,
-      "MaxHp": 310.0,
-      "MaxHpUpForIncreasStage": 6.0,
-      "Attack": 20.0,
-      "AttackUpForIncreasStage": 5.0,
-      "Def": 5.0,
-      "Speed": 5.0,
-      "HpRate": 1.5,
-      "AttackRate": 1.5,
-      "DefRate": 1.5,
-      "MoveSpeedRate": 1.6,
-      "Image_Name": "Epsilon.sprite",
-      "CreatureAnimName": "Player_Epsilon_Anim",
-      "CharacterAnimName": "Character_Epsilon",
-      "UnLockStage": 5,
-      "SkillTypeList": [
-        20000,
-        20100,
-        20200,
-        20300,
-        20400,
-        20500,
-        20600,
-        20700,
-        20800,
-        20900
-      ],
-      "EvolutionTypeList": [
-        21000,
-        21100,
-        21200,
-        21300,
-        21400,
-        21500,
-        21600,
-        21700,
-        21800,
-        21900
-      ]
-    },
-    {
-      "DataID": 10000,
-      "Name": "Blue Slime",
-      "NameKR": "파란 슬라임",
-      "Description": null,
-      "prefabName": "Monster",
-      "Type": 2,
-      "MaxHp": 140.0,
-      "MaxHpUpForIncreasStage": 8.0,
-      "Attack": 5.0,
-      "AttackUpForIncreasStage": 4.0,
-      "Def": 2.0,
-      "Speed": 2.0,
-      "HpRate": 1.0,
-      "AttackRate": 1.0,
-      "DefRate": 1.0,
-      "MoveSpeedRate": 1.0,
-      "Image_Name": "NH_BasicAlien_Move_01.sprite",
-      "CreatureAnimName": null,
-      "CharacterAnimName": null,
-      "UnLockStage": 0,
-      "SkillTypeList": [
-        0
-      ],
-      "EvolutionTypeList": [
-        0
-      ]
-    },
-    {
-      "DataID": 10001,
-      "Name": "Green Slime",
-      "NameKR": "초록 슬라임",
-      "Description": null,
-      "prefabName": "Monster",
-      "Type": 2,
-      "MaxHp": 150.0,
-      "MaxHpUpForIncreasStage": 8.0,
-      "Attack": 7.0,
-      "AttackUpForIncreasStage": 4.0,
-      "Def": 3.0,
-      "Speed": 2.5,
-      "HpRate": 1.0,
-      "AttackRate": 1.0,
-      "DefRate": 1.0,
-      "MoveSpeedRate": 1.0,
-      "Image_Name": "NH_BasicAlien_Move_01.sprite",
-      "CreatureAnimName": null,
-      "CharacterAnimName": null,
-      "UnLockStage": 0,
-      "SkillTypeList": [
-        0
-      ],
-      "EvolutionTypeList": [
-        0
-      ]
-    },
-    {
-      "DataID": 10002,
-      "Name": "Red Slime",
-      "NameKR": "빨강 슬라임",
-      "Description": null,
-      "prefabName": "Monster",
-      "Type": 2,
-      "MaxHp": 160.0,
-      "MaxHpUpForIncreasStage": 8.0,
-      "Attack": 9.0,
-      "AttackUpForIncreasStage": 4.0,
-      "Def": 4.0,
-      "Speed": 2.0,
-      "HpRate": 1.0,
-      "AttackRate": 1.0,
-      "DefRate": 1.0,
-      "MoveSpeedRate": 1.0,
-      "Image_Name": "NH_BasicAlien_Move_01.sprite",
-      "CreatureAnimName": null,
-      "CharacterAnimName": null,
-      "UnLockStage": 0,
-      "SkillTypeList": [
-        0
-      ],
-      "EvolutionTypeList": [
-        0
-      ]
-    },
-    {
-      "DataID": 10003,
-      "Name": "Yellow Slime",
-      "NameKR": "노랑 슬라임",
-      "Description": null,
-      "prefabName": "Monster",
-      "Type": 2,
-      "MaxHp": 170.0,
-      "MaxHpUpForIncreasStage": 8.0,
-      "Attack": 10.0,
-      "AttackUpForIncreasStage": 4.0,
-      "Def": 2.0,
-      "Speed": 2.5,
-      "HpRate": 1.0,
-      "AttackRate": 1.0,
-      "DefRate": 1.0,
-      "MoveSpeedRate": 1.0,
-      "Image_Name": "NH_BasicAlien_Move_01.sprite",
-      "CreatureAnimName": null,
-      "CharacterAnimName": null,
-      "UnLockStage": 0,
-      "SkillTypeList": [
-        0
-      ],
-      "EvolutionTypeList": [
-        0
-      ]
-    },
-    {
-      "DataID": 10004,
-      "Name": "Black Slime",
-      "NameKR": "검정 슬라임",
-      "Description": null,
-      "prefabName": "Monster",
-      "Type": 2,
-      "MaxHp": 180.0,
-      "MaxHpUpForIncreasStage": 8.0,
-      "Attack": 15.0,
-      "AttackUpForIncreasStage": 4.0,
-      "Def": 3.0,
-      "Speed": 2.0,
-      "HpRate": 1.0,
-      "AttackRate": 1.0,
-      "DefRate": 1.0,
-      "MoveSpeedRate": 1.0,
-      "Image_Name": "NH_BasicAlien_Move_01.sprite",
-      "CreatureAnimName": null,
-      "CharacterAnimName": null,
-      "UnLockStage": 0,
-      "SkillTypeList": [
-        0
-      ],
-      "EvolutionTypeList": [
-        0
-      ]
-    },
-    {
-      "DataID": 10005,
-      "Name": "Flower Slime",
-      "NameKR": "꽃 슬라임",
-      "Description": null,
-      "prefabName": "Monster",
-      "Type": 2,
-      "MaxHp": 140.0,
-      "MaxHpUpForIncreasStage": 8.0,
-      "Attack": 5.0,
-      "AttackUpForIncreasStage": 4.0,
-      "Def": 4.0,
-      "Speed": 2.5,
-      "HpRate": 1.0,
-      "AttackRate": 1.0,
-      "DefRate": 1.0,
-      "MoveSpeedRate": 1.0,
-      "Image_Name": "NH_BasicAlien_Move_01.sprite",
-      "CreatureAnimName": null,
-      "CharacterAnimName": null,
-      "UnLockStage": 0,
-      "SkillTypeList": [
-        0
-      ],
-      "EvolutionTypeList": [
-        0
-      ]
-    },
-    {
-      "DataID": 10006,
-      "Name": "Mushroom Slime",
-      "NameKR": "버섯 슬라임",
-      "Description": null,
-      "prefabName": "Monster",
-      "Type": 2,
-      "MaxHp": 150.0,
-      "MaxHpUpForIncreasStage": 8.0,
-      "Attack": 7.0,
-      "AttackUpForIncreasStage": 4.0,
-      "Def": 2.0,
-      "Speed": 2.0,
-      "HpRate": 1.0,
-      "AttackRate": 1.0,
-      "DefRate": 1.0,
-      "MoveSpeedRate": 1.0,
-      "Image_Name": "NH_BasicAlien_Move_01.sprite",
-      "CreatureAnimName": null,
-      "CharacterAnimName": null,
-      "UnLockStage": 0,
-      "SkillTypeList": [
-        0
-      ],
-      "EvolutionTypeList": [
-        0
-      ]
-    },
-    {
-      "DataID": 10007,
-      "Name": "Tree Slime",
-      "NameKR": "나무 슬라임",
-      "Description": null,
-      "prefabName": "Monster",
-      "Type": 2,
-      "MaxHp": 160.0,
-      "MaxHpUpForIncreasStage": 8.0,
-      "Attack": 9.0,
-      "AttackUpForIncreasStage": 4.0,
-      "Def": 3.0,
-      "Speed": 2.5,
-      "HpRate": 1.0,
-      "AttackRate": 1.0,
-      "DefRate": 1.0,
-      "MoveSpeedRate": 1.0,
-      "Image_Name": "NH_BasicAlien_Move_01.sprite",
-      "CreatureAnimName": null,
-      "CharacterAnimName": null,
-      "UnLockStage": 0,
-      "SkillTypeList": [
-        0
-      ],
-      "EvolutionTypeList": [
-        0
-      ]
-    },
-    {
-      "DataID": 10008,
-      "Name": "Vine Slime",
-      "NameKR": "덩굴 슬라임",
-      "Description": null,
-      "prefabName": "Monster",
-      "Type": 2,
-      "MaxHp": 170.0,
-      "MaxHpUpForIncreasStage": 8.0,
-      "Attack": 10.0,
-      "AttackUpForIncreasStage": 4.0,
-      "Def": 4.0,
-      "Speed": 2.0,
-      "HpRate": 1.0,
-      "AttackRate": 1.0,
-      "DefRate": 1.0,
-      "MoveSpeedRate": 1.0,
-      "Image_Name": "NH_BasicAlien_Move_01.sprite",
-      "CreatureAnimName": null,
-      "CharacterAnimName": null,
-      "UnLockStage": 0,
-      "SkillTypeList": [
-        0
-      ],
-      "EvolutionTypeList": [
-        0
-      ]
-    },
-    {
-      "DataID": 10009,
-      "Name": "Wildman Slime",
-      "NameKR": "야만 슬라임",
-      "Description": null,
-      "prefabName": "Monster",
-      "Type": 2,
-      "MaxHp": 180.0,
-      "MaxHpUpForIncreasStage": 8.0,
-      "Attack": 15.0,
-      "AttackUpForIncreasStage": 4.0,
-      "Def": 2.0,
-      "Speed": 2.5,
-      "HpRate": 1.0,
-      "AttackRate": 1.0,
-      "DefRate": 1.0,
-      "MoveSpeedRate": 1.0,
-      "Image_Name": "NH_BasicAlien_Move_01.sprite",
-      "CreatureAnimName": null,
-      "CharacterAnimName": null,
-      "UnLockStage": 0,
-      "SkillTypeList": [
-        0
-      ],
-      "EvolutionTypeList": [
-        0
-      ]
-    },
-    {
-      "DataID": 10010,
-      "Name": "Diamond Slime",
-      "NameKR": "다이아 슬라임",
-      "Description": null,
-      "prefabName": "Monster",
-      "Type": 2,
-      "MaxHp": 140.0,
-      "MaxHpUpForIncreasStage": 8.0,
-      "Attack": 5.0,
-      "AttackUpForIncreasStage": 4.0,
-      "Def": 3.0,
-      "Speed": 2.0,
-      "HpRate": 1.0,
-      "AttackRate": 1.0,
-      "DefRate": 1.0,
-      "MoveSpeedRate": 1.0,
-      "Image_Name": "NH_BasicAlien_Move_01.sprite",
-      "CreatureAnimName": null,
-      "CharacterAnimName": null,
-      "UnLockStage": 0,
-      "SkillTypeList": [
-        0
-      ],
-      "EvolutionTypeList": [
-        0
-      ]
-    },
-    {
-      "DataID": 10011,
-      "Name": "Gold Slime",
-      "NameKR": "황금 슬라임",
-      "Description": null,
-      "prefabName": "Monster",
-      "Type": 2,
-      "MaxHp": 150.0,
-      "MaxHpUpForIncreasStage": 8.0,
-      "Attack": 7.0,
-      "AttackUpForIncreasStage": 4.0,
-      "Def": 4.0,
-      "Speed": 2.5,
-      "HpRate": 1.0,
-      "AttackRate": 1.0,
-      "DefRate": 1.0,
-      "MoveSpeedRate": 1.0,
-      "Image_Name": "NH_BasicAlien_Move_01.sprite",
-      "CreatureAnimName": null,
-      "CharacterAnimName": null,
-      "UnLockStage": 0,
-      "SkillTypeList": [
-        0
-      ],
-      "EvolutionTypeList": [
-        0
-      ]
-    },
-    {
-      "DataID": 10012,
-      "Name": "Obsidian Slime",
-      "NameKR": "흑요석 슬라임",
-      "Description": null,
-      "prefabName": "Monster",
-      "Type": 2,
-      "MaxHp": 160.0,
-      "MaxHpUpForIncreasStage": 8.0,
-      "Attack": 9.0,
-      "AttackUpForIncreasStage": 4.0,
-      "Def": 2.0,
-      "Speed": 2.0,
-      "HpRate": 1.0,
-      "AttackRate": 1.0,
-      "DefRate": 1.0,
-      "MoveSpeedRate": 1.0,
-      "Image_Name": "NH_BasicAlien_Move_01.sprite",
-      "CreatureAnimName": null,
-      "CharacterAnimName": null,
-      "UnLockStage": 0,
-      "SkillTypeList": [
-        0
-      ],
-      "EvolutionTypeList": [
-        0
-      ]
-    },
-    {
-      "DataID": 10013,
-      "Name": "Skeleton Slime",
-      "NameKR": "뼈 슬라임",
-      "Description": null,
-      "prefabName": "Monster",
-      "Type": 2,
-      "MaxHp": 170.0,
-      "MaxHpUpForIncreasStage": 8.0,
-      "Attack": 10.0,
-      "AttackUpForIncreasStage": 4.0,
-      "Def": 3.0,
-      "Speed": 2.5,
-      "HpRate": 1.0,
-      "AttackRate": 1.0,
-      "DefRate": 1.0,
-      "MoveSpeedRate": 1.0,
-      "Image_Name": "NH_BasicAlien_Move_01.sprite",
-      "CreatureAnimName": null,
-      "CharacterAnimName": null,
-      "UnLockStage": 0,
-      "SkillTypeList": [
-        0
-      ],
-      "EvolutionTypeList": [
-        0
-      ]
-    },
-    {
-      "DataID": 10014,
-      "Name": "Stone Slime",
-      "NameKR": "돌 슬라임",
-      "Description": null,
-      "prefabName": "Monster",
-      "Type": 2,
-      "MaxHp": 180.0,
-      "MaxHpUpForIncreasStage": 8.0,
-      "Attack": 15.0,
-      "AttackUpForIncreasStage": 4.0,
-      "Def": 4.0,
-      "Speed": 2.0,
-      "HpRate": 1.0,
-      "AttackRate": 1.0,
-      "DefRate": 1.0,
-      "MoveSpeedRate": 1.0,
-      "Image_Name": "NH_BasicAlien_Move_01.sprite",
-      "CreatureAnimName": null,
-      "CharacterAnimName": null,
-      "UnLockStage": 0,
-      "SkillTypeList": [
-        0
-      ],
-      "EvolutionTypeList": [
-        0
-      ]
-    },
-    {
-      "DataID": 10015,
-      "Name": "Cactus Slime",
-      "NameKR": "선인장 슬라임",
-      "Description": null,
-      "prefabName": "Monster",
-      "Type": 2,
-      "MaxHp": 140.0,
-      "MaxHpUpForIncreasStage": 8.0,
-      "Attack": 5.0,
-      "AttackUpForIncreasStage": 4.0,
-      "Def": 2.0,
-      "Speed": 2.5,
-      "HpRate": 1.0,
-      "AttackRate": 1.0,
-      "DefRate": 1.0,
-      "MoveSpeedRate": 1.0,
-      "Image_Name": "NH_BasicAlien_Move_01.sprite",
-      "CreatureAnimName": null,
-      "CharacterAnimName": null,
-      "UnLockStage": 0,
-      "SkillTypeList": [
-        0
-      ],
-      "EvolutionTypeList": [
-        0
-      ]
-    },
-    {
-      "DataID": 10016,
-      "Name": "Ice Slime",
-      "NameKR": "얼음 슬라임",
-      "Description": null,
-      "prefabName": "Monster",
-      "Type": 2,
-      "MaxHp": 150.0,
-      "MaxHpUpForIncreasStage": 8.0,
-      "Attack": 7.0,
-      "AttackUpForIncreasStage": 4.0,
-      "Def": 3.0,
-      "Speed": 2.0,
-      "HpRate": 1.0,
-      "AttackRate": 1.0,
-      "DefRate": 1.0,
-      "MoveSpeedRate": 1.0,
-      "Image_Name": "NH_BasicAlien_Move_01.sprite",
-      "CreatureAnimName": null,
-      "CharacterAnimName": null,
-      "UnLockStage": 0,
-      "SkillTypeList": [
-        0
-      ],
-      "EvolutionTypeList": [
-        0
-      ]
-    },
-    {
-      "DataID": 10017,
-      "Name": "Mummy Slime",
-      "NameKR": "엄마 슬라임",
-      "Description": null,
-      "prefabName": "Monster",
-      "Type": 2,
-      "MaxHp": 160.0,
-      "MaxHpUpForIncreasStage": 8.0,
-      "Attack": 9.0,
-      "AttackUpForIncreasStage": 4.0,
-      "Def": 4.0,
-      "Speed": 2.5,
-      "HpRate": 1.0,
-      "AttackRate": 1.0,
-      "DefRate": 1.0,
-      "MoveSpeedRate": 1.0,
-      "Image_Name": "NH_BasicAlien_Move_01.sprite",
-      "CreatureAnimName": null,
-      "CharacterAnimName": null,
-      "UnLockStage": 0,
-      "SkillTypeList": [
-        0
-      ],
-      "EvolutionTypeList": [
-        0
-      ]
-    },
-    {
-      "DataID": 10018,
-      "Name": "Sand Slime",
-      "NameKR": "모래 슬라임",
-      "Description": null,
-      "prefabName": "Monster",
-      "Type": 2,
-      "MaxHp": 170.0,
-      "MaxHpUpForIncreasStage": 8.0,
-      "Attack": 10.0,
-      "AttackUpForIncreasStage": 4.0,
-      "Def": 2.0,
-      "Speed": 2.0,
-      "HpRate": 1.0,
-      "AttackRate": 1.0,
-      "DefRate": 1.0,
-      "MoveSpeedRate": 1.0,
-      "Image_Name": "NH_BasicAlien_Move_01.sprite",
-      "CreatureAnimName": null,
-      "CharacterAnimName": null,
-      "UnLockStage": 0,
-      "SkillTypeList": [
-        0
-      ],
-      "EvolutionTypeList": [
-        0
-      ]
-    },
-    {
-      "DataID": 10019,
-      "Name": "Snow Slime",
-      "NameKR": "눈 슬라임",
-      "Description": null,
-      "prefabName": "Monster",
-      "Type": 2,
-      "MaxHp": 180.0,
-      "MaxHpUpForIncreasStage": 8.0,
-      "Attack": 15.0,
-      "AttackUpForIncreasStage": 4.0,
-      "Def": 3.0,
-      "Speed": 2.5,
-      "HpRate": 1.0,
-      "AttackRate": 1.0,
-      "DefRate": 1.0,
-      "MoveSpeedRate": 1.0,
-      "Image_Name": "NH_BasicAlien_Move_01.sprite",
-      "CreatureAnimName": null,
-      "CharacterAnimName": null,
-      "UnLockStage": 0,
-      "SkillTypeList": [
-        0
-      ],
-      "EvolutionTypeList": [
-        0
-      ]
-    },
-    {
-      "DataID": 10020,
-      "Name": "Coral Slime",
-      "NameKR": "산호 슬라임",
-      "Description": null,
-      "prefabName": "Monster",
-      "Type": 2,
-      "MaxHp": 140.0,
-      "MaxHpUpForIncreasStage": 8.0,
-      "Attack": 5.0,
-      "AttackUpForIncreasStage": 4.0,
-      "Def": 4.0,
-      "Speed": 2.0,
-      "HpRate": 1.0,
-      "AttackRate": 1.0,
-      "DefRate": 1.0,
-      "MoveSpeedRate": 1.0,
-      "Image_Name": "NH_BasicAlien_Move_01.sprite",
-      "CreatureAnimName": null,
-      "CharacterAnimName": null,
-      "UnLockStage": 0,
-      "SkillTypeList": [
-        0
-      ],
-      "EvolutionTypeList": [
-        0
-      ]
-    },
-    {
-      "DataID": 10021,
-      "Name": "Crab Slime",
-      "NameKR": "게 슬라임",
-      "Description": null,
-      "prefabName": "Monster",
-      "Type": 2,
-      "MaxHp": 150.0,
-      "MaxHpUpForIncreasStage": 8.0,
-      "Attack": 7.0,
-      "AttackUpForIncreasStage": 4.0,
-      "Def": 2.0,
-      "Speed": 2.5,
-      "HpRate": 1.0,
-      "AttackRate": 1.0,
-      "DefRate": 1.0,
-      "MoveSpeedRate": 1.0,
-      "Image_Name": "NH_BasicAlien_Move_01.sprite",
-      "CreatureAnimName": null,
-      "CharacterAnimName": null,
-      "UnLockStage": 0,
-      "SkillTypeList": [
-        0
-      ],
-      "EvolutionTypeList": [
-        0
-      ]
-    },
-    {
-      "DataID": 10022,
-      "Name": "Lanternfish Slime",
-      "NameKR": "랜턴피시 슬라임",
-      "Description": null,
-      "prefabName": "Monster",
-      "Type": 2,
-      "MaxHp": 160.0,
-      "MaxHpUpForIncreasStage": 8.0,
-      "Attack": 9.0,
-      "AttackUpForIncreasStage": 4.0,
-      "Def": 3.0,
-      "Speed": 2.0,
-      "HpRate": 1.0,
-      "AttackRate": 1.0,
-      "DefRate": 1.0,
-      "MoveSpeedRate": 1.0,
-      "Image_Name": "NH_BasicAlien_Move_01.sprite",
-      "CreatureAnimName": null,
-      "CharacterAnimName": null,
-      "UnLockStage": 0,
-      "SkillTypeList": [
-        0
-      ],
-      "EvolutionTypeList": [
-        0
-      ]
-    },
-    {
-      "DataID": 10023,
-      "Name": "Tiger shark Slime",
-      "NameKR": "호랑이상어 슬라임",
-      "Description": null,
-      "prefabName": "Monster",
-      "Type": 2,
-      "MaxHp": 170.0,
-      "MaxHpUpForIncreasStage": 8.0,
-      "Attack": 10.0,
-      "AttackUpForIncreasStage": 4.0,
-      "Def": 4.0,
-      "Speed": 2.5,
-      "HpRate": 1.0,
-      "AttackRate": 1.0,
-      "DefRate": 1.0,
-      "MoveSpeedRate": 1.0,
-      "Image_Name": "NH_BasicAlien_Move_01.sprite",
-      "CreatureAnimName": null,
-      "CharacterAnimName": null,
-      "UnLockStage": 0,
-      "SkillTypeList": [
-        0
-      ],
-      "EvolutionTypeList": [
-        0
-      ]
-    },
-    {
-      "DataID": 10024,
-      "Name": "Water Slime",
-      "NameKR": "물 슬라임",
-      "Description": null,
-      "prefabName": "Monster",
-      "Type": 2,
-      "MaxHp": 180.0,
-      "MaxHpUpForIncreasStage": 8.0,
-      "Attack": 15.0,
-      "AttackUpForIncreasStage": 4.0,
-      "Def": 2.0,
-      "Speed": 2.0,
-      "HpRate": 1.0,
-      "AttackRate": 1.0,
-      "DefRate": 1.0,
-      "MoveSpeedRate": 1.0,
-      "Image_Name": "NH_BasicAlien_Move_01.sprite",
-      "CreatureAnimName": null,
-      "CharacterAnimName": null,
-      "UnLockStage": 0,
-      "SkillTypeList": [
-        0
-      ],
-      "EvolutionTypeList": [
-        0
-      ]
-    },
-    {
-      "DataID": 10025,
-      "Name": "Darkness Slime",
-      "NameKR": "어둠 슬라임",
-      "Description": null,
-      "prefabName": "Monster",
-      "Type": 2,
-      "MaxHp": 200.0,
-      "MaxHpUpForIncreasStage": 9.0,
-      "Attack": 15.0,
-      "AttackUpForIncreasStage": 5.0,
-      "Def": 4.0,
-      "Speed": 2.5,
-      "HpRate": 1.0,
-      "AttackRate": 1.0,
-      "DefRate": 1.0,
-      "MoveSpeedRate": 1.0,
-      "Image_Name": "NH_BasicAlien_Move_01.sprite",
-      "CreatureAnimName": null,
-      "CharacterAnimName": null,
-      "UnLockStage": 0,
-      "SkillTypeList": [
-        0
-      ],
-      "EvolutionTypeList": [
-        0
-      ]
-    },
-    {
-      "DataID": 11000,
-      "Name": "Fire Slime",
-      "NameKR": "파이어 슬라임",
-      "Description": "불꽃을 두른 공격적인 슬라임",
-      "prefabName": "EliteMonster",
-      "Type": 3,
-      "MaxHp": 300.0,
-      "MaxHpUpForIncreasStage": 10.0,
-      "Attack": 17.0,
-      "AttackUpForIncreasStage": 5.0,
-      "Def": 5.0,
-      "Speed": 2.5,
-      "HpRate": 2.0,
-      "AttackRate": 2.0,
-      "DefRate": 2.0,
-      "MoveSpeedRate": 2.0,
-      "Image_Name": "NH_BasicAlien_Move_01.sprite",
-      "CreatureAnimName": null,
-      "CharacterAnimName": null,
-      "UnLockStage": 0,
-      "SkillTypeList": [
-        0
-      ],
-      "EvolutionTypeList": [
-        0
-      ]
-    },
-    {
-      "DataID": 11001,
-      "Name": "Light Slime",
-      "NameKR": "라이트 슬라임",
-      "Description": "밝은 빛을 발하는 슬라임",
-      "prefabName": "EliteMonster",
-      "Type": 3,
-      "MaxHp": 350.0,
-      "MaxHpUpForIncreasStage": 10.0,
-      "Attack": 21.0,
-      "AttackUpForIncreasStage": 5.0,
-      "Def": 6.0,
-      "Speed": 2.8,
-      "HpRate": 2.0,
-      "AttackRate": 2.0,
-      "DefRate": 2.0,
-      "MoveSpeedRate": 2.0,
-      "Image_Name": "NH_BasicAlien_Move_01.sprite",
-      "CreatureAnimName": null,
-      "CharacterAnimName": null,
-      "UnLockStage": 0,
-      "SkillTypeList": [
-        0
-      ],
-      "EvolutionTypeList": [
-        0
-      ]
-    },
-    {
-      "DataID": 11002,
-      "Name": "Lightning Slime",
-      "NameKR": "라이트닝 슬라임",
-      "Description": "전기를 방출하는 슬라임",
-      "prefabName": "EliteMonster",
-      "Type": 3,
-      "MaxHp": 300.0,
-      "MaxHpUpForIncreasStage": 10.0,
-      "Attack": 22.0,
-      "AttackUpForIncreasStage": 5.0,
-      "Def": 5.0,
-      "Speed": 2.5,
-      "HpRate": 2.0,
-      "AttackRate": 2.0,
-      "DefRate": 2.0,
-      "MoveSpeedRate": 2.0,
-      "Image_Name": "NH_BasicAlien_Move_01.sprite",
-      "CreatureAnimName": null,
-      "CharacterAnimName": null,
-      "UnLockStage": 0,
-      "SkillTypeList": [
-        0
-      ],
-      "EvolutionTypeList": [
-        0
-      ]
-    },
-    {
-      "DataID": 11003,
-      "Name": "Magic Slime",
-      "NameKR": "매직 슬라임",
-      "Description": "마법으로 우연히 태어난 슬라임",
-      "prefabName": "EliteMonster",
-      "Type": 3,
-      "MaxHp": 350.0,
-      "MaxHpUpForIncreasStage": 10.0,
-      "Attack": 24.0,
-      "AttackUpForIncreasStage": 5.0,
-      "Def": 6.0,
-      "Speed": 2.8,
-      "HpRate": 2.0,
-      "AttackRate": 2.0,
-      "DefRate": 2.0,
-      "MoveSpeedRate": 2.0,
-      "Image_Name": "NH_BasicAlien_Move_01.sprite",
-      "CreatureAnimName": null,
-      "CharacterAnimName": null,
-      "UnLockStage": 0,
-      "SkillTypeList": [
-        0
-      ],
-      "EvolutionTypeList": [
-        0
-      ]
-    },
-    {
-      "DataID": 11004,
-      "Name": "Cthulhu Slime",
-      "NameKR": "크툴루 슬라임",
-      "Description": "눈이 하나인 무서운 슬라임",
-      "prefabName": "EliteMonster",
-      "Type": 3,
-      "MaxHp": 300.0,
-      "MaxHpUpForIncreasStage": 10.0,
-      "Attack": 25.0,
-      "AttackUpForIncreasStage": 5.0,
-      "Def": 5.0,
-      "Speed": 2.5,
-      "HpRate": 2.0,
-      "AttackRate": 2.0,
-      "DefRate": 2.0,
-      "MoveSpeedRate": 2.0,
-      "Image_Name": "NH_BasicAlien_Move_01.sprite",
-      "CreatureAnimName": null,
-      "CharacterAnimName": null,
-      "UnLockStage": 0,
-      "SkillTypeList": [
-        0
-      ],
-      "EvolutionTypeList": [
-        0
-      ]
-    },
-    {
-      "DataID": 11005,
-      "Name": "Demon Slime",
-      "NameKR": "데몬 슬라임",
-      "Description": "지옥의 기운을 지닌 강력한 존재",
-      "prefabName": "EliteMonster",
-      "Type": 3,
-      "MaxHp": 350.0,
-      "MaxHpUpForIncreasStage": 10.0,
-      "Attack": 29.0,
-      "AttackUpForIncreasStage": 5.0,
-      "Def": 6.0,
-      "Speed": 2.8,
-      "HpRate": 2.0,
-      "AttackRate": 2.0,
-      "DefRate": 2.0,
-      "MoveSpeedRate": 2.0,
-      "Image_Name": "NH_BasicAlien_Move_01.sprite",
-      "CreatureAnimName": null,
-      "CharacterAnimName": null,
-      "UnLockStage": 0,
-      "SkillTypeList": [
-        0
-      ],
-      "EvolutionTypeList": [
-        0
-      ]
-    },
-    {
-      "DataID": 11006,
-      "Name": "Electron Slime",
-      "NameKR": "일렉트론 슬라임",
-      "Description": "전자기파를 내뿜는 슬라임",
-      "prefabName": "EliteMonster",
-      "Type": 3,
-      "MaxHp": 300.0,
-      "MaxHpUpForIncreasStage": 10.0,
-      "Attack": 30.0,
-      "AttackUpForIncreasStage": 5.0,
-      "Def": 5.0,
-      "Speed": 2.5,
-      "HpRate": 2.0,
-      "AttackRate": 2.0,
-      "DefRate": 2.0,
-      "MoveSpeedRate": 2.0,
-      "Image_Name": "NH_BasicAlien_Move_01.sprite",
-      "CreatureAnimName": null,
-      "CharacterAnimName": null,
-      "UnLockStage": 0,
-      "SkillTypeList": [
-        0
-      ],
-      "EvolutionTypeList": [
-        0
-      ]
-    },
-    {
-      "DataID": 11007,
-      "Name": "King Slime",
-      "NameKR": "킹 슬라임",
-      "Description": "거대한 슬라임",
-      "prefabName": "EliteMonster",
-      "Type": 3,
-      "MaxHp": 350.0,
-      "MaxHpUpForIncreasStage": 10.0,
-      "Attack": 32.0,
-      "AttackUpForIncreasStage": 5.0,
-      "Def": 6.0,
-      "Speed": 2.8,
-      "HpRate": 2.0,
-      "AttackRate": 2.0,
-      "DefRate": 2.0,
-      "MoveSpeedRate": 2.0,
-      "Image_Name": "NH_BasicAlien_Move_01.sprite",
-      "CreatureAnimName": null,
-      "CharacterAnimName": null,
-      "UnLockStage": 0,
-      "SkillTypeList": [
-        0
-      ],
-      "EvolutionTypeList": [
-        0
-      ]
-    },
-    {
-      "DataID": 12000,
-      "Name": "Sky Slime",
-      "NameKR": "스카이 슬라임",
-      "Description": "날개가 달린 슬라임",
-      "prefabName": "Boss",
-      "Type": 4,
-      "MaxHp": 800.0,
-      "MaxHpUpForIncreasStage": 14.0,
-      "Attack": 32.0,
-      "AttackUpForIncreasStage": 7.0,
-      "Def": 6.0,
-      "Speed": 2.5,
-      "HpRate": 2.0,
-      "AttackRate": 2.0,
-      "DefRate": 2.0,
-      "MoveSpeedRate": 2.0,
-      "Image_Name": "NH_BasicAlien_Move_01.sprite",
-      "CreatureAnimName": null,
-      "CharacterAnimName": null,
-      "UnLockStage": 0,
-      "SkillTypeList": [
-        90000,
-        90001,
-        90002
-      ],
-      "EvolutionTypeList": [
-        0
-      ]
-    },
-    {
-      "DataID": 12001,
-      "Name": "Assassin Slime",
-      "NameKR": "어쌔신 슬라임",
-      "Description": "그림자처럼 다가와 공격하는 슬라임",
-      "prefabName": "Boss",
-      "Type": 4,
-      "MaxHp": 900.0,
-      "MaxHpUpForIncreasStage": 14.0,
-      "Attack": 35.0,
-      "AttackUpForIncreasStage": 7.0,
-      "Def": 7.0,
-      "Speed": 2.7,
-      "HpRate": 2.0,
-      "AttackRate": 2.0,
-      "DefRate": 2.0,
-      "MoveSpeedRate": 2.0,
-      "Image_Name": "NH_BasicAlien_Move_01.sprite",
-      "CreatureAnimName": null,
-      "CharacterAnimName": null,
-      "UnLockStage": 0,
-      "SkillTypeList": [
-        90000,
-        90001,
-        90002
-      ],
-      "EvolutionTypeList": [
-        0
-      ]
-    },
-    {
-      "DataID": 12002,
-      "Name": "Black Hole Slime",
-      "NameKR": "블랙홀 슬라임",
-      "Description": "블랙홀에서 빠져나온 슬라임",
-      "prefabName": "Boss",
-      "Type": 4,
-      "MaxHp": 1000.0,
-      "MaxHpUpForIncreasStage": 14.0,
-      "Attack": 43.0,
-      "AttackUpForIncreasStage": 7.0,
-      "Def": 6.0,
-      "Speed": 2.9,
-      "HpRate": 2.0,
-      "AttackRate": 2.0,
-      "DefRate": 2.0,
-      "MoveSpeedRate": 2.0,
-      "Image_Name": "NH_BasicAlien_Move_01.sprite",
-      "CreatureAnimName": null,
-      "CharacterAnimName": null,
-      "UnLockStage": 0,
-      "SkillTypeList": [
-        90000,
-        90001,
-        90002
-      ],
-      "EvolutionTypeList": [
-        0
-      ]
-    },
-    {
-      "DataID": 12003,
-      "Name": "Ice King Slime",
-      "NameKR": "아이스 킹 슬라임",
-      "Description": "엄청난 한기를 내뿜는 슬라임",
-      "prefabName": "Boss",
-      "Type": 4,
-      "MaxHp": 1100.0,
-      "MaxHpUpForIncreasStage": 14.0,
-      "Attack": 46.0,
-      "AttackUpForIncreasStage": 7.0,
-      "Def": 7.0,
-      "Speed": 3.0,
-      "HpRate": 2.0,
-      "AttackRate": 2.0,
-      "DefRate": 2.0,
-      "MoveSpeedRate": 2.0,
-      "Image_Name": "NH_BasicAlien_Move_01.sprite",
-      "CreatureAnimName": null,
-      "CharacterAnimName": null,
-      "UnLockStage": 0,
-      "SkillTypeList": [
-        90000,
-        90001,
-        90002
-      ],
-      "EvolutionTypeList": [
-        0
-      ]
-    },
-    {
-      "DataID": 12004,
-      "Name": "Mud King Slime",
-      "NameKR": "머드 킹 슬라임",
-      "Description": "악취가 나는 슬라임",
-      "prefabName": "Boss",
-      "Type": 4,
-      "MaxHp": 1200.0,
-      "MaxHpUpForIncreasStage": 14.0,
-      "Attack": 50.0,
-      "AttackUpForIncreasStage": 7.0,
-      "Def": 6.0,
-      "Speed": 3.1,
-      "HpRate": 2.0,
-      "AttackRate": 2.0,
-      "DefRate": 2.0,
-      "MoveSpeedRate": 2.0,
-      "Image_Name": "NH_BasicAlien_Move_01.sprite",
-      "CreatureAnimName": null,
-      "CharacterAnimName": null,
-      "UnLockStage": 0,
-      "SkillTypeList": [
-        90000,
-        90001,
-        90002
-      ],
-      "EvolutionTypeList": [
-        0
-      ]
-    }
-  ]
+    "creatureData":  [
+                         {
+                             "DataID":  1,
+                             "Name":  "Alpha",
+                             "NameKR":  "??怨뺤냱",
+                             "Description":  null,
+                             "prefabName":  "Player",
+                             "Type":  1,
+                             "MaxHp":  200.0,
+                             "MaxHpUpForIncreasStage":  2.0,
+                             "Attack":  10.0,
+                             "AttackUpForIncreasStage":  2.0,
+                             "Def":  1.0,
+                             "Speed":  4.0,
+                             "HpRate":  1.0,
+                             "AttackRate":  1.0,
+                             "DefRate":  1.0,
+                             "MoveSpeedRate":  2,
+                             "Image_Name":  "Alpha.sprite",
+                             "CreatureAnimName":  "Player_Alpha_Anim",
+                             "CharacterAnimName":  "Character_Alpha",
+                             "UnLockStage":  1,
+                             "SkillTypeList":  [
+                                                   20000,
+                                                   20100,
+                                                   20200,
+                                                   20300,
+                                                   20400,
+                                                   20500,
+                                                   20600,
+                                                   20700,
+                                                   20800,
+                                                   20900
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       21000,
+                                                       21100,
+                                                       21200,
+                                                       21300,
+                                                       21400,
+                                                       21500,
+                                                       21600,
+                                                       21700,
+                                                       21800,
+                                                       21900
+                                                   ]
+                         },
+                         {
+                             "DataID":  2,
+                             "Name":  "Beta",
+                             "NameKR":  "?뺢퀣伊?",
+                             "Description":  null,
+                             "prefabName":  "Player",
+                             "Type":  1,
+                             "MaxHp":  220.0,
+                             "MaxHpUpForIncreasStage":  3.0,
+                             "Attack":  11.0,
+                             "AttackUpForIncreasStage":  2.0,
+                             "Def":  2.0,
+                             "Speed":  4.2,
+                             "HpRate":  1.1,
+                             "AttackRate":  1.1,
+                             "DefRate":  1.1,
+                             "MoveSpeedRate":  2.2,
+                             "Image_Name":  "Beta.sprite",
+                             "CreatureAnimName":  "Player_Beta_Anim",
+                             "CharacterAnimName":  "Character_Beta",
+                             "UnLockStage":  2,
+                             "SkillTypeList":  [
+                                                   20000,
+                                                   20100,
+                                                   20200,
+                                                   20300,
+                                                   20400,
+                                                   20500,
+                                                   20600,
+                                                   20700,
+                                                   20800,
+                                                   20900
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       21000,
+                                                       21100,
+                                                       21200,
+                                                       21300,
+                                                       21400,
+                                                       21500,
+                                                       21600,
+                                                       21700,
+                                                       21800,
+                                                       21900
+                                                   ]
+                         },
+                         {
+                             "DataID":  3,
+                             "Name":  "Gamma",
+                             "NameKR":  "?띠룆큔壤?",
+                             "Description":  null,
+                             "prefabName":  "Player",
+                             "Type":  1,
+                             "MaxHp":  250.0,
+                             "MaxHpUpForIncreasStage":  4.0,
+                             "Attack":  13.0,
+                             "AttackUpForIncreasStage":  3.0,
+                             "Def":  3.0,
+                             "Speed":  4.4,
+                             "HpRate":  1.2,
+                             "AttackRate":  1.3,
+                             "DefRate":  1.3,
+                             "MoveSpeedRate":  2.6,
+                             "Image_Name":  "Gamma.sprite",
+                             "CreatureAnimName":  "Player_Gamma_Anim",
+                             "CharacterAnimName":  "Character_Gamma",
+                             "UnLockStage":  3,
+                             "SkillTypeList":  [
+                                                   20000,
+                                                   20100,
+                                                   20200,
+                                                   20300,
+                                                   20400,
+                                                   20500,
+                                                   20600,
+                                                   20700,
+                                                   20800,
+                                                   20900
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       21000,
+                                                       21100,
+                                                       21200,
+                                                       21300,
+                                                       21400,
+                                                       21500,
+                                                       21600,
+                                                       21700,
+                                                       21800,
+                                                       21900
+                                                   ]
+                         },
+                         {
+                             "DataID":  4,
+                             "Name":  "Delta",
+                             "NameKR":  "?筌?",
+                             "Description":  null,
+                             "prefabName":  "Player",
+                             "Type":  1,
+                             "MaxHp":  280.0,
+                             "MaxHpUpForIncreasStage":  5.0,
+                             "Attack":  15.0,
+                             "AttackUpForIncreasStage":  4.0,
+                             "Def":  4.0,
+                             "Speed":  4.6,
+                             "HpRate":  1.4,
+                             "AttackRate":  1.4,
+                             "DefRate":  1.4,
+                             "MoveSpeedRate":  2.8,
+                             "Image_Name":  "Delta.sprite",
+                             "CreatureAnimName":  "Player_Delta_Anim",
+                             "CharacterAnimName":  "Character_Delta",
+                             "UnLockStage":  4,
+                             "SkillTypeList":  [
+                                                   20000,
+                                                   20100,
+                                                   20200,
+                                                   20300,
+                                                   20400,
+                                                   20500,
+                                                   20600,
+                                                   20700,
+                                                   20800,
+                                                   20900
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       21000,
+                                                       21100,
+                                                       21200,
+                                                       21300,
+                                                       21400,
+                                                       21500,
+                                                       21600,
+                                                       21700,
+                                                       21800,
+                                                       21900
+                                                   ]
+                         },
+                         {
+                             "DataID":  5,
+                             "Name":  "Epsilon",
+                             "NameKR":  "?繹먮끏堉꾢슖?",
+                             "Description":  null,
+                             "prefabName":  "Player",
+                             "Type":  1,
+                             "MaxHp":  310.0,
+                             "MaxHpUpForIncreasStage":  6.0,
+                             "Attack":  20.0,
+                             "AttackUpForIncreasStage":  5.0,
+                             "Def":  5.0,
+                             "Speed":  5.0,
+                             "HpRate":  1.5,
+                             "AttackRate":  1.5,
+                             "DefRate":  1.5,
+                             "MoveSpeedRate":  3.2,
+                             "Image_Name":  "Epsilon.sprite",
+                             "CreatureAnimName":  "Player_Epsilon_Anim",
+                             "CharacterAnimName":  "Character_Epsilon",
+                             "UnLockStage":  5,
+                             "SkillTypeList":  [
+                                                   20000,
+                                                   20100,
+                                                   20200,
+                                                   20300,
+                                                   20400,
+                                                   20500,
+                                                   20600,
+                                                   20700,
+                                                   20800,
+                                                   20900
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       21000,
+                                                       21100,
+                                                       21200,
+                                                       21300,
+                                                       21400,
+                                                       21500,
+                                                       21600,
+                                                       21700,
+                                                       21800,
+                                                       21900
+                                                   ]
+                         },
+                         {
+                             "DataID":  10000,
+                             "Name":  "NH Basic Alien",
+                             "NameKR":  "쫄쫄이",
+                             "Description":  null,
+                             "prefabName":  "NH_BasicAlien",
+                             "Type":  2,
+                             "MaxHp":  140.0,
+                             "MaxHpUpForIncreasStage":  8.0,
+                             "Attack":  5.0,
+                             "AttackUpForIncreasStage":  4.0,
+                             "Def":  2.0,
+                             "Speed":  2.0,
+                             "HpRate":  1.0,
+                             "AttackRate":  1.0,
+                             "DefRate":  1.0,
+                             "MoveSpeedRate":  1.0,
+                             "Image_Name":  "NH_BasicAlien_Move_01.sprite",
+                             "CreatureAnimName":  "NH_BasicAlien",
+                             "CharacterAnimName":  null,
+                             "UnLockStage":  0,
+                             "SkillTypeList":  [
+                                                   0
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       0
+                                                   ]
+                         },
+                         {
+                             "DataID":  10001,
+                             "Name":  "NH KongKongi",
+                             "NameKR":  "콩콩이",
+                             "Description":  null,
+                             "prefabName":  "NH_KongKongi",
+                             "Type":  2,
+                             "MaxHp":  150.0,
+                             "MaxHpUpForIncreasStage":  8.0,
+                             "Attack":  7.0,
+                             "AttackUpForIncreasStage":  4.0,
+                             "Def":  3.0,
+                             "Speed":  2.5,
+                             "HpRate":  1.0,
+                             "AttackRate":  1.0,
+                             "DefRate":  1.0,
+                             "MoveSpeedRate":  1.0,
+                             "Image_Name":  "NH_KongKongi_Move_01.sprite",
+                             "CreatureAnimName":  "NH_KongKongi",
+                             "CharacterAnimName":  null,
+                             "UnLockStage":  0,
+                             "SkillTypeList":  [
+                                                   0
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       0
+                                                   ]
+                         },
+                         {
+                             "DataID":  10002,
+                             "Name":  "NH KkuBeogi",
+                             "NameKR":  "꾸벅이",
+                             "Description":  null,
+                             "prefabName":  "NH_KkuBeogi",
+                             "Type":  2,
+                             "MaxHp":  160.0,
+                             "MaxHpUpForIncreasStage":  8.0,
+                             "Attack":  9.0,
+                             "AttackUpForIncreasStage":  4.0,
+                             "Def":  4.0,
+                             "Speed":  2.0,
+                             "HpRate":  1.0,
+                             "AttackRate":  1.0,
+                             "DefRate":  1.0,
+                             "MoveSpeedRate":  1.0,
+                             "Image_Name":  "NH_KkuBeogi_Move_01.sprite",
+                             "CreatureAnimName":  "NH_KkuBeogi",
+                             "CharacterAnimName":  null,
+                             "UnLockStage":  0,
+                             "SkillTypeList":  [
+                                                   0
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       0
+                                                   ]
+                         },
+                         {
+                             "DataID":  10003,
+                             "Name":  "Yellow Slime",
+                             "NameKR":  "?筌뤾퍔???????",
+                             "Description":  null,
+                             "prefabName":  "Monster",
+                             "Type":  2,
+                             "MaxHp":  170.0,
+                             "MaxHpUpForIncreasStage":  8.0,
+                             "Attack":  10.0,
+                             "AttackUpForIncreasStage":  4.0,
+                             "Def":  2.0,
+                             "Speed":  2.5,
+                             "HpRate":  1.0,
+                             "AttackRate":  1.0,
+                             "DefRate":  1.0,
+                             "MoveSpeedRate":  1.0,
+                             "Image_Name":  "MonsterIcon_04.sprite",
+                             "CreatureAnimName":  null,
+                             "CharacterAnimName":  null,
+                             "UnLockStage":  0,
+                             "SkillTypeList":  [
+                                                   0
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       0
+                                                   ]
+                         },
+                         {
+                             "DataID":  10004,
+                             "Name":  "Black Slime",
+                             "NameKR":  "?롪틵????????",
+                             "Description":  null,
+                             "prefabName":  "Monster",
+                             "Type":  2,
+                             "MaxHp":  180.0,
+                             "MaxHpUpForIncreasStage":  8.0,
+                             "Attack":  15.0,
+                             "AttackUpForIncreasStage":  4.0,
+                             "Def":  3.0,
+                             "Speed":  2.0,
+                             "HpRate":  1.0,
+                             "AttackRate":  1.0,
+                             "DefRate":  1.0,
+                             "MoveSpeedRate":  1.0,
+                             "Image_Name":  "MonsterIcon_05.sprite",
+                             "CreatureAnimName":  null,
+                             "CharacterAnimName":  null,
+                             "UnLockStage":  0,
+                             "SkillTypeList":  [
+                                                   0
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       0
+                                                   ]
+                         },
+                         {
+                             "DataID":  10005,
+                             "Name":  "Flower Slime",
+                             "NameKR":  "???????",
+                             "Description":  null,
+                             "prefabName":  "Monster",
+                             "Type":  2,
+                             "MaxHp":  140.0,
+                             "MaxHpUpForIncreasStage":  8.0,
+                             "Attack":  5.0,
+                             "AttackUpForIncreasStage":  4.0,
+                             "Def":  4.0,
+                             "Speed":  2.5,
+                             "HpRate":  1.0,
+                             "AttackRate":  1.0,
+                             "DefRate":  1.0,
+                             "MoveSpeedRate":  1.0,
+                             "Image_Name":  "MonsterIcon_06.sprite",
+                             "CreatureAnimName":  null,
+                             "CharacterAnimName":  null,
+                             "UnLockStage":  0,
+                             "SkillTypeList":  [
+                                                   0
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       0
+                                                   ]
+                         },
+                         {
+                             "DataID":  10006,
+                             "Name":  "NH MeongAli",
+                             "NameKR":  "멍알이",
+                             "Description":  null,
+                             "prefabName":  "NH_MeongAli",
+                             "Type":  2,
+                             "MaxHp":  150.0,
+                             "MaxHpUpForIncreasStage":  8.0,
+                             "Attack":  7.0,
+                             "AttackUpForIncreasStage":  4.0,
+                             "Def":  2.0,
+                             "Speed":  2.0,
+                             "HpRate":  1.0,
+                             "AttackRate":  1.0,
+                             "DefRate":  1.0,
+                             "MoveSpeedRate":  1.0,
+                             "Image_Name":  "NH_MeongAli_Move_01.sprite",
+                             "CreatureAnimName":  "NH_MeongAli",
+                             "CharacterAnimName":  null,
+                             "UnLockStage":  0,
+                             "SkillTypeList":  [
+                                                   0
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       0
+                                                   ]
+                         },
+                         {
+                             "DataID":  10007,
+                             "Name":  "NH SaengseonPpyeoByeong",
+                             "NameKR":  "생선뼈병",
+                             "Description":  null,
+                             "prefabName":  "NH_SaengseonPpyeoByeong",
+                             "Type":  2,
+                             "MaxHp":  160.0,
+                             "MaxHpUpForIncreasStage":  8.0,
+                             "Attack":  9.0,
+                             "AttackUpForIncreasStage":  4.0,
+                             "Def":  3.0,
+                             "Speed":  2.5,
+                             "HpRate":  1.0,
+                             "AttackRate":  1.0,
+                             "DefRate":  1.0,
+                             "MoveSpeedRate":  1.0,
+                             "Image_Name":  "NH_SaengseonPpyeoByeong_Move_01.sprite",
+                             "CreatureAnimName":  "NH_SaengseonPpyeoByeong",
+                             "CharacterAnimName":  null,
+                             "UnLockStage":  0,
+                             "SkillTypeList":  [
+                                                   0
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       0
+                                                   ]
+                         },
+                         {
+                             "DataID":  10008,
+                             "Name":  "NH PokeByeong",
+                             "NameKR":  "포크병",
+                             "Description":  null,
+                             "prefabName":  "NH_PokeByeong",
+                             "Type":  2,
+                             "MaxHp":  170.0,
+                             "MaxHpUpForIncreasStage":  8.0,
+                             "Attack":  10.0,
+                             "AttackUpForIncreasStage":  4.0,
+                             "Def":  4.0,
+                             "Speed":  2.0,
+                             "HpRate":  1.0,
+                             "AttackRate":  1.0,
+                             "DefRate":  1.0,
+                             "MoveSpeedRate":  1.0,
+                             "Image_Name":  "NH_PokeByeong_Move_01.sprite",
+                             "CreatureAnimName":  "NH_PokeByeong",
+                             "CharacterAnimName":  null,
+                             "UnLockStage":  0,
+                             "SkillTypeList":  [
+                                                   0
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       0
+                                                   ]
+                         },
+                         {
+                             "DataID":  10009,
+                             "Name":  "Wildman Slime",
+                             "NameKR":  "??怨쀬떳 ?????",
+                             "Description":  null,
+                             "prefabName":  "Monster",
+                             "Type":  2,
+                             "MaxHp":  180.0,
+                             "MaxHpUpForIncreasStage":  8.0,
+                             "Attack":  15.0,
+                             "AttackUpForIncreasStage":  4.0,
+                             "Def":  2.0,
+                             "Speed":  2.5,
+                             "HpRate":  1.0,
+                             "AttackRate":  1.0,
+                             "DefRate":  1.0,
+                             "MoveSpeedRate":  1.0,
+                             "Image_Name":  "MonsterIcon_10.sprite",
+                             "CreatureAnimName":  null,
+                             "CharacterAnimName":  null,
+                             "UnLockStage":  0,
+                             "SkillTypeList":  [
+                                                   0
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       0
+                                                   ]
+                         },
+                         {
+                             "DataID":  10010,
+                             "Name":  "Diamond Slime",
+                             "NameKR":  "???깅턄???????",
+                             "Description":  null,
+                             "prefabName":  "Monster",
+                             "Type":  2,
+                             "MaxHp":  140.0,
+                             "MaxHpUpForIncreasStage":  8.0,
+                             "Attack":  5.0,
+                             "AttackUpForIncreasStage":  4.0,
+                             "Def":  3.0,
+                             "Speed":  2.0,
+                             "HpRate":  1.0,
+                             "AttackRate":  1.0,
+                             "DefRate":  1.0,
+                             "MoveSpeedRate":  1.0,
+                             "Image_Name":  "MonsterIcon_11.sprite",
+                             "CreatureAnimName":  null,
+                             "CharacterAnimName":  null,
+                             "UnLockStage":  0,
+                             "SkillTypeList":  [
+                                                   0
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       0
+                                                   ]
+                         },
+                         {
+                             "DataID":  10011,
+                             "Name":  "Gold Slime",
+                             "NameKR":  "??猷삳땴 ?????",
+                             "Description":  null,
+                             "prefabName":  "Monster",
+                             "Type":  2,
+                             "MaxHp":  150.0,
+                             "MaxHpUpForIncreasStage":  8.0,
+                             "Attack":  7.0,
+                             "AttackUpForIncreasStage":  4.0,
+                             "Def":  4.0,
+                             "Speed":  2.5,
+                             "HpRate":  1.0,
+                             "AttackRate":  1.0,
+                             "DefRate":  1.0,
+                             "MoveSpeedRate":  1.0,
+                             "Image_Name":  "MonsterIcon_12.sprite",
+                             "CreatureAnimName":  null,
+                             "CharacterAnimName":  null,
+                             "UnLockStage":  0,
+                             "SkillTypeList":  [
+                                                   0
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       0
+                                                   ]
+                         },
+                         {
+                             "DataID":  10012,
+                             "Name":  "Obsidian Slime",
+                             "NameKR":  "??얜?????????",
+                             "Description":  null,
+                             "prefabName":  "Monster",
+                             "Type":  2,
+                             "MaxHp":  160.0,
+                             "MaxHpUpForIncreasStage":  8.0,
+                             "Attack":  9.0,
+                             "AttackUpForIncreasStage":  4.0,
+                             "Def":  2.0,
+                             "Speed":  2.0,
+                             "HpRate":  1.0,
+                             "AttackRate":  1.0,
+                             "DefRate":  1.0,
+                             "MoveSpeedRate":  1.0,
+                             "Image_Name":  "MonsterIcon_13.sprite",
+                             "CreatureAnimName":  null,
+                             "CharacterAnimName":  null,
+                             "UnLockStage":  0,
+                             "SkillTypeList":  [
+                                                   0
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       0
+                                                   ]
+                         },
+                         {
+                             "DataID":  10013,
+                             "Name":  "Skeleton Slime",
+                             "NameKR":  "???????",
+                             "Description":  null,
+                             "prefabName":  "Monster",
+                             "Type":  2,
+                             "MaxHp":  170.0,
+                             "MaxHpUpForIncreasStage":  8.0,
+                             "Attack":  10.0,
+                             "AttackUpForIncreasStage":  4.0,
+                             "Def":  3.0,
+                             "Speed":  2.5,
+                             "HpRate":  1.0,
+                             "AttackRate":  1.0,
+                             "DefRate":  1.0,
+                             "MoveSpeedRate":  1.0,
+                             "Image_Name":  "MonsterIcon_14.sprite",
+                             "CreatureAnimName":  null,
+                             "CharacterAnimName":  null,
+                             "UnLockStage":  0,
+                             "SkillTypeList":  [
+                                                   0
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       0
+                                                   ]
+                         },
+                         {
+                             "DataID":  10014,
+                             "Name":  "Stone Slime",
+                             "NameKR":  "???????",
+                             "Description":  null,
+                             "prefabName":  "Monster",
+                             "Type":  2,
+                             "MaxHp":  180.0,
+                             "MaxHpUpForIncreasStage":  8.0,
+                             "Attack":  15.0,
+                             "AttackUpForIncreasStage":  4.0,
+                             "Def":  4.0,
+                             "Speed":  2.0,
+                             "HpRate":  1.0,
+                             "AttackRate":  1.0,
+                             "DefRate":  1.0,
+                             "MoveSpeedRate":  1.0,
+                             "Image_Name":  "MonsterIcon_15.sprite",
+                             "CreatureAnimName":  null,
+                             "CharacterAnimName":  null,
+                             "UnLockStage":  0,
+                             "SkillTypeList":  [
+                                                   0
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       0
+                                                   ]
+                         },
+                         {
+                             "DataID":  10015,
+                             "Name":  "Cactus Slime",
+                             "NameKR":  "??ル‘逾???????",
+                             "Description":  null,
+                             "prefabName":  "Monster",
+                             "Type":  2,
+                             "MaxHp":  140.0,
+                             "MaxHpUpForIncreasStage":  8.0,
+                             "Attack":  5.0,
+                             "AttackUpForIncreasStage":  4.0,
+                             "Def":  2.0,
+                             "Speed":  2.5,
+                             "HpRate":  1.0,
+                             "AttackRate":  1.0,
+                             "DefRate":  1.0,
+                             "MoveSpeedRate":  1.0,
+                             "Image_Name":  "MonsterIcon_16.sprite",
+                             "CreatureAnimName":  null,
+                             "CharacterAnimName":  null,
+                             "UnLockStage":  0,
+                             "SkillTypeList":  [
+                                                   0
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       0
+                                                   ]
+                         },
+                         {
+                             "DataID":  10016,
+                             "Name":  "Ice Slime",
+                             "NameKR":  "??源녿쾳 ?????",
+                             "Description":  null,
+                             "prefabName":  "Monster",
+                             "Type":  2,
+                             "MaxHp":  150.0,
+                             "MaxHpUpForIncreasStage":  8.0,
+                             "Attack":  7.0,
+                             "AttackUpForIncreasStage":  4.0,
+                             "Def":  3.0,
+                             "Speed":  2.0,
+                             "HpRate":  1.0,
+                             "AttackRate":  1.0,
+                             "DefRate":  1.0,
+                             "MoveSpeedRate":  1.0,
+                             "Image_Name":  "MonsterIcon_17.sprite",
+                             "CreatureAnimName":  null,
+                             "CharacterAnimName":  null,
+                             "UnLockStage":  0,
+                             "SkillTypeList":  [
+                                                   0
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       0
+                                                   ]
+                         },
+                         {
+                             "DataID":  10017,
+                             "Name":  "Mummy Slime",
+                             "NameKR":  "?熬곣뫁異??????",
+                             "Description":  null,
+                             "prefabName":  "Monster",
+                             "Type":  2,
+                             "MaxHp":  160.0,
+                             "MaxHpUpForIncreasStage":  8.0,
+                             "Attack":  9.0,
+                             "AttackUpForIncreasStage":  4.0,
+                             "Def":  4.0,
+                             "Speed":  2.5,
+                             "HpRate":  1.0,
+                             "AttackRate":  1.0,
+                             "DefRate":  1.0,
+                             "MoveSpeedRate":  1.0,
+                             "Image_Name":  "MonsterIcon_18.sprite",
+                             "CreatureAnimName":  null,
+                             "CharacterAnimName":  null,
+                             "UnLockStage":  0,
+                             "SkillTypeList":  [
+                                                   0
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       0
+                                                   ]
+                         },
+                         {
+                             "DataID":  10018,
+                             "Name":  "Sand Slime",
+                             "NameKR":  "嶺뚮ㅄ維???????",
+                             "Description":  null,
+                             "prefabName":  "Monster",
+                             "Type":  2,
+                             "MaxHp":  170.0,
+                             "MaxHpUpForIncreasStage":  8.0,
+                             "Attack":  10.0,
+                             "AttackUpForIncreasStage":  4.0,
+                             "Def":  2.0,
+                             "Speed":  2.0,
+                             "HpRate":  1.0,
+                             "AttackRate":  1.0,
+                             "DefRate":  1.0,
+                             "MoveSpeedRate":  1.0,
+                             "Image_Name":  "MonsterIcon_19.sprite",
+                             "CreatureAnimName":  null,
+                             "CharacterAnimName":  null,
+                             "UnLockStage":  0,
+                             "SkillTypeList":  [
+                                                   0
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       0
+                                                   ]
+                         },
+                         {
+                             "DataID":  10019,
+                             "Name":  "Snow Slime",
+                             "NameKR":  "???????",
+                             "Description":  null,
+                             "prefabName":  "Monster",
+                             "Type":  2,
+                             "MaxHp":  180.0,
+                             "MaxHpUpForIncreasStage":  8.0,
+                             "Attack":  15.0,
+                             "AttackUpForIncreasStage":  4.0,
+                             "Def":  3.0,
+                             "Speed":  2.5,
+                             "HpRate":  1.0,
+                             "AttackRate":  1.0,
+                             "DefRate":  1.0,
+                             "MoveSpeedRate":  1.0,
+                             "Image_Name":  "MonsterIcon_20.sprite",
+                             "CreatureAnimName":  null,
+                             "CharacterAnimName":  null,
+                             "UnLockStage":  0,
+                             "SkillTypeList":  [
+                                                   0
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       0
+                                                   ]
+                         },
+                         {
+                             "DataID":  10020,
+                             "Name":  "Coral Slime",
+                             "NameKR":  "??⑥쥙源??????",
+                             "Description":  null,
+                             "prefabName":  "Monster",
+                             "Type":  2,
+                             "MaxHp":  140.0,
+                             "MaxHpUpForIncreasStage":  8.0,
+                             "Attack":  5.0,
+                             "AttackUpForIncreasStage":  4.0,
+                             "Def":  4.0,
+                             "Speed":  2.0,
+                             "HpRate":  1.0,
+                             "AttackRate":  1.0,
+                             "DefRate":  1.0,
+                             "MoveSpeedRate":  1.0,
+                             "Image_Name":  "MonsterIcon_21.sprite",
+                             "CreatureAnimName":  null,
+                             "CharacterAnimName":  null,
+                             "UnLockStage":  0,
+                             "SkillTypeList":  [
+                                                   0
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       0
+                                                   ]
+                         },
+                         {
+                             "DataID":  10021,
+                             "Name":  "Crab Slime",
+                             "NameKR":  "???????",
+                             "Description":  null,
+                             "prefabName":  "Monster",
+                             "Type":  2,
+                             "MaxHp":  150.0,
+                             "MaxHpUpForIncreasStage":  8.0,
+                             "Attack":  7.0,
+                             "AttackUpForIncreasStage":  4.0,
+                             "Def":  2.0,
+                             "Speed":  2.5,
+                             "HpRate":  1.0,
+                             "AttackRate":  1.0,
+                             "DefRate":  1.0,
+                             "MoveSpeedRate":  1.0,
+                             "Image_Name":  "MonsterIcon_22.sprite",
+                             "CreatureAnimName":  null,
+                             "CharacterAnimName":  null,
+                             "UnLockStage":  0,
+                             "SkillTypeList":  [
+                                                   0
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       0
+                                                   ]
+                         },
+                         {
+                             "DataID":  10022,
+                             "Name":  "Lanternfish Slime",
+                             "NameKR":  "???れ돇??源낅뻣 ?????",
+                             "Description":  null,
+                             "prefabName":  "Monster",
+                             "Type":  2,
+                             "MaxHp":  160.0,
+                             "MaxHpUpForIncreasStage":  8.0,
+                             "Attack":  9.0,
+                             "AttackUpForIncreasStage":  4.0,
+                             "Def":  3.0,
+                             "Speed":  2.0,
+                             "HpRate":  1.0,
+                             "AttackRate":  1.0,
+                             "DefRate":  1.0,
+                             "MoveSpeedRate":  1.0,
+                             "Image_Name":  "MonsterIcon_23.sprite",
+                             "CreatureAnimName":  null,
+                             "CharacterAnimName":  null,
+                             "UnLockStage":  0,
+                             "SkillTypeList":  [
+                                                   0
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       0
+                                                   ]
+                         },
+                         {
+                             "DataID":  10023,
+                             "Name":  "Tiger shark Slime",
+                             "NameKR":  "?筌뤾퍔???怨대쭜???????",
+                             "Description":  null,
+                             "prefabName":  "Monster",
+                             "Type":  2,
+                             "MaxHp":  170.0,
+                             "MaxHpUpForIncreasStage":  8.0,
+                             "Attack":  10.0,
+                             "AttackUpForIncreasStage":  4.0,
+                             "Def":  4.0,
+                             "Speed":  2.5,
+                             "HpRate":  1.0,
+                             "AttackRate":  1.0,
+                             "DefRate":  1.0,
+                             "MoveSpeedRate":  1.0,
+                             "Image_Name":  "MonsterIcon_24.sprite",
+                             "CreatureAnimName":  null,
+                             "CharacterAnimName":  null,
+                             "UnLockStage":  0,
+                             "SkillTypeList":  [
+                                                   0
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       0
+                                                   ]
+                         },
+                         {
+                             "DataID":  10024,
+                             "Name":  "Water Slime",
+                             "NameKR":  "???????",
+                             "Description":  null,
+                             "prefabName":  "Monster",
+                             "Type":  2,
+                             "MaxHp":  180.0,
+                             "MaxHpUpForIncreasStage":  8.0,
+                             "Attack":  15.0,
+                             "AttackUpForIncreasStage":  4.0,
+                             "Def":  2.0,
+                             "Speed":  2.0,
+                             "HpRate":  1.0,
+                             "AttackRate":  1.0,
+                             "DefRate":  1.0,
+                             "MoveSpeedRate":  1.0,
+                             "Image_Name":  "MonsterIcon_25.sprite",
+                             "CreatureAnimName":  null,
+                             "CharacterAnimName":  null,
+                             "UnLockStage":  0,
+                             "SkillTypeList":  [
+                                                   0
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       0
+                                                   ]
+                         },
+                         {
+                             "DataID":  10025,
+                             "Name":  "Darkness Slime",
+                             "NameKR":  "???筌??????",
+                             "Description":  null,
+                             "prefabName":  "Monster",
+                             "Type":  2,
+                             "MaxHp":  200.0,
+                             "MaxHpUpForIncreasStage":  9.0,
+                             "Attack":  15.0,
+                             "AttackUpForIncreasStage":  5.0,
+                             "Def":  4.0,
+                             "Speed":  2.5,
+                             "HpRate":  1.0,
+                             "AttackRate":  1.0,
+                             "DefRate":  1.0,
+                             "MoveSpeedRate":  1.0,
+                             "Image_Name":  "MonsterIcon_26.sprite",
+                             "CreatureAnimName":  null,
+                             "CharacterAnimName":  null,
+                             "UnLockStage":  0,
+                             "SkillTypeList":  [
+                                                   0
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       0
+                                                   ]
+                         },
+                         {
+                             "DataID":  11000,
+                             "Name":  "Fire Slime",
+                             "NameKR":  "???逾???????",
+                             "Description":  "?釉띾쐝??????????ㅻ????⑤챷逾??????",
+                             "prefabName":  "EliteMonster",
+                             "Type":  3,
+                             "MaxHp":  300.0,
+                             "MaxHpUpForIncreasStage":  10.0,
+                             "Attack":  17.0,
+                             "AttackUpForIncreasStage":  5.0,
+                             "Def":  5.0,
+                             "Speed":  2.5,
+                             "HpRate":  2.0,
+                             "AttackRate":  2.0,
+                             "DefRate":  2.0,
+                             "MoveSpeedRate":  2.0,
+                             "Image_Name":  "MonsterIcon_27.sprite",
+                             "CreatureAnimName":  null,
+                             "CharacterAnimName":  null,
+                             "UnLockStage":  0,
+                             "SkillTypeList":  [
+                                                   0
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       0
+                                                   ]
+                         },
+                         {
+                             "DataID":  11001,
+                             "Name":  "Light Slime",
+                             "NameKR":  "??源녿턄???????",
+                             "Description":  "?꾩룇鍮? ??猷???꾩룇裕됮뇡???????",
+                             "prefabName":  "EliteMonster",
+                             "Type":  3,
+                             "MaxHp":  350.0,
+                             "MaxHpUpForIncreasStage":  10.0,
+                             "Attack":  21.0,
+                             "AttackUpForIncreasStage":  5.0,
+                             "Def":  6.0,
+                             "Speed":  2.8,
+                             "HpRate":  2.0,
+                             "AttackRate":  2.0,
+                             "DefRate":  2.0,
+                             "MoveSpeedRate":  2.0,
+                             "Image_Name":  "MonsterIcon_28.sprite",
+                             "CreatureAnimName":  null,
+                             "CharacterAnimName":  null,
+                             "UnLockStage":  0,
+                             "SkillTypeList":  [
+                                                   0
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       0
+                                                   ]
+                         },
+                         {
+                             "DataID":  11002,
+                             "Name":  "Lightning Slime",
+                             "NameKR":  "??源녿턄?筌뤾퍓六??????",
+                             "Description":  "?熬곥룗????꾩렮維???濡ル츎 ?????",
+                             "prefabName":  "EliteMonster",
+                             "Type":  3,
+                             "MaxHp":  300.0,
+                             "MaxHpUpForIncreasStage":  10.0,
+                             "Attack":  22.0,
+                             "AttackUpForIncreasStage":  5.0,
+                             "Def":  5.0,
+                             "Speed":  2.5,
+                             "HpRate":  2.0,
+                             "AttackRate":  2.0,
+                             "DefRate":  2.0,
+                             "MoveSpeedRate":  2.0,
+                             "Image_Name":  "MonsterIcon_29.sprite",
+                             "CreatureAnimName":  null,
+                             "CharacterAnimName":  null,
+                             "UnLockStage":  0,
+                             "SkillTypeList":  [
+                                                   0
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       0
+                                                   ]
+                         },
+                         {
+                             "DataID":  11003,
+                             "Name":  "Magic Slime",
+                             "NameKR":  "嶺뚮씞?됧퐲??????",
+                             "Description":  "嶺뚮씭?꾥떋??怨쀬Ŧ ??⑥レ뿼????戮?꽑???????",
+                             "prefabName":  "EliteMonster",
+                             "Type":  3,
+                             "MaxHp":  350.0,
+                             "MaxHpUpForIncreasStage":  10.0,
+                             "Attack":  24.0,
+                             "AttackUpForIncreasStage":  5.0,
+                             "Def":  6.0,
+                             "Speed":  2.8,
+                             "HpRate":  2.0,
+                             "AttackRate":  2.0,
+                             "DefRate":  2.0,
+                             "MoveSpeedRate":  2.0,
+                             "Image_Name":  "MonsterIcon_30.sprite",
+                             "CreatureAnimName":  null,
+                             "CharacterAnimName":  null,
+                             "UnLockStage":  0,
+                             "SkillTypeList":  [
+                                                   0
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       0
+                                                   ]
+                         },
+                         {
+                             "DataID":  11004,
+                             "Name":  "Cthulhu Slime",
+                             "NameKR":  "????㏓쇀??????",
+                             "Description":  "???깅턄 ??濡る룎????쒕샍????????",
+                             "prefabName":  "EliteMonster",
+                             "Type":  3,
+                             "MaxHp":  300.0,
+                             "MaxHpUpForIncreasStage":  10.0,
+                             "Attack":  25.0,
+                             "AttackUpForIncreasStage":  5.0,
+                             "Def":  5.0,
+                             "Speed":  2.5,
+                             "HpRate":  2.0,
+                             "AttackRate":  2.0,
+                             "DefRate":  2.0,
+                             "MoveSpeedRate":  2.0,
+                             "Image_Name":  "MonsterIcon_31.sprite",
+                             "CreatureAnimName":  null,
+                             "CharacterAnimName":  null,
+                             "UnLockStage":  0,
+                             "SkillTypeList":  [
+                                                   0
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       0
+                                                   ]
+                         },
+                         {
+                             "DataID":  11005,
+                             "Name":  "Demon Slime",
+                             "NameKR":  "??⑤틳嫄??????",
+                             "Description":  "嶺뚯솘??????リ옇????嶺뚯솘????띠룆踰????브퀡???",
+                             "prefabName":  "EliteMonster",
+                             "Type":  3,
+                             "MaxHp":  350.0,
+                             "MaxHpUpForIncreasStage":  10.0,
+                             "Attack":  29.0,
+                             "AttackUpForIncreasStage":  5.0,
+                             "Def":  6.0,
+                             "Speed":  2.8,
+                             "HpRate":  2.0,
+                             "AttackRate":  2.0,
+                             "DefRate":  2.0,
+                             "MoveSpeedRate":  2.0,
+                             "Image_Name":  "MonsterIcon_32.sprite",
+                             "CreatureAnimName":  null,
+                             "CharacterAnimName":  null,
+                             "UnLockStage":  0,
+                             "SkillTypeList":  [
+                                                   0
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       0
+                                                   ]
+                         },
+                         {
+                             "DataID":  11006,
+                             "Name":  "Electron Slime",
+                             "NameKR":  "??怨쀬쟼?筌뤾퍔夷??????",
+                             "Description":  "?熬곣뫗?썹뼨轅명??븍ご????????????",
+                             "prefabName":  "EliteMonster",
+                             "Type":  3,
+                             "MaxHp":  300.0,
+                             "MaxHpUpForIncreasStage":  10.0,
+                             "Attack":  30.0,
+                             "AttackUpForIncreasStage":  5.0,
+                             "Def":  5.0,
+                             "Speed":  2.5,
+                             "HpRate":  2.0,
+                             "AttackRate":  2.0,
+                             "DefRate":  2.0,
+                             "MoveSpeedRate":  2.0,
+                             "Image_Name":  "MonsterIcon_33.sprite",
+                             "CreatureAnimName":  null,
+                             "CharacterAnimName":  null,
+                             "UnLockStage":  0,
+                             "SkillTypeList":  [
+                                                   0
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       0
+                                                   ]
+                         },
+                         {
+                             "DataID":  11007,
+                             "Name":  "King Slime",
+                             "NameKR":  "???????",
+                             "Description":  "濾곌쑨?????????",
+                             "prefabName":  "EliteMonster",
+                             "Type":  3,
+                             "MaxHp":  350.0,
+                             "MaxHpUpForIncreasStage":  10.0,
+                             "Attack":  32.0,
+                             "AttackUpForIncreasStage":  5.0,
+                             "Def":  6.0,
+                             "Speed":  2.8,
+                             "HpRate":  2.0,
+                             "AttackRate":  2.0,
+                             "DefRate":  2.0,
+                             "MoveSpeedRate":  2.0,
+                             "Image_Name":  "MonsterIcon_34.sprite",
+                             "CreatureAnimName":  null,
+                             "CharacterAnimName":  null,
+                             "UnLockStage":  0,
+                             "SkillTypeList":  [
+                                                   0
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       0
+                                                   ]
+                         },
+                         {
+                             "DataID":  12000,
+                             "Name":  "Sky Slime",
+                             "NameKR":  "???곗땋???????",
+                             "Description":  "??ル맩六ｆ뤆?쎛 ?????????",
+                             "prefabName":  "Boss",
+                             "Type":  4,
+                             "MaxHp":  800.0,
+                             "MaxHpUpForIncreasStage":  14.0,
+                             "Attack":  32.0,
+                             "AttackUpForIncreasStage":  7.0,
+                             "Def":  6.0,
+                             "Speed":  2.5,
+                             "HpRate":  2.0,
+                             "AttackRate":  2.0,
+                             "DefRate":  2.0,
+                             "MoveSpeedRate":  2.0,
+                             "Image_Name":  "MonsterIcon_35.sprite",
+                             "CreatureAnimName":  null,
+                             "CharacterAnimName":  null,
+                             "UnLockStage":  0,
+                             "SkillTypeList":  [
+                                                   90000,
+                                                   90001,
+                                                   90002
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       0
+                                                   ]
+                         },
+                         {
+                             "DataID":  12001,
+                             "Name":  "Assassin Slime",
+                             "NameKR":  "??怨룹냻???????",
+                             "Description":  "?잙갭梨???????????? ??ㅻ????濡ル츎 ?????",
+                             "prefabName":  "Boss",
+                             "Type":  4,
+                             "MaxHp":  900.0,
+                             "MaxHpUpForIncreasStage":  14.0,
+                             "Attack":  35.0,
+                             "AttackUpForIncreasStage":  7.0,
+                             "Def":  7.0,
+                             "Speed":  2.7,
+                             "HpRate":  2.0,
+                             "AttackRate":  2.0,
+                             "DefRate":  2.0,
+                             "MoveSpeedRate":  2.0,
+                             "Image_Name":  "MonsterIcon_36.sprite",
+                             "CreatureAnimName":  null,
+                             "CharacterAnimName":  null,
+                             "UnLockStage":  0,
+                             "SkillTypeList":  [
+                                                   90000,
+                                                   90001,
+                                                   90002
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       0
+                                                   ]
+                         },
+                         {
+                             "DataID":  12002,
+                             "Name":  "Black Hole Slime",
+                             "NameKR":  "??곕???? ?????",
+                             "Description":  "??곕???????????伊숃???瑜곴텛 ?????",
+                             "prefabName":  "Boss",
+                             "Type":  4,
+                             "MaxHp":  1000.0,
+                             "MaxHpUpForIncreasStage":  14.0,
+                             "Attack":  43.0,
+                             "AttackUpForIncreasStage":  7.0,
+                             "Def":  6.0,
+                             "Speed":  2.9,
+                             "HpRate":  2.0,
+                             "AttackRate":  2.0,
+                             "DefRate":  2.0,
+                             "MoveSpeedRate":  2.0,
+                             "Image_Name":  "MonsterIcon_37.sprite",
+                             "CreatureAnimName":  null,
+                             "CharacterAnimName":  null,
+                             "UnLockStage":  0,
+                             "SkillTypeList":  [
+                                                   90000,
+                                                   90001,
+                                                   90002
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       0
+                                                   ]
+                         },
+                         {
+                             "DataID":  12003,
+                             "Name":  "Ice King Slime",
+                             "NameKR":  "?熬곣뫗逾?????????",
+                             "Description":  "?熬곣뫕?????蹂β뵛?????????????",
+                             "prefabName":  "Boss",
+                             "Type":  4,
+                             "MaxHp":  1100.0,
+                             "MaxHpUpForIncreasStage":  14.0,
+                             "Attack":  46.0,
+                             "AttackUpForIncreasStage":  7.0,
+                             "Def":  7.0,
+                             "Speed":  3.0,
+                             "HpRate":  2.0,
+                             "AttackRate":  2.0,
+                             "DefRate":  2.0,
+                             "MoveSpeedRate":  2.0,
+                             "Image_Name":  "MonsterIcon_38.sprite",
+                             "CreatureAnimName":  null,
+                             "CharacterAnimName":  null,
+                             "UnLockStage":  0,
+                             "SkillTypeList":  [
+                                                   90000,
+                                                   90001,
+                                                   90002
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       0
+                                                   ]
+                         },
+                         {
+                             "DataID":  12004,
+                             "Name":  "Mud King Slime",
+                             "NameKR":  "?誘⑹굡獄????????",
+                             "Description":  "???우삺?띠럾? ??濡ル츎 ?????",
+                             "prefabName":  "Boss",
+                             "Type":  4,
+                             "MaxHp":  1200.0,
+                             "MaxHpUpForIncreasStage":  14.0,
+                             "Attack":  50.0,
+                             "AttackUpForIncreasStage":  7.0,
+                             "Def":  6.0,
+                             "Speed":  3.1,
+                             "HpRate":  2.0,
+                             "AttackRate":  2.0,
+                             "DefRate":  2.0,
+                             "MoveSpeedRate":  2.0,
+                             "Image_Name":  "MonsterIcon_39.sprite",
+                             "CreatureAnimName":  null,
+                             "CharacterAnimName":  null,
+                             "UnLockStage":  0,
+                             "SkillTypeList":  [
+                                                   90000,
+                                                   90001,
+                                                   90002
+                                               ],
+                             "EvolutionTypeList":  [
+                                                       0
+                                                   ]
+                         }
+                     ]
 }

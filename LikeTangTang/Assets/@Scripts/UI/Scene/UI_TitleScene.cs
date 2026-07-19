@@ -282,6 +282,12 @@ public class UI_TitleScene : UI_Scene
             "SceneChangeAnimation_Out",
             "Player",
             "Monster",
+            "NH_BasicAlien",
+            "NH_KongKongi",
+            "NH_KkuBeogi",
+            "NH_MeongAli",
+            "NH_SaengseonPpyeoByeong",
+            "NH_PokeByeong",
             "EliteMonster",
             "Boss",
             "Map_01",
@@ -355,6 +361,14 @@ public class UI_TitleScene : UI_Scene
             "GreenGem.sprite",
             "BlueGem.sprite",
             "GoldGem.sprite",
+            "Weapon_Icon.sprite",
+            "Glove_Icon.sprite",
+            "Armor_Icon.sprite",
+            "Helmet_Icon.sprite",
+            "Ring_Icon.sprite",
+            "Boots_Icon.sprite",
+            "Ui_Attack_Icon.sprite",
+            "Ui_Hp_Icon.sprite",
         };
 
         foreach (string key in requiredSpriteKeys)
@@ -449,6 +463,14 @@ public class UI_TitleScene : UI_Scene
         AddSpriteKey(spriteKeys, "GreenGem.sprite");
         AddSpriteKey(spriteKeys, "BlueGem.sprite");
         AddSpriteKey(spriteKeys, "GoldGem.sprite");
+        AddSpriteKey(spriteKeys, "Weapon_Icon.sprite");
+        AddSpriteKey(spriteKeys, "Glove_Icon.sprite");
+        AddSpriteKey(spriteKeys, "Armor_Icon.sprite");
+        AddSpriteKey(spriteKeys, "Helmet_Icon.sprite");
+        AddSpriteKey(spriteKeys, "Ring_Icon.sprite");
+        AddSpriteKey(spriteKeys, "Boots_Icon.sprite");
+        AddSpriteKey(spriteKeys, "Ui_Attack_Icon.sprite");
+        AddSpriteKey(spriteKeys, "Ui_Hp_Icon.sprite");
 
         foreach (string key in spriteKeys)
         {

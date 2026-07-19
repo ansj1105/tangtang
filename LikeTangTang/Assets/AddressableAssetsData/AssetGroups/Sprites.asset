@@ -822,6 +822,30 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - AlwaysKeep
+  - m_GUID: 152bab7a3d59aeb438604152febf1a7e
+    m_Address: NH_BasicAlien_Move_01.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0891ea9d602a23449811443eafd9ad9f
+    m_Address: NH_KongKongi_Move_01.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5d7adcbae82237646beb6c733d86c5a3
+    m_Address: NH_KkuBeogi_Move_01.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: abb8b6b2851809f4592736cc0d69be18
+    m_Address: NH_MeongAli_Move_01.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 48812662ad5137240bda1853c81b936b
+    m_Address: NH_SaengseonPpyeoByeong_Move_01.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: df262181ca5d0ce448adfe5c45a6dc1f
+    m_Address: NH_PokeByeong_Move_01.sprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   - m_GUID: 83669ad259d236b43be9d27ce056b9b0
     m_Address: Normal_Potion.sprite
     m_ReadOnly: 0
@@ -847,106 +871,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - AlwaysKeep
-  - m_GUID: 3afed2ebccc56534d974f0786d4cb221
-    m_Address: NH_BasicAlien_Attack_01.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: bd79fa0b519a62647b829379c9ec43ca
-    m_Address: NH_BasicAlien_Attack_02.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 7ca37a09707f4bb48a536fa2d89ee811
-    m_Address: NH_BasicAlien_Attack_03.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 263288fd44166334396ded238db327b3
-    m_Address: NH_BasicAlien_Attack_04.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 41218b1db94643c44bc8af0116b2e2c3
-    m_Address: NH_BasicAlien_Attack_05.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 34a02b7e75d91754bb3cc21db24d87d1
-    m_Address: NH_BasicAlien_Attack_06.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 82d04e400d06b8c40b8c649523c5dd78
-    m_Address: NH_BasicAlien_Death_01.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 6e352850b345f3e40ab6a451c595edfa
-    m_Address: NH_BasicAlien_Death_02.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 8c0b1d74b73e761458623d5bc034cf72
-    m_Address: NH_BasicAlien_Death_03.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 9b1d4ba83d6feeb48b9a02c7607323dc
-    m_Address: NH_BasicAlien_Death_04.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 64b3a671a73bef5409e99cd5900025d5
-    m_Address: NH_BasicAlien_Death_05.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 7f1b4363ea302654697d06338986f262
-    m_Address: NH_BasicAlien_Death_06.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 8beba9f4bf052cf498e7309714918a27
-    m_Address: NH_BasicAlien_Hit_01.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 9f9df7ee04437e04b8e24ae373f35def
-    m_Address: NH_BasicAlien_Hit_02.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 0027895e16711d74bbabeb4bf5a88b13
-    m_Address: NH_BasicAlien_Move_01.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: ad67525a38384934b9f993481038d144
-    m_Address: NH_BasicAlien_Move_02.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 5e4e15dde0b28104592b63370387ba25
-    m_Address: NH_BasicAlien_Move_03.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 43df39cc78177f14d88c8f4dd5f35995
-    m_Address: NH_BasicAlien_Move_04.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 671c31335b26b2b4d98ca897f6fe3e2c
-    m_Address: NH_BasicAlien_Move_05.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 525a717c73c6ed6458910a8de02dff39
-    m_Address: NH_BasicAlien_Move_06.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 3fdbc4794f189f246a349c26af16c8e9
-    m_Address: NH_BasicAlien_Shadow_01.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 46a8a0ea18ef0ce4193f991f2e9e8249
-    m_Address: NH_BasicAlien_Spawn_01.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 93a316d5e3abb934f9f0902d8a0ebb36
-    m_Address: NH_BasicAlien_Spawn_02.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: b911957653786af40a39dec7e0a047fe
-    m_Address: NH_BasicAlien_Spawn_03.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: c290435928b619641bb879b78d063547
-    m_Address: NH_BasicAlien_Spawn_04.sprite
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 58fc61992768249fdab8acc891732a43, type: 2}
   m_SchemaSet:
