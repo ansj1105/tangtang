@@ -255,7 +255,7 @@ PlayerSettings:
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
   AndroidKeystoreName: '{inproject}: NYAON_HUNTER_Key.keystore'
-  AndroidKeyaliasName: nyaon_hunters
+  AndroidKeyaliasName: nyaon_hunter
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0
   AndroidIsGame: 1
