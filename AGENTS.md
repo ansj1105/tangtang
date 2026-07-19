@@ -4,6 +4,7 @@
 
 - Use Unity `2021.3.19f1` from `C:\work\Unity\Hub\Editor\2021.3.19f1\Editor\Unity.exe`.
 - Windows build source is `C:\work\likeTangTang-build-src\LikeTangTang`; default build APK is `C:\work\likeTangTang-build-src\LikeTangTang\Builds\Android\NyaonHunter.apk`; final convenience copy is `C:\work\NyaonHunter.apk`.
+- For future source replacement from the downloaded NYAON_HUNTERS folder, run `powershell.exe -NoProfile -ExecutionPolicy Bypass -Command '& "\\wsl.localhost\Ubuntu\home\ubuntu\work\likeTangTang\scripts\resync-nyaonhunter-source.ps1"'`. Use `-DryRun` inside the quoted command when only checking changes; add `-Detailed` only when file-level output is needed.
 - Keep the Windows Unity `Library/` cache. First IL2CPP builds are slow; cached rebuilds are much faster.
 - For source replacement from downloaded Unity folders, use incremental sync that skips unchanged files and excludes `Library/`, `Temp/`, `Logs/`, `Builds/`, `UserSettings/`, and `ServerData/`.
 - Do not send Telegram artifacts unless the latest user message explicitly requests it.
