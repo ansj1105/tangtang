@@ -413,12 +413,41 @@ public class GameManager
 
     public int GetCurrentRunGold()
     {
-        if (CurrentStageData == null || ContinueDatas == null)
+        if (ContinueDatas == null)
+            return 0;
+
+        return ContinueDatas.RunGold;
+    }
+
+    public int GetProjectedRunGold(int killCount)
+    {
+        if (CurrentStageData == null)
             return 0;
 
         int stageKill = Mathf.Max(1, CurrentStageData.StageKill);
-        float progress = Mathf.Clamp01(ContinueDatas.KillCount / (float)stageKill);
+        float progress = Mathf.Clamp01(killCount / (float)stageKill);
         return Mathf.FloorToInt(GetStageClearGoldReward() * progress);
+    }
+
+    public void RegisterMonsterKill()
+    {
+        if (player != null)
+            player.KillCount++;
+
+        TotalMonsterKillCount++;
+
+        if (ContinueDatas == null)
+            return;
+
+        ContinueDatas.KillCount = player != null ? player.KillCount : ContinueDatas.KillCount + 1;
+
+        int projectedGold = GetProjectedRunGold(ContinueDatas.KillCount);
+        int goldDelta = Mathf.Max(0, projectedGold - ContinueDatas.RunGold);
+        if (goldDelta > 0)
+        {
+            ContinueDatas.RunGold += goldDelta;
+            Gold += goldDelta;
+        }
     }
 
     public void Init()

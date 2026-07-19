@@ -26,7 +26,9 @@ public class UI_TitleScene : UI_Scene
     }
     bool isLoadEnd = false;
     private GameObject loadingIndicatorObject;
+    private GameObject loadingProgressObject;
     private Image loadingProgressFillImage;
+    private RectTransform loadingProgressFillRect;
     private TextMeshProUGUI loadingStatusText;
     private Tween loadingSpinnerTween;
     private Tween startTextTween;
@@ -56,11 +58,8 @@ public class UI_TitleScene : UI_Scene
         return true;
     }
 
-    private int completedLoadOperations = 0; // 완료된 LoadAllAsync 호출 수
-    private int totalExpectedLoadOperations = 2; // 총 LoadAllAsync 호출 수 (Sprite + PrevLoad)
-
-    private int currentLoadedAssetCount = 0; // 현재까지 로드된 총 에셋 수
-    private int totalExpectedAssetCount = 0; // 로드할 총 에셋 수
+    private int loadingLoadedAssetCount = 0;
+    private int loadingTotalAssetCount = 0;
 
     async UniTask SetInfo()
     {
@@ -69,32 +68,30 @@ public class UI_TitleScene : UI_Scene
             string alwaysKeepLabel = "AlwaysKeep";
             string NeedReleaseLabel = "NeedRelease";
 
-            ResetLoadingProgress();
-
-            totalExpectedAssetCount =
-                await Manager.ResourceM.CountGroupAsync(alwaysKeepLabel) +
-                await Manager.ResourceM.CountGroupAsync(NeedReleaseLabel) +
-                await Manager.ResourceM.CountGroupByTypeAsync<Sprite>(alwaysKeepLabel) +
-                await Manager.ResourceM.CountGroupByTypeAsync<Sprite>(NeedReleaseLabel) +
-                await Manager.ResourceM.CountGroupByTypeAsync<RuntimeAnimatorController>(alwaysKeepLabel) +
-                await Manager.ResourceM.CountGroupByTypeAsync<RuntimeAnimatorController>(NeedReleaseLabel);
-
-            UpdateLoadingProgress(currentLoadedAssetCount, totalExpectedAssetCount);
+            loadingLoadedAssetCount = 0;
+            loadingTotalAssetCount = 0;
+            AddLoadingTotal(await Manager.ResourceM.CountGroupAsync<Object>(alwaysKeepLabel));
+            AddLoadingTotal(await Manager.ResourceM.CountGroupAsync<Object>(NeedReleaseLabel));
+            AddLoadingTotal(await Manager.ResourceM.CountGroupAsync<Sprite>(alwaysKeepLabel));
+            AddLoadingTotal(await Manager.ResourceM.CountGroupAsync<Sprite>(NeedReleaseLabel));
+            AddLoadingTotal(await Manager.ResourceM.CountGroupAsync<RuntimeAnimatorController>(alwaysKeepLabel));
+            AddLoadingTotal(await Manager.ResourceM.CountGroupAsync<RuntimeAnimatorController>(NeedReleaseLabel));
+            UpdateLoadingProgress(loadingLoadedAssetCount, loadingTotalAssetCount);
 
             await Manager.ResourceM.LoadGroupAsync<Object>(alwaysKeepLabel, (key, count, max) =>
             {
-                AdvanceLoadingProgress();
+                MarkLoadingAssetLoaded();
             });
 
             await Manager.ResourceM.LoadGroupAsync<Object>(NeedReleaseLabel, (key, count, max) =>
             {
-                AdvanceLoadingProgress();
+                MarkLoadingAssetLoaded();
             });
 
-            await Manager.ResourceM.LoadGroupByTypeAsync<Sprite>(alwaysKeepLabel, (key, count, max) => AdvanceLoadingProgress());
-            await Manager.ResourceM.LoadGroupByTypeAsync<Sprite>(NeedReleaseLabel, (key, count, max) => AdvanceLoadingProgress());
-            await Manager.ResourceM.LoadGroupByTypeAsync<RuntimeAnimatorController>(alwaysKeepLabel, (key, count, max) => AdvanceLoadingProgress());
-            await Manager.ResourceM.LoadGroupByTypeAsync<RuntimeAnimatorController>(NeedReleaseLabel, (key, count, max) => AdvanceLoadingProgress());
+            await Manager.ResourceM.LoadGroupByTypeAsync<Sprite>(alwaysKeepLabel, (key, count, max) => MarkLoadingAssetLoaded());
+            await Manager.ResourceM.LoadGroupByTypeAsync<Sprite>(NeedReleaseLabel, (key, count, max) => MarkLoadingAssetLoaded());
+            await Manager.ResourceM.LoadGroupByTypeAsync<RuntimeAnimatorController>(alwaysKeepLabel, (key, count, max) => MarkLoadingAssetLoaded());
+            await Manager.ResourceM.LoadGroupByTypeAsync<RuntimeAnimatorController>(NeedReleaseLabel, (key, count, max) => MarkLoadingAssetLoaded());
 
             await EnsureRequiredTitleResourcesLoaded();
 
@@ -117,11 +114,25 @@ public class UI_TitleScene : UI_Scene
 
     }
 
-    private void ResetLoadingProgress()
+    private void UpdateLoadingProgress(int current, int total)
     {
-        currentLoadedAssetCount = 0;
-        totalExpectedAssetCount = 0;
-        UpdateLoadingProgress(0, 1);
+        if (total <= 0)
+            return;
+
+        Slider slider = GetSlider(typeof(Sliders), (int)Sliders.Slider);
+        TextMeshProUGUI countText = GetText(typeof(Texts), (int)Texts.CountText);
+
+        if (slider != null)
+            slider.value = (float)current / total;
+
+        float progress = Mathf.Clamp01(current / (float)total);
+        UpdateGeneratedProgressBar(progress);
+
+        if (countText != null)
+            countText.text = $"{current} / {total}";
+
+        if (loadingStatusText != null)
+            loadingStatusText.text = $"로딩중입니다\n{current} / {total}";
     }
 
     private void AddLoadingTotal(int count)
@@ -129,36 +140,13 @@ public class UI_TitleScene : UI_Scene
         if (count <= 0)
             return;
 
-        totalExpectedAssetCount += count;
-        UpdateLoadingProgress(currentLoadedAssetCount, totalExpectedAssetCount);
+        loadingTotalAssetCount += count;
     }
 
-    private void AdvanceLoadingProgress()
+    private void MarkLoadingAssetLoaded()
     {
-        currentLoadedAssetCount++;
-        UpdateLoadingProgress(currentLoadedAssetCount, totalExpectedAssetCount);
-    }
-
-    private void UpdateLoadingProgress(int current, int total)
-    {
-        if (total <= 0)
-            return;
-
-        float progress = Mathf.Clamp01((float)current / total);
-        Slider slider = GetSlider(typeof(Sliders), (int)Sliders.Slider);
-        TextMeshProUGUI countText = GetText(typeof(Texts), (int)Texts.CountText);
-
-        if (slider != null)
-            slider.value = progress;
-
-        if (loadingProgressFillImage != null)
-            loadingProgressFillImage.fillAmount = progress;
-
-        if (countText != null)
-            countText.text = $"{current} / {total}";
-
-        if (loadingStatusText != null)
-            loadingStatusText.text = $"로딩중입니다\n{current} / {total}";
+        loadingLoadedAssetCount++;
+        UpdateLoadingProgress(loadingLoadedAssetCount, loadingTotalAssetCount);
     }
 
     private void ShowLoadingIndicator()
@@ -182,7 +170,7 @@ public class UI_TitleScene : UI_Scene
             indicatorRect.anchorMax = new Vector2(0.5f, 0f);
             indicatorRect.pivot = new Vector2(0.5f, 0.5f);
             indicatorRect.anchoredPosition = new Vector2(0f, 260f);
-            indicatorRect.sizeDelta = new Vector2(420f, 180f);
+            indicatorRect.sizeDelta = new Vector2(360f, 140f);
 
             Image sourceImage = null;
             if (slider != null && slider.fillRect != null)
@@ -195,7 +183,7 @@ public class UI_TitleScene : UI_Scene
             spinnerRect.anchorMin = new Vector2(0.5f, 0.5f);
             spinnerRect.anchorMax = new Vector2(0.5f, 0.5f);
             spinnerRect.pivot = new Vector2(0.5f, 0.5f);
-            spinnerRect.anchoredPosition = new Vector2(0f, 50f);
+            spinnerRect.anchoredPosition = new Vector2(0f, 36f);
             spinnerRect.sizeDelta = new Vector2(72f, 72f);
 
             Image spinnerImage = spinnerObject.GetComponent<Image>();
@@ -216,7 +204,7 @@ public class UI_TitleScene : UI_Scene
             textRect.anchorMin = new Vector2(0.5f, 0.5f);
             textRect.anchorMax = new Vector2(0.5f, 0.5f);
             textRect.pivot = new Vector2(0.5f, 0.5f);
-            textRect.anchoredPosition = new Vector2(0f, -24f);
+            textRect.anchoredPosition = new Vector2(0f, -42f);
             textRect.sizeDelta = new Vector2(360f, 72f);
 
             loadingStatusText = textObject.GetComponent<TextMeshProUGUI>();
@@ -231,42 +219,15 @@ public class UI_TitleScene : UI_Scene
                 loadingStatusText.fontSharedMaterial = countText.fontSharedMaterial;
                 loadingStatusText.color = countText.color;
             }
-
-            GameObject progressBackObject = new GameObject("LoadingProgressBack", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
-            progressBackObject.transform.SetParent(loadingIndicatorObject.transform, false);
-
-            RectTransform progressBackRect = progressBackObject.GetComponent<RectTransform>();
-            progressBackRect.anchorMin = new Vector2(0.5f, 0.5f);
-            progressBackRect.anchorMax = new Vector2(0.5f, 0.5f);
-            progressBackRect.pivot = new Vector2(0.5f, 0.5f);
-            progressBackRect.anchoredPosition = new Vector2(0f, -80f);
-            progressBackRect.sizeDelta = new Vector2(360f, 18f);
-
-            Image progressBackImage = progressBackObject.GetComponent<Image>();
-            progressBackImage.color = new Color(0f, 0f, 0f, 0.42f);
-            progressBackImage.raycastTarget = false;
-
-            GameObject progressFillObject = new GameObject("LoadingProgressFill", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
-            progressFillObject.transform.SetParent(progressBackObject.transform, false);
-
-            RectTransform progressFillRect = progressFillObject.GetComponent<RectTransform>();
-            progressFillRect.anchorMin = new Vector2(0f, 0f);
-            progressFillRect.anchorMax = new Vector2(1f, 1f);
-            progressFillRect.pivot = new Vector2(0.5f, 0.5f);
-            progressFillRect.offsetMin = Vector2.zero;
-            progressFillRect.offsetMax = Vector2.zero;
-
-            loadingProgressFillImage = progressFillObject.GetComponent<Image>();
-            loadingProgressFillImage.color = sourceImage != null ? sourceImage.color : new Color(1f, 0.82f, 0.25f, 1f);
-            loadingProgressFillImage.type = Image.Type.Filled;
-            loadingProgressFillImage.fillMethod = Image.FillMethod.Horizontal;
-            loadingProgressFillImage.fillOrigin = (int)Image.OriginHorizontal.Left;
-            loadingProgressFillImage.fillAmount = 0f;
-            loadingProgressFillImage.raycastTarget = false;
         }
 
+        EnsureGeneratedProgressBar();
+
         loadingIndicatorObject.SetActive(true);
-        UpdateLoadingProgress(currentLoadedAssetCount, totalExpectedAssetCount <= 0 ? 1 : totalExpectedAssetCount);
+        if (loadingProgressObject != null)
+            loadingProgressObject.SetActive(true);
+
+        UpdateGeneratedProgressBar(0f);
         loadingSpinnerTween?.Kill();
         loadingSpinnerTween = loadingIndicatorObject.transform.Find("LoadingSpinner")
             .DOLocalRotate(new Vector3(0f, 0f, -360f), 0.9f, RotateMode.FastBeyond360)
@@ -282,6 +243,9 @@ public class UI_TitleScene : UI_Scene
         if (loadingIndicatorObject != null)
             loadingIndicatorObject.SetActive(false);
 
+        if (loadingProgressObject != null)
+            loadingProgressObject.SetActive(false);
+
         Slider slider = GetSlider(typeof(Sliders), (int)Sliders.Slider);
         TextMeshProUGUI countText = GetText(typeof(Texts), (int)Texts.CountText);
 
@@ -290,6 +254,67 @@ public class UI_TitleScene : UI_Scene
 
         if (countText != null)
             countText.gameObject.SetActive(false);
+    }
+
+    private void EnsureGeneratedProgressBar()
+    {
+        if (loadingProgressObject != null)
+            return;
+
+        loadingProgressObject = new GameObject("GeneratedLoadingProgress", typeof(RectTransform));
+        loadingProgressObject.transform.SetParent(transform, false);
+
+        RectTransform progressRect = loadingProgressObject.GetComponent<RectTransform>();
+        progressRect.anchorMin = new Vector2(0f, 0f);
+        progressRect.anchorMax = new Vector2(1f, 0f);
+        progressRect.pivot = new Vector2(0.5f, 0.5f);
+        progressRect.anchoredPosition = new Vector2(0f, 170f);
+        progressRect.offsetMin = new Vector2(80f, progressRect.offsetMin.y);
+        progressRect.offsetMax = new Vector2(-80f, progressRect.offsetMax.y);
+        progressRect.sizeDelta = new Vector2(progressRect.sizeDelta.x, 18f);
+
+        GameObject trackObject = new GameObject("Track", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
+        trackObject.transform.SetParent(loadingProgressObject.transform, false);
+        RectTransform trackRect = trackObject.GetComponent<RectTransform>();
+        trackRect.anchorMin = Vector2.zero;
+        trackRect.anchorMax = Vector2.one;
+        trackRect.offsetMin = Vector2.zero;
+        trackRect.offsetMax = Vector2.zero;
+        Image trackImage = trackObject.GetComponent<Image>();
+        trackImage.color = new Color(0f, 0f, 0f, 0.55f);
+        trackImage.raycastTarget = false;
+
+        GameObject fillObject = new GameObject("Fill", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
+        fillObject.transform.SetParent(trackObject.transform, false);
+        loadingProgressFillRect = fillObject.GetComponent<RectTransform>();
+        loadingProgressFillRect.anchorMin = Vector2.zero;
+        loadingProgressFillRect.anchorMax = new Vector2(0f, 1f);
+        loadingProgressFillRect.pivot = new Vector2(0f, 0.5f);
+        loadingProgressFillRect.offsetMin = Vector2.zero;
+        loadingProgressFillRect.offsetMax = Vector2.zero;
+        loadingProgressFillImage = fillObject.GetComponent<Image>();
+        loadingProgressFillImage.color = new Color(0.18f, 1f, 0.05f, 1f);
+        loadingProgressFillImage.type = Image.Type.Filled;
+        loadingProgressFillImage.fillMethod = Image.FillMethod.Horizontal;
+        loadingProgressFillImage.fillOrigin = (int)Image.OriginHorizontal.Left;
+        loadingProgressFillImage.fillAmount = 0f;
+        loadingProgressFillImage.raycastTarget = false;
+    }
+
+    private void UpdateGeneratedProgressBar(float progress)
+    {
+        if (loadingProgressFillRect == null)
+            return;
+
+        loadingProgressFillRect.anchorMax = new Vector2(Mathf.Clamp01(progress), 1f);
+        loadingProgressFillRect.offsetMin = Vector2.zero;
+        loadingProgressFillRect.offsetMax = Vector2.zero;
+
+        if (loadingProgressFillImage != null)
+        {
+            loadingProgressFillImage.fillAmount = Mathf.Clamp01(progress);
+            loadingProgressFillImage.enabled = progress > 0f;
+        }
     }
 
     private async UniTask EnsureRequiredTitleResourcesLoaded()
@@ -380,6 +405,15 @@ public class UI_TitleScene : UI_Scene
             "MagneticField",
         };
 
+        AddLoadingTotal(requiredPrefabKeys.Length);
+        UpdateLoadingProgress(loadingLoadedAssetCount, loadingTotalAssetCount);
+
+        foreach (string key in requiredPrefabKeys)
+        {
+            await LoadRequiredAsset<GameObject>(key);
+            MarkLoadingAssetLoaded();
+        }
+
         string[] requiredDataKeys =
         {
             "SkillData.json",
@@ -400,6 +434,15 @@ public class UI_TitleScene : UI_Scene
             "CharacterLevelData.json",
             "EvolutionData.json",
         };
+
+        AddLoadingTotal(requiredDataKeys.Length);
+        UpdateLoadingProgress(loadingLoadedAssetCount, loadingTotalAssetCount);
+
+        foreach (string key in requiredDataKeys)
+        {
+            await LoadRequiredAsset<TextAsset>(key);
+            MarkLoadingAssetLoaded();
+        }
 
         string[] requiredSpriteKeys =
         {
@@ -423,6 +466,15 @@ public class UI_TitleScene : UI_Scene
             "GoldGem.sprite",
         };
 
+        AddLoadingTotal(requiredSpriteKeys.Length);
+        UpdateLoadingProgress(loadingLoadedAssetCount, loadingTotalAssetCount);
+
+        foreach (string key in requiredSpriteKeys)
+        {
+            await LoadRequiredAsset<Sprite>(key);
+            MarkLoadingAssetLoaded();
+        }
+
         string[] requiredAnimatorKeys =
         {
             "Player_Alpha_Anim",
@@ -440,23 +492,14 @@ public class UI_TitleScene : UI_Scene
             "Best_Potion_Anim",
         };
 
-        AddLoadingTotal(
-            requiredPrefabKeys.Length +
-            requiredDataKeys.Length +
-            requiredSpriteKeys.Length +
-            requiredAnimatorKeys.Length);
-
-        foreach (string key in requiredPrefabKeys)
-            await LoadRequiredAssetWithProgress<GameObject>(key);
-
-        foreach (string key in requiredDataKeys)
-            await LoadRequiredAssetWithProgress<TextAsset>(key);
-
-        foreach (string key in requiredSpriteKeys)
-            await LoadRequiredAssetWithProgress<Sprite>(key);
+        AddLoadingTotal(requiredAnimatorKeys.Length);
+        UpdateLoadingProgress(loadingLoadedAssetCount, loadingTotalAssetCount);
 
         foreach (string key in requiredAnimatorKeys)
-            await LoadRequiredAssetWithProgress<RuntimeAnimatorController>(key);
+        {
+            await LoadRequiredAsset<RuntimeAnimatorController>(key);
+            MarkLoadingAssetLoaded();
+        }
 
         foreach (string key in requiredPrefabKeys)
         {
@@ -489,12 +532,6 @@ public class UI_TitleScene : UI_Scene
             return;
 
         await Manager.ResourceM.LoadAsync<T>(key);
-    }
-
-    private async UniTask LoadRequiredAssetWithProgress<T>(string key) where T : Object
-    {
-        await LoadRequiredAsset<T>(key);
-        AdvanceLoadingProgress();
     }
 
     private async UniTask EnsureDataDrivenSpritesLoaded()
@@ -531,11 +568,12 @@ public class UI_TitleScene : UI_Scene
         AddSpriteKey(spriteKeys, "GoldGem.sprite");
 
         AddLoadingTotal(spriteKeys.Count);
+        UpdateLoadingProgress(loadingLoadedAssetCount, loadingTotalAssetCount);
 
         foreach (string key in spriteKeys)
         {
             await LoadRequiredAsset<Sprite>(key);
-            AdvanceLoadingProgress();
+            MarkLoadingAssetLoaded();
 
             if (Manager.ResourceM.Load<Sprite>(key) == null)
                 Debug.LogError($"Data-driven sprite missing after preload: {key}");
@@ -585,34 +623,6 @@ public class UI_TitleScene : UI_Scene
     //        CheckAllLoadsCompleted();
     //    }
     //});
-
-
-    void UpdateLoadingUI(int current, int total)
-    {
-        GetSlider(typeof(Sliders), (int)Sliders.Slider).value = (float)current / total;
-        GetText(typeof(Texts), (int)Texts.CountText).text = $"{current} / {total}";
-    }
-
-    // 모든 로드 작업이 완료되었는지 확인
-    void CheckAllLoadsCompleted()
-    {
-        // 모든 LoadAllAsync 호출이 완료되었는지 확인
-        if (completedLoadOperations == totalExpectedLoadOperations)
-        {
-            isLoadEnd = true;
-            GetButton(typeof(Buttons), (int)Buttons.StartButton).gameObject.SetActive(true);
-            GetText(typeof(Texts), (int)Texts.StartText).gameObject.SetActive(true);
-
-            // 모든 초기화 작업 실행
-            Manager.DataM.Init();
-            Manager.GameM.Init();
-            Manager.TimeM.Init();
-            Manager.AdM.Init();
-
-            StartAnim();
-        }
-    }
-
 
     public void StartAnim()
     {

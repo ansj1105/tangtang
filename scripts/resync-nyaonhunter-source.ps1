@@ -2,6 +2,7 @@ param(
     [string]$SourcePath = "C:\Users\msi\Downloads\Telegram Desktop\NYAON_HUNTERS-00\NYAON_HUNTERS\NYAON_HUNTERS",
     [string]$WslRepoRoot = "\\wsl.localhost\Ubuntu\home\ubuntu\work\likeTangTang",
     [string]$WindowsBuildRoot = "C:\work\likeTangTang-build-src",
+    [switch]$BuildCopyOnly,
     [switch]$SkipWindowsBuildCopy,
     [switch]$DryRun,
     [switch]$Detailed
@@ -21,7 +22,8 @@ $excludedDirs = @(
 )
 
 $excludedFiles = @(
-    "*.keystore"
+    "*.keystore",
+    "*:Zone.Identifier"
 )
 
 function Invoke-RobocopyMirror {
@@ -83,10 +85,12 @@ function Invoke-RobocopyMirror {
 
 $wslProjectPath = Join-Path $WslRepoRoot "LikeTangTang"
 
-Invoke-RobocopyMirror `
-    -Source $SourcePath `
-    -Destination $wslProjectPath `
-    -Label "Download source -> WSL repo project"
+if (-not $BuildCopyOnly) {
+    Invoke-RobocopyMirror `
+        -Source $SourcePath `
+        -Destination $wslProjectPath `
+        -Label "Download source -> WSL repo project"
+}
 
 if (-not $SkipWindowsBuildCopy) {
     Invoke-RobocopyMirror `

@@ -42,8 +42,11 @@ public class MonsterController : CreatureController, ITickable
     private bool invertSpriteFacing;
     private const int MonsterSortingOrder = 201;
     private const int MonsterShadowSortingOrder = 149;
+    private const float MonsterBodyColliderScale = 0.58f;
     protected virtual float MonsterScale => 1.22f;
     protected bool isRedTintedMonster;
+    private CircleCollider2D bodyCollider;
+    private float originalBodyColliderRadius = -1f;
     #endregion
 
     #region Unity 기본
@@ -81,6 +84,7 @@ public class MonsterController : CreatureController, ITickable
     {
         if (!base.Init()) return false;
 
+        ApplyBodyColliderOverlapTuning();
         objType = ObjectType.Monster;
         CreatureState = CreatureState.Moving;
         Rigid.simulated = true;
@@ -220,8 +224,7 @@ public class MonsterController : CreatureController, ITickable
         base.OnDead();
         transform.localScale = Vector3.one * MonsterScale;
         InvokeMonsterData();
-        Manager.GameM.player.KillCount++;
-        Manager.GameM.TotalMonsterKillCount++;
+        Manager.GameM.RegisterMonsterKill();
 
         // 드롭
         if (objType == ObjectType.Monster && UnityEngine.Random.value >= Manager.GameM.CurrentWaveData.NonDropRate)
@@ -242,6 +245,20 @@ public class MonsterController : CreatureController, ITickable
     public void Clear()
     {
         DOTween.Kill(this);
+    }
+
+    private void ApplyBodyColliderOverlapTuning()
+    {
+        if (bodyCollider == null)
+            bodyCollider = GetComponent<CircleCollider2D>();
+
+        if (bodyCollider == null)
+            return;
+
+        if (originalBodyColliderRadius < 0f)
+            originalBodyColliderRadius = bodyCollider.radius;
+
+        bodyCollider.radius = originalBodyColliderRadius * MonsterBodyColliderScale;
     }
 
     #endregion

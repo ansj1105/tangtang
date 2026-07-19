@@ -13,7 +13,7 @@ public static class NHBasicAlienControllerBinder
         EditorApplication.delayCall += BindIfNeeded;
     }
 
-    [MenuItem("NYAON_HUNTER/Bind NH Basic Alien Controller")]
+    [MenuItem("NYAON_HUNTERS/Bind NH Basic Alien Controller")]
     public static void Bind()
     {
         if (!File.Exists(PrefabPath))

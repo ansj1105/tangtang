@@ -17,7 +17,7 @@ public static class NYAONPlayerAssetGenerator
         EditorApplication.delayCall += RunIfRequested;
     }
 
-    [MenuItem("NYAON_HUNTER/Regenerate Player Alpha Assets")]
+    [MenuItem("NYAON_HUNTERS/Regenerate Player Alpha Assets")]
     public static void Generate()
     {
         AssetDatabase.Refresh();

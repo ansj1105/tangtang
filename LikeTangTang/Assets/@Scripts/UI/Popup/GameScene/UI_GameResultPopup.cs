@@ -76,7 +76,8 @@ public class UI_GameResultPopup : UI_Popup
         GetText(typeof(Texts), (int)Texts.ResultKillValueText).text = $"{Manager.GameM.player.KillCount}";
 
 
-        Manager.GameM.Gold += clearGoldReward;
+        int remainingGoldReward = Mathf.Max(clearGoldReward - Manager.GameM.GetCurrentRunGold(), 0);
+        Manager.GameM.Gold += remainingGoldReward;
         Manager.GameM.ExchangeMaterial(Manager.DataM.MaterialDic[Define.ID_RandomScroll], 10);
         Manager.GameM.ExchangeMaterial(Manager.DataM.MaterialDic[Define.ID_LevelUpCoupon], Manager.GameM.CurrentStageData.StageIndex);
 
@@ -84,7 +85,7 @@ public class UI_GameResultPopup : UI_Popup
         cont.gameObject.DestroyChilds();
 
         UI_MaterialItem gold = Manager.UiM.MakeSubItem<UI_MaterialItem>(cont);
-        gold.SetInfo(Manager.DataM.MaterialDic[Define.ID_GOLD].SpriteName, clearGoldReward);
+        gold.SetInfo(Manager.DataM.MaterialDic[Define.ID_GOLD].SpriteName, remainingGoldReward);
 
 
         UI_MaterialItem scroll = Manager.UiM.MakeSubItem<UI_MaterialItem>(cont);

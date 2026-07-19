@@ -15,7 +15,7 @@ public static class GameViewResolutionSetter
         EditorApplication.delayCall += Apply;
     }
 
-    [MenuItem("NYAON_HUNTER/Apply 4K Game View")]
+    [MenuItem("NYAON_HUNTERS/Apply 4K Game View")]
     public static void Apply()
     {
         try

@@ -200,7 +200,7 @@ public class GemController : DropItemController
         float expBonusRate = Mathf.Max(1f, Manager.GameM.player.ExpBounsRate);
         Manager.GameM.player.Exp += gemInfo.ExpAmount * expBonusRate;
         (Manager.UiM.SceneUI as UI_GameScene)?.OnPlayerDataUpdated();
-        if (Manager.GameM.player.Level > beforeLevel && !Manager.GameM.isGameEnd && Time.timeScale > 0f)
+        if (Manager.GameM.player.Level > beforeLevel && !Manager.GameM.isGameEnd && Time.timeScale > 0f && Manager.GameM.player.Skills.HasSelectableSkillCandidates())
             Manager.UiM.ShowPopup<UI_SkillSelectPopup>();
     }
 }

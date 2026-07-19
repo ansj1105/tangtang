@@ -38,10 +38,9 @@ public class NHBasicAlienMonsterController : MonsterController
         }
 
         InvokeMonsterData();
-        Manager.GameM.player.KillCount++;
-        Manager.GameM.TotalMonsterKillCount++;
+        Manager.GameM.RegisterMonsterKill();
 
-        if (objType == Define.ObjectType.Monster && UnityEngine.Random.value >= Manager.GameM.CurrentWaveData.NonDropRate)
+        if (objType == Define.ObjectType.Monster && Manager.GameM.CurrentWaveData != null && UnityEngine.Random.value >= Manager.GameM.CurrentWaveData.NonDropRate)
         {
             GemController gem = Manager.ObjectM.Spawn<GemController>(transform.position, _prefabName: Define.DROPITEMNAME);
             gem.SetInfo(isRedTintedMonster ? Manager.GameM.GetEpicRedGemInfo() : Manager.GameM.GetGemInfo());

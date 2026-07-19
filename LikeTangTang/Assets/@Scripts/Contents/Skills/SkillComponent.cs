@@ -212,13 +212,27 @@ public class SkillComponent : MonoBehaviour
         for(int i =0; i< skillList.Count; i++)
         {
             var sb = skillList[i];
-            if (!sb.isLearnSkill || sb.SkillLevel != 5) continue;
+            if (!sb.isLearnSkill || sb.SkillLevel != Define.MAX_SKILL_LEVEL || !sb.isCanEvolve()) continue;
 
             int id = sb.SkillDatas.EvolutionItemID;
-            if (id > 0) evoItems.Add(id);
+            if (id > 0 && !evolutionItemList.Contains(id)) evoItems.Add(id);
         }
 
         return evoItems;
+    }
+
+    public bool HasSelectableSkillCandidates()
+    {
+        var all = skillList;
+        var active = new List<SkillBase>(Define.MAX_SKILL_COUNT);
+        for (int i = 0; i < all.Count; i++)
+            if (all[i].isLearnSkill) active.Add(all[i]);
+
+        bool hasBaseSkill = (active.Count == Define.MAX_SKILL_COUNT)
+            ? active.Exists(skill => skill.SkillLevel < Define.MAX_SKILL_LEVEL)
+            : all.Exists(skill => skill.SkillLevel < Define.MAX_SKILL_LEVEL);
+
+        return hasBaseSkill || GetAvailableEvolutionItems().Count > 0;
     }
 
 

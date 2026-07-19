@@ -17,7 +17,7 @@ public static class NHBasicAlienStage1Setup
         EditorApplication.delayCall += SetupIfNeeded;
     }
 
-    [MenuItem("NYAON_HUNTER/Setup NH Basic Alien Stage 1")]
+    [MenuItem("NYAON_HUNTERS/Setup NH Basic Alien Stage 1")]
     public static void Setup()
     {
         AssetDatabase.Refresh();

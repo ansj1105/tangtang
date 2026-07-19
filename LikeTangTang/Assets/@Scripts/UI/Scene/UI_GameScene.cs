@@ -1085,6 +1085,14 @@ public class UI_GameScene : UI_Scene
         if (Manager.GameM.isGameEnd) return;
 
         EnsurePlayerSkillCandidates();
+        if (Manager.GameM.player == null || Manager.GameM.player.Skills == null || !Manager.GameM.player.Skills.HasSelectableSkillCandidates())
+        {
+            Manager.TimeM.TimeReStart();
+            SetExpSliderImmediate(Manager.GameM.player.ExpRatio);
+            GetText(typeof(Texts), (int)Texts.CharacterLevelValueText).text = $"LV.{Manager.GameM.ContinueDatas.Level}";
+            return;
+        }
+
         Manager.UiM.ShowPopup<UI_SkillSelectPopup>();
 
         SetExpSliderImmediate(Manager.GameM.player.ExpRatio);

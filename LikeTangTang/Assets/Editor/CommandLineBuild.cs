@@ -10,21 +10,12 @@ using UnityEngine;
 
 public static class CommandLineBuild
 {
-    private static readonly RequiredAddressable[] RequiredAddressables =
-    {
-        new RequiredAddressable("Assets/@Resources/Sprites/Env/Potion/Normal_Potion/Normal_Potion.png", "Sprites", "Normal_Potion.sprite", "AlwaysKeep"),
-        new RequiredAddressable("Assets/@Resources/Sprites/Env/Potion/Good_Potion/Good_Potion.png", "Sprites", "Good_Potion.sprite", "AlwaysKeep"),
-        new RequiredAddressable("Assets/@Resources/Sprites/Env/Potion/Best_Potion/Best_Potion.png", "Sprites", "Best_Potion.sprite", "AlwaysKeep"),
-        new RequiredAddressable("Assets/@Resources/Sprites/Jam/EXPJam_01.png", "Sprites", "Exp.sprite", "AlwaysKeep"),
-        new RequiredAddressable("Assets/@Resources/Sprites/UI/Item/EqptBox_Icon.png", "Sprites", "EqptBox_Icon.sprite", "AlwaysKeep"),
-    };
-
     public static void BuildAndroidApk()
     {
         var outputPath = GetArg("-buildOutput");
         if (string.IsNullOrWhiteSpace(outputPath))
         {
-            outputPath = "Builds/Android/NYAON_HUNTER.apk";
+            outputPath = "Builds/Android/NYAON_HUNTERS.apk";
         }
 
         ConfigureAndroidTools();
@@ -81,8 +72,6 @@ public static class CommandLineBuild
             throw new Exception("AddressableAssetSettings not found.");
         }
 
-        EnsureRequiredAddressables(settings);
-
         var serverDataPath = Path.Combine(Directory.GetCurrentDirectory(), "ServerData", "Android");
         if (Directory.Exists(serverDataPath))
         {
@@ -92,41 +81,6 @@ public static class CommandLineBuild
         AddressableAssetSettings.CleanPlayerContent(settings.ActivePlayerDataBuilder);
         AddressableAssetSettings.BuildPlayerContent();
         Debug.Log("Addressables Android content rebuilt for player build.");
-    }
-
-    private static void EnsureRequiredAddressables(AddressableAssetSettings settings)
-    {
-        foreach (var required in RequiredAddressables)
-        {
-            RegisterAddressable(settings, required);
-        }
-
-        AssetDatabase.SaveAssets();
-    }
-
-    private static void RegisterAddressable(AddressableAssetSettings settings, RequiredAddressable required)
-    {
-        var guid = AssetDatabase.AssetPathToGUID(required.AssetPath);
-        if (string.IsNullOrWhiteSpace(guid))
-        {
-            throw new Exception($"Required addressable asset not found: {required.AssetPath}");
-        }
-
-        var group = settings.FindGroup(required.GroupName);
-        if (group == null)
-        {
-            throw new Exception($"Required addressable group not found: {required.GroupName}");
-        }
-
-        var entry = settings.CreateOrMoveEntry(guid, group, false, false);
-        entry.address = required.Address;
-        if (!string.IsNullOrWhiteSpace(required.Label))
-        {
-            settings.AddLabel(required.Label);
-            entry.SetLabel(required.Label, true, true);
-        }
-
-        settings.SetDirty(AddressableAssetSettings.ModificationEvent.EntryMoved, entry, true);
     }
 
     private static AndroidArchitecture GetAndroidArchitectures()
@@ -199,21 +153,5 @@ public static class CommandLineBuild
     private static bool HasArg(string name)
     {
         return Environment.GetCommandLineArgs().Any(arg => arg == name);
-    }
-
-    private readonly struct RequiredAddressable
-    {
-        public RequiredAddressable(string assetPath, string groupName, string address, string label)
-        {
-            AssetPath = assetPath;
-            GroupName = groupName;
-            Address = address;
-            Label = label;
-        }
-
-        public string AssetPath { get; }
-        public string GroupName { get; }
-        public string Address { get; }
-        public string Label { get; }
     }
 }

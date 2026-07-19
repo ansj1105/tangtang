@@ -32,6 +32,7 @@ public class ContinueData
     public float ExpBonusRate = 1;
     public float CollectDistBonus = 1;
     public int KillCount;
+    public int RunGold;
     public int SkillRefreshCountAD = 3;
     public int SkillRefreshCount = 3;
     public int SpecialSkillHealCount = 0;
@@ -65,6 +66,7 @@ public class ContinueData
         ExpBonusRate = 1f;
         CollectDistBonus = 1f;
         KillCount = 0;
+        RunGold = 0;
         SkillRefreshCountAD = 3;
         SkillRefreshCount = 3;
         SpecialSkillHealCount = 0;

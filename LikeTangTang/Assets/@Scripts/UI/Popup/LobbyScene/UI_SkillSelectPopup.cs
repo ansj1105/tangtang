@@ -68,6 +68,7 @@ public class UI_SkillSelectPopup : UI_Popup
     Transform _grid;
 
     List<UI_Base> _items = new List<UI_Base>();
+    bool hasSelectableCards;
 
     void OnEnable()
     {
@@ -167,6 +168,14 @@ public class UI_SkillSelectPopup : UI_Popup
             skillList = gm.player.Skills.GetSkills();
         }
 
+        hasSelectableCards = skillList.Count > 0;
+        if (!hasSelectableCards)
+        {
+            Manager.TimeM.TimeReStart();
+            StartCoroutine(CoCloseEmptyPopup());
+            return;
+        }
+
         foreach (var candidate in skillList)
         {
             UI_SkillCardItem item = Manager.UiM.MakeSubItem<UI_SkillCardItem>(cont.transform);
@@ -184,6 +193,13 @@ public class UI_SkillSelectPopup : UI_Popup
         }
 
         Manager.TimeM.TimeStop();
+    }
+
+    IEnumerator CoCloseEmptyPopup()
+    {
+        yield return null;
+        if (gameObject.IsValid())
+            Manager.UiM.ClosePopup(this);
     }
 
 

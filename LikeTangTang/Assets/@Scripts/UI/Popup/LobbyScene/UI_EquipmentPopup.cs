@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using Cysharp.Threading.Tasks;
 
 
 public class UI_EquipmentPopup : UI_Popup
@@ -13,6 +14,7 @@ public class UI_EquipmentPopup : UI_Popup
     Define.EquipmentSortType equipmentSortType;
     string sort_Level = "정렬 : 레벨";
     string sort_Grade = "정렬 : 등급";
+    Image characterFallbackImage;
     public ScrollRect scrollRect;
     public bool isOpen = false;
     enum GameObjects
@@ -53,6 +55,7 @@ public class UI_EquipmentPopup : UI_Popup
     private void OnEnable()
     {
         PopupOpenAnim(GetObject(gameObjectsType, (int)GameObjects.ContentObject));
+        UpdateCharacterPreview();
     }
     private void Awake()
     {
@@ -98,7 +101,7 @@ public class UI_EquipmentPopup : UI_Popup
             equipedSlotPool[Define.EquipmentType.Ring] = Manager.UiM.MakeSubItem<UI_EquipItem>(RingCont.transform);
         }
 
-        GetObject(gameObjectsType, (int)GameObjects.CharacterImage).GetComponent<RawImage>().texture = Manager.SceneM.cam_target;
+        UpdateCharacterPreview();
         return true;
     }
 
@@ -133,11 +136,63 @@ public class UI_EquipmentPopup : UI_Popup
         GetText(TextsType, (int)Texts.HealthValueText).text = (Manager.GameM.CurrentCharacter.MaxHp* Manager.GameM.CurrentCharacter.MaxHpRate + hp).ToString();
 
         SetItem();
+        UpdateCharacterPreview();
 
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetObject(gameObjectsType, (int)GameObjects.EquipInventoryObject).GetComponent<RectTransform>());
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetObject(gameObjectsType, (int)GameObjects.ItemInventoryObject).GetComponent<RectTransform>());
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetObject(gameObjectsType, (int)GameObjects.EquipInventoryGroupObject).GetComponent<RectTransform>());
         LayoutRebuilder.ForceRebuildLayoutImmediate(GetObject(gameObjectsType, (int)GameObjects.ItemInventoryGroupObject).GetComponent<RectTransform>());
+    }
+
+    void UpdateCharacterPreview()
+    {
+        GameObject characterImageObject = GetObject(gameObjectsType, (int)GameObjects.CharacterImage);
+        RawImage rawImage = characterImageObject.GetComponent<RawImage>();
+        if (rawImage != null)
+        {
+            rawImage.texture = Manager.SceneM.cam_target;
+            rawImage.enabled = false;
+        }
+
+        if (characterFallbackImage == null)
+        {
+            GameObject fallbackObject = new GameObject("CharacterFallbackImage", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
+            fallbackObject.transform.SetParent(characterImageObject.transform, false);
+            RectTransform rect = fallbackObject.GetComponent<RectTransform>();
+            rect.anchorMin = Vector2.zero;
+            rect.anchorMax = Vector2.one;
+            rect.offsetMin = Vector2.zero;
+            rect.offsetMax = Vector2.zero;
+            characterFallbackImage = fallbackObject.GetComponent<Image>();
+            characterFallbackImage.raycastTarget = false;
+            characterFallbackImage.preserveAspect = true;
+        }
+
+        characterFallbackImage.transform.SetAsLastSibling();
+
+        Character currentCharacter = Manager.GameM.CurrentCharacter;
+        if (currentCharacter == null || !Manager.DataM.CreatureDic.TryGetValue(currentCharacter.DataId, out var creatureData))
+        {
+            characterFallbackImage.enabled = false;
+            return;
+        }
+
+        Sprite sprite = Manager.ResourceM.Load<Sprite>(creatureData.Image_Name);
+        if (sprite == null)
+            LoadCharacterPreviewSpriteAsync(creatureData.Image_Name).Forget();
+
+        characterFallbackImage.sprite = sprite;
+        characterFallbackImage.enabled = characterFallbackImage.sprite != null;
+    }
+
+    async UniTaskVoid LoadCharacterPreviewSpriteAsync(string spriteName)
+    {
+        Sprite sprite = await Manager.ResourceM.LoadAsync<Sprite>(spriteName);
+        if (characterFallbackImage != null && sprite != null)
+        {
+            characterFallbackImage.sprite = sprite;
+            characterFallbackImage.enabled = true;
+        }
     }
 
     void SortEquipments()

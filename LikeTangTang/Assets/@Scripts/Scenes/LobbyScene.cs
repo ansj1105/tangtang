@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cysharp.Threading.Tasks;
 
 public class LobbyScene : BaseScene
 {
@@ -26,13 +27,18 @@ public class LobbyScene : BaseScene
         }
 
         cam.targetTexture = rt;
+        cam.cullingMask |= 1 << 9;
         var target = cam.targetTexture;
+        Manager.SceneM.Setup(cam, target, this);
+
         GameObject characterObject = GameObject.Find("Character");
         if (characterObject == null || !characterObject.TryGetComponent(out anim))
         {
             Debug.LogError("LobbyScene missing Character animator.");
             return;
         }
+
+        SetLayerRecursively(characterObject, 9);
 
         Character currentCharacter = Manager.GameM.CurrentCharacter;
         if (currentCharacter == null)
@@ -52,12 +58,13 @@ public class LobbyScene : BaseScene
         RuntimeAnimatorController controller = Manager.ResourceM.Load<RuntimeAnimatorController>(anim_name);
         if (controller == null)
         {
-            Debug.LogError($"LobbyScene missing animator controller: {anim_name}");
-            return;
+            LoadCharacterPreviewControllerAsync(anim_name).Forget();
         }
-
-        anim.runtimeAnimatorController = controller;
-        Manager.SceneM.Setup(cam, target, this);
+        else
+        {
+            anim.runtimeAnimatorController = controller;
+            Debug.Log($"LobbyScene preview character set: {anim_name}");
+        }
 
         Manager.SoundM.Play(Define.Sound.Bgm, "Bgm_Lobby");
         Debug.Log("LobbyScene.Init complete");
@@ -76,12 +83,39 @@ public class LobbyScene : BaseScene
 
         string anim_name = creatureData.CharacterAnimName;
         RuntimeAnimatorController controller = Manager.ResourceM.Load<RuntimeAnimatorController>(anim_name);
-        if (controller != null)
+        if (controller == null)
+            LoadCharacterPreviewControllerAsync(anim_name).Forget();
+        else
             anim.runtimeAnimatorController = controller;
     }
 
     public override void Clear()
     {
 
+    }
+
+    private void SetLayerRecursively(GameObject target, int layer)
+    {
+        target.layer = layer;
+        foreach (Transform child in target.transform)
+        {
+            SetLayerRecursively(child.gameObject, layer);
+        }
+    }
+
+    private async UniTaskVoid LoadCharacterPreviewControllerAsync(string animName)
+    {
+        RuntimeAnimatorController controller = await Manager.ResourceM.LoadAsync<RuntimeAnimatorController>(animName);
+        if (controller == null)
+        {
+            Debug.LogError($"LobbyScene missing animator controller: {animName}");
+            return;
+        }
+
+        if (anim != null)
+        {
+            anim.runtimeAnimatorController = controller;
+            Debug.Log($"LobbyScene preview character loaded async: {animName}");
+        }
     }
 }

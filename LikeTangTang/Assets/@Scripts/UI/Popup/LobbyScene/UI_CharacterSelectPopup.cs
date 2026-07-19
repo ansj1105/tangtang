@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
-using UnityEditor;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR;
 
 public class UI_CharacterSelectPopup : UI_Popup
 {
+    Image characterFallbackImage;
     enum GameObjects
     {
         LevelUpToggleCheckmark,
@@ -84,6 +85,7 @@ public class UI_CharacterSelectPopup : UI_Popup
     void OnEnable()
     {
         Events.OnCharacterSelected += HandleCharacterSeleected;
+        UpdateCharacterPreview();
     }
 
     void OnDisable()
@@ -110,7 +112,7 @@ public class UI_CharacterSelectPopup : UI_Popup
         BindButton(ButtonsType);
         BindToggle(TogglesType);
 
-        GetObject(gameObjectsType, (int)GameObjects.CharacterImage).GetComponent<RawImage>().texture = Manager.SceneM.cam_target;
+        UpdateCharacterPreview();
 
 
         GetButton(ButtonsType, (int)Buttons.BackButton).gameObject.BindEvent(OnClickBackButton);
@@ -123,6 +125,57 @@ public class UI_CharacterSelectPopup : UI_Popup
 
 
         return true;
+    }
+
+    void UpdateCharacterPreview()
+    {
+        GameObject characterImageObject = GetObject(gameObjectsType, (int)GameObjects.CharacterImage);
+        RawImage rawImage = characterImageObject.GetComponent<RawImage>();
+        if (rawImage != null)
+        {
+            rawImage.texture = Manager.SceneM.cam_target;
+            rawImage.enabled = false;
+        }
+
+        if (characterFallbackImage == null)
+        {
+            GameObject fallbackObject = new GameObject("CharacterFallbackImage", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
+            fallbackObject.transform.SetParent(characterImageObject.transform, false);
+            RectTransform rect = fallbackObject.GetComponent<RectTransform>();
+            rect.anchorMin = Vector2.zero;
+            rect.anchorMax = Vector2.one;
+            rect.offsetMin = Vector2.zero;
+            rect.offsetMax = Vector2.zero;
+            characterFallbackImage = fallbackObject.GetComponent<Image>();
+            characterFallbackImage.raycastTarget = false;
+            characterFallbackImage.preserveAspect = true;
+        }
+
+        characterFallbackImage.transform.SetAsLastSibling();
+
+        Character currentCharacter = Manager.GameM.CurrentCharacter;
+        if (currentCharacter == null || !Manager.DataM.CreatureDic.TryGetValue(currentCharacter.DataId, out var creatureData))
+        {
+            characterFallbackImage.enabled = false;
+            return;
+        }
+
+        Sprite sprite = Manager.ResourceM.Load<Sprite>(creatureData.Image_Name);
+        if (sprite == null)
+            LoadCharacterPreviewSpriteAsync(creatureData.Image_Name).Forget();
+
+        characterFallbackImage.sprite = sprite;
+        characterFallbackImage.enabled = characterFallbackImage.sprite != null;
+    }
+
+    async UniTaskVoid LoadCharacterPreviewSpriteAsync(string spriteName)
+    {
+        Sprite sprite = await Manager.ResourceM.LoadAsync<Sprite>(spriteName);
+        if (characterFallbackImage != null && sprite != null)
+        {
+            characterFallbackImage.sprite = sprite;
+            characterFallbackImage.enabled = true;
+        }
     }
 
     public void SetInfo()
@@ -308,6 +361,7 @@ public class UI_CharacterSelectPopup : UI_Popup
         character.ChangeCharacter(character.DataId);
 
         Manager.SceneM.lobbyScene.ChangeCharacter();
+        UpdateCharacterPreview();
         Refresh();
 
     }
