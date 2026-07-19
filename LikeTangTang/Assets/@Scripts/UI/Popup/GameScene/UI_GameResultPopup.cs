@@ -71,11 +71,12 @@ public class UI_GameResultPopup : UI_Popup
         GetText(typeof(Texts), (int)Texts.ResultStageValueText).text = $"{Manager.GameM.CurrentStageData.StageIndex} STAGE";
         int second = (int)(Manager.GameM.ElapsedTime % 60);
         GetText(typeof(Texts), (int)Texts.ResultSurvivalTimeValueText).text = $"{Manager.GameM.minute:D2} : {second:D2}";
-        GetText(typeof(Texts), (int)Texts.ResultGoldValueText).text = $"{Manager.GameM.CurrentStageData.ClearGold}";
+        int clearGoldReward = Manager.GameM.GetStageClearGoldReward();
+        GetText(typeof(Texts), (int)Texts.ResultGoldValueText).text = $"{clearGoldReward}";
         GetText(typeof(Texts), (int)Texts.ResultKillValueText).text = $"{Manager.GameM.player.KillCount}";
 
 
-        Manager.GameM.Gold += (int)(Manager.GameM.CurrentStageData.ClearGold * Manager.GameM.CurrentCharacter.Evol_GoldBonus);
+        Manager.GameM.Gold += clearGoldReward;
         Manager.GameM.ExchangeMaterial(Manager.DataM.MaterialDic[Define.ID_RandomScroll], 10);
         Manager.GameM.ExchangeMaterial(Manager.DataM.MaterialDic[Define.ID_LevelUpCoupon], Manager.GameM.CurrentStageData.StageIndex);
 
@@ -83,7 +84,7 @@ public class UI_GameResultPopup : UI_Popup
         cont.gameObject.DestroyChilds();
 
         UI_MaterialItem gold = Manager.UiM.MakeSubItem<UI_MaterialItem>(cont);
-        gold.SetInfo(Manager.DataM.MaterialDic[Define.ID_GOLD].SpriteName, Manager.GameM.CurrentStageData.ClearGold);
+        gold.SetInfo(Manager.DataM.MaterialDic[Define.ID_GOLD].SpriteName, clearGoldReward);
 
 
         UI_MaterialItem scroll = Manager.UiM.MakeSubItem<UI_MaterialItem>(cont);

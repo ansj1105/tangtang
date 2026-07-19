@@ -69,6 +69,9 @@ public class ObjectManager
             var dropItemCotnroller = dropItem as DropItemController;
 
             dropItemSet.Add(dropItemCotnroller);
+            if (dropItemCotnroller is GemController gem)
+                gemSet.Add(gem);
+
             Manager.GameM.CurrentMap.Grid.AddCell(dropItemCotnroller);
 
             return dropItem;
@@ -127,6 +130,9 @@ public class ObjectManager
             var drop = _obj as DropItemController;
 
             dropItemSet.Remove(drop);
+            if (drop is GemController gem)
+                gemSet.Remove(gem);
+
             Manager.ResourceM.Destory(_obj.gameObject);
         }
         else if (projectileType.IsAssignableFrom(type))
@@ -148,6 +154,7 @@ public class ObjectManager
 
         foreach (var dc in dropItemSet) dc.Clear();
         dropItemSet.Clear();
+        gemSet.Clear();
 
         pjSet.Clear();
     }
@@ -193,6 +200,7 @@ public class ObjectManager
         foreach (var monster in mcSet)
         {
             if (monster == null || !monster.IsValid()) continue;
+            if (!monster.IsInsideCameraView()) continue;
             float distSqr = (Manager.GameM.player.transform.position - monster.transform.position).sqrMagnitude;
 
             if (distSqr > 0 && distSqr < thresholdSqr) continue;
@@ -239,7 +247,7 @@ public class ObjectManager
         var snapshot = new List<MonsterController>(mcSet);
         foreach (MonsterController monster in snapshot)
         {
-            if (monster.objType == Define.ObjectType.Monster)
+            if (monster.objType == Define.ObjectType.Monster && monster.IsInsideCameraView())
                 monster.OnDead();
         }
     }

@@ -98,7 +98,7 @@ public class UI_EquipmentPopup : UI_Popup
             equipedSlotPool[Define.EquipmentType.Ring] = Manager.UiM.MakeSubItem<UI_EquipItem>(RingCont.transform);
         }
 
-        ApplyCharacterPreviewTexture();
+        GetObject(gameObjectsType, (int)GameObjects.CharacterImage).GetComponent<RawImage>().texture = Manager.SceneM.cam_target;
         return true;
     }
 
@@ -109,7 +109,6 @@ public class UI_EquipmentPopup : UI_Popup
 
     void Refresh()
     {
-        ApplyCharacterPreviewTexture();
 
         foreach (var slot in equipedSlotPool.Values)
             slot.gameObject.SetActive(false);
@@ -241,18 +240,10 @@ public class UI_EquipmentPopup : UI_Popup
 
     public void RefreshCharacterInfo()
     {
-        ApplyCharacterPreviewTexture();
 
         var (hp, attack) = Manager.GameM.GetCurrentCharacterStat();
         GetText(TextsType, (int)Texts.AttackValueText).text = (Manager.GameM.CurrentCharacter.Attack + attack).ToString();
         GetText(TextsType, (int)Texts.HealthValueText).text = (Manager.GameM.CurrentCharacter.MaxHp + hp).ToString();
-    }
-
-    void ApplyCharacterPreviewTexture()
-    {
-        RawImage image = GetObject(gameObjectsType, (int)GameObjects.CharacterImage).GetComponent<RawImage>();
-        if (image.texture != Manager.SceneM.cam_target)
-            image.texture = Manager.SceneM.cam_target;
     }
 
 }

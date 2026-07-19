@@ -161,6 +161,11 @@ public class UI_SkillSelectPopup : UI_Popup
         cont.DestroyChilds();
         //ist<SkillBase> skillList = gm.player.Skills.Test();
         List<object> skillList = gm.player.Skills.GetSkills();
+        if (skillList.Count == 0 && gm.player.Skills.skillList.Count == 0)
+        {
+            gm.player.InitSkill();
+            skillList = gm.player.Skills.GetSkills();
+        }
 
         foreach (var candidate in skillList)
         {

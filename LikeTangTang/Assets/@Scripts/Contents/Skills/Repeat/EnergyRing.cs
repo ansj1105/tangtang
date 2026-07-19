@@ -154,7 +154,8 @@ public class EnergyRing : RepeatSkill, ITickable
     {
         CreatureController cc = collision.transform.GetComponent<CreatureController>();
 
-        if (cc.IsValid() == false) return;
-        if (cc.IsMonster()) cc.OnDamaged(Manager.GameM.player, this);
+        if (cc == null || cc.IsValid() == false) return;
+        if (cc is MonsterController monster && monster.IsInsideCameraView())
+            monster.OnDamaged(Manager.GameM.player, this);
     }
 }

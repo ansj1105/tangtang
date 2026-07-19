@@ -6,5 +6,7 @@ LikeTangTang/obj/Debug
 LikeTangTang/.vs
 LikeTangTang/Builds
 LikeTangTang/UserSettings
+LikeTangTang/ServerData
 license-request/
 *.log
+*.keystore

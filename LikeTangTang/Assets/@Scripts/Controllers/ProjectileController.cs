@@ -36,6 +36,12 @@ public class ProjectileController : SkillBase
     {
         StopAllCoroutines();
     }
+
+    private void FixedUpdate()
+    {
+        BounceOnMobileFrame();
+    }
+
     public override bool Init()
     {
         base.Init();
@@ -151,6 +157,56 @@ public class ProjectileController : SkillBase
     {
 
     }
+
+    void BounceOnMobileFrame()
+    {
+        if (skillType != Define.SkillType.PlasmaSpinner || rigid == null || rigid.velocity.sqrMagnitude <= 0f)
+            return;
+
+        Rect frame = Utils.GetMobileGameplayFrame();
+        Vector3 pos = transform.position;
+        Vector2 velocity = rigid.velocity;
+        bool bounced = false;
+
+        if (pos.x < frame.xMin)
+        {
+            pos.x = frame.xMin;
+            velocity.x = Mathf.Abs(velocity.x);
+            bounced = true;
+        }
+        else if (pos.x > frame.xMax)
+        {
+            pos.x = frame.xMax;
+            velocity.x = -Mathf.Abs(velocity.x);
+            bounced = true;
+        }
+
+        if (pos.y < frame.yMin)
+        {
+            pos.y = frame.yMin;
+            velocity.y = Mathf.Abs(velocity.y);
+            bounced = true;
+        }
+        else if (pos.y > frame.yMax)
+        {
+            pos.y = frame.yMax;
+            velocity.y = -Mathf.Abs(velocity.y);
+            bounced = true;
+        }
+
+        if (!bounced)
+            return;
+
+        transform.position = pos;
+        rigid.velocity = velocity.normalized * Mathf.Max(velocity.magnitude, bounceSpeed);
+
+        if (particleT != null)
+        {
+            float angle = Mathf.Atan2(rigid.velocity.y, rigid.velocity.x) * Mathf.Rad2Deg - 90f;
+            particleT.rotation = Quaternion.Euler(0, 0, angle);
+        }
+    }
+
     #region  GravityBomb
     IEnumerator CoExplosionGravityBomb()
     {
@@ -170,6 +226,9 @@ public class ProjectileController : SkillBase
 
     void ExplosionGravityBomb()
     {
+        if (!Utils.IsInsideMobileGameplayFrame(transform.position))
+            return;
+
         string explosionName = skill.SkillDatas.ExplosionName;
         GameObject go = Manager.ResourceM.Instantiate(explosionName, _pooling: true);
         go.transform.position = transform.position;
@@ -195,6 +254,9 @@ public class ProjectileController : SkillBase
 
     void ExplosionTimeStopBomb()
     {
+        if (!Utils.IsInsideMobileGameplayFrame(transform.position))
+            return;
+
         string explosionName = skill.SkillDatas.ExplosionName;
         GameObject go = Manager.ResourceM.Instantiate(explosionName, _pooling: true);
         go.transform.position = transform.position;
@@ -260,9 +322,9 @@ public class ProjectileController : SkillBase
         RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, effectRange, Vector2.zero);
         foreach (var target in hits)
         {
-            CreatureController cc = target.collider.GetComponent<MonsterController>();
-            if (cc?.IsMonster() == true && cc.IsValid())
-                cc.OnDamaged(owner, skill);
+            MonsterController mc = target.collider.GetComponent<MonsterController>();
+            if (mc != null && mc.IsMonster() && mc.IsValid() && mc.IsInsideCameraView())
+                mc.OnDamaged(owner, skill);
         }
     }
 
@@ -279,6 +341,7 @@ public class ProjectileController : SkillBase
         for (int i = 0; i < numBounce; i++)
         {
             if (currentTarget == null || !currentTarget.IsValid()) break;
+            if (!currentTarget.IsInsideCameraView()) break;
 
             sharedTarget.Add(currentTarget);
 
@@ -314,7 +377,7 @@ public class ProjectileController : SkillBase
 
         electricEffect.Play();
 
-        if (_target != null && _target.IsValid())
+        if (_target != null && _target.IsValid() && _target.IsInsideCameraView())
         {
             _target.OnDamaged(owner, skill);
         }
@@ -333,6 +396,7 @@ public class ProjectileController : SkillBase
         CreatureController cc = collision.gameObject.GetComponent<CreatureController>();
 
         if (cc == null || !cc.IsValid() || !this.IsValid() || !cc.IsMonster()) return;
+        if (cc is MonsterController monster && !monster.IsInsideCameraView()) return;
 
         switch (skillType)
         {

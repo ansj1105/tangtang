@@ -8,6 +8,8 @@ using static Define;
 
 public class GameScene : BaseScene, ITickable
 {
+    const float LateGameZoomStartTime = 180f;
+
     GameManager gm;
     TimeManager tm;
     SpawnManager spawnManager;
@@ -15,6 +17,7 @@ public class GameScene : BaseScene, ITickable
     UI_GameScene ui;
     Define.StageType stageType;
     BossController bossMonster;
+    bool didLateGameZoomOut;
 
     #region Action
     public Action<int> OnWaveStart;
@@ -240,6 +243,12 @@ public class GameScene : BaseScene, ITickable
     public void Tick(float _deltaTime)
     {
         Manager.GameM.ElapsedTime += _deltaTime;
+
+        if (!didLateGameZoomOut && Manager.GameM.ElapsedTime >= LateGameZoomStartTime)
+        {
+            didLateGameZoomOut = true;
+            Manager.GameM.Camera?.ZoomOutForLateGame();
+        }
 
         if (isGameEnd || gm.CurrentWaveData == null) return;
 

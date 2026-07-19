@@ -17,6 +17,10 @@ public class MissionInfo
 
 public class GameManager
 {
+    private static readonly Vector3 GemDropScale = Vector3.one * 1.0f;
+    private static readonly Vector3 BigBlueGemDropScale = Vector3.one * 1.25f;
+    private static readonly Vector3 EpicRedGemDropScale = Vector3.one * 1.3f;
+
     public PlayerController player { get { return Manager.ObjectM?.Player; } }
 
     public Character CurrentCharacter {get { return Characters?.Find(c => c != null && c.isCurrentCharacter == true); } }
@@ -397,6 +401,26 @@ public class GameManager
 
     public int minute;
     public int second;
+
+    public int GetStageClearGoldReward()
+    {
+        if (CurrentStageData == null)
+            return 0;
+
+        float goldBonus = CurrentCharacter != null ? CurrentCharacter.Evol_GoldBonus : 1f;
+        return Mathf.FloorToInt(CurrentStageData.ClearGold * goldBonus);
+    }
+
+    public int GetCurrentRunGold()
+    {
+        if (CurrentStageData == null || ContinueDatas == null)
+            return 0;
+
+        int stageKill = Mathf.Max(1, CurrentStageData.StageKill);
+        float progress = Mathf.Clamp01(ContinueDatas.KillCount / (float)stageKill);
+        return Mathf.FloorToInt(GetStageClearGoldReward() * progress);
+    }
+
     public void Init()
     {
         path = Application.persistentDataPath + "/SaveData.json";
@@ -586,8 +610,10 @@ public class GameManager
             return false;
         }
 
-        if (data.CurrentStageData == null || !Manager.DataM.StageDic.ContainsKey(data.CurrentStageData.StageIndex))
-            data.CurrentStageData = Manager.DataM.StageDic[1];
+        int currentStageIndex = data.CurrentStageData != null ? data.CurrentStageData.StageIndex : 1;
+        if (!Manager.DataM.StageDic.TryGetValue(currentStageIndex, out StageData currentStageData))
+            currentStageData = Manager.DataM.StageDic[1];
+        data.CurrentStageData = currentStageData;
 
         foreach (Data.StageData stage in Manager.DataM.StageDic.Values)
         {
@@ -653,35 +679,51 @@ public class GameManager
     public void ClearContinueData()
     {
         ContinueDatas.Clear();
+        ContinueDatas.Level = 1;
+        ContinueDatas.Exp = 0f;
+        if (Manager.DataM != null && Manager.DataM.LevelDic.TryGetValue(ContinueDatas.Level, out var levelData))
+            ContinueDatas.TotalExp = levelData.TotalExp;
         CurrentWaveIndex = 0;
+        ElapsedTime = 0f;
+        TimeRemaining = 60f;
+        isGameEnd = false;
         SaveGame();
     }
 
     public GemInfo GetGemInfo()
     {
-        float randNum = UnityEngine.Random.value;
-        (GemInfo.GemType type, float chace, Vector3 scale)[] gems = new (GemInfo.GemType type, float chace, Vector3 scale)[]
-        {
-            (GemInfo.GemType.Red, CurrentWaveData.SmallGemDropRate,  Vector3.one),
-            (GemInfo.GemType.Green, CurrentWaveData.GreenGemDropRate, Vector3.one),
-            (GemInfo.GemType.Blue, CurrentWaveData.BlueGemDropRate, Vector3.one),
-            (GemInfo.GemType.Gold, CurrentWaveData.YellowGemDropRate, Vector3.one)
-        };
+        float smallBlueRate = Mathf.Max(0f, CurrentWaveData.SmallGemDropRate);
+        float bigBlueRate = Mathf.Max(0f,
+            CurrentWaveData.GreenGemDropRate +
+            CurrentWaveData.BlueGemDropRate +
+            CurrentWaveData.YellowGemDropRate);
+        float totalRate = smallBlueRate + bigBlueRate;
 
-        float cumulative = 0f;
-        foreach (var gem in gems)
-        {
-            cumulative += gem.chace;
-            if (randNum < cumulative)
-                return new GemInfo(gem.type, gem.scale);
-        }
+        if (totalRate <= 0f)
+            return GetSmallBlueGemInfo();
 
-        return null;
+        float randNum = UnityEngine.Random.value * totalRate;
+        return randNum < smallBlueRate ? GetSmallBlueGemInfo() : GetBigBlueGemInfo();
+    }
+
+    public GemInfo GetSmallBlueGemInfo()
+    {
+        return new GemInfo(GemInfo.GemType.Blue, GemDropScale, "BlueGem.sprite", Define.SMALL_GEM_EXP);
+    }
+
+    public GemInfo GetBigBlueGemInfo()
+    {
+        return new GemInfo(GemInfo.GemType.Blue, BigBlueGemDropScale, "BlueGem.sprite", Define.GREEN_GEM_EXP);
+    }
+
+    public GemInfo GetEpicRedGemInfo()
+    {
+        return new GemInfo(GemInfo.GemType.Red, EpicRedGemDropScale, "RedGem.sprite", Define.YELLOW_GEM_EXP);
     }
 
     public GemInfo GetGemInfo(GemInfo.GemType _type)
     {
-        return new GemInfo(_type, Vector3.one);
+        return new GemInfo(_type, GemDropScale);
     }
 
     public void EquipItem(EquipmentType _type, Equipment _equipment)

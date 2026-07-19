@@ -110,7 +110,7 @@ public class UI_CharacterSelectPopup : UI_Popup
         BindButton(ButtonsType);
         BindToggle(TogglesType);
 
-        ApplyCharacterPreviewTexture();
+        GetObject(gameObjectsType, (int)GameObjects.CharacterImage).GetComponent<RawImage>().texture = Manager.SceneM.cam_target;
 
 
         GetButton(ButtonsType, (int)Buttons.BackButton).gameObject.BindEvent(OnClickBackButton);
@@ -141,7 +141,6 @@ public class UI_CharacterSelectPopup : UI_Popup
 
     void Refresh()
     {
-        ApplyCharacterPreviewTexture();
 
         if (!Manager.DataM.CreatureDic.TryGetValue(Manager.GameM.CurrentCharacter.DataId, out creatureData)) return;
         character = Manager.GameM.CurrentCharacter;
@@ -336,12 +335,5 @@ public class UI_CharacterSelectPopup : UI_Popup
         {
             Manager.UiM.ShowToast("레벨업 쿠폰이 부족합니다.");
         }
-    }
-
-    void ApplyCharacterPreviewTexture()
-    {
-        RawImage image = GetObject(gameObjectsType, (int)GameObjects.CharacterImage).GetComponent<RawImage>();
-        if (image.texture != Manager.SceneM.cam_target)
-            image.texture = Manager.SceneM.cam_target;
     }
 }

@@ -123,6 +123,7 @@ public class ElectricShock : RepeatSkill, ITickable
         foreach (var mc in Manager.ObjectM.mcSet)
         {
             if (mc == null || !mc.IsValid()) continue;
+            if (!mc.IsInsideCameraView()) continue;
             if (_ignoreMonsters != null && _ignoreMonsters.Contains(mc)) continue;
 
             float distSqr = (_origin - mc.transform.position).sqrMagnitude;

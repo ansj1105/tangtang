@@ -72,6 +72,8 @@ public class Manager : MonoBehaviour
                 }
                 DontDestroyOnLoad(obj);
                 instance = obj.GetComponent<Manager>();
+                ApplyHighQualityRendering();
+                ApplyHighResolution();
                 instance.updateM = obj.AddComponent<UpdateManager>();
                 instance.soundM.Init();
                 instance.timeM = obj.AddComponent<TimeManager>();
@@ -85,6 +87,25 @@ public class Manager : MonoBehaviour
     private string GetDebuggerDisplay()
     {
         return ToString();
+    }
+
+    static void ApplyHighQualityRendering()
+    {
+        int highestQuality = QualitySettings.names.Length - 1;
+        if (highestQuality >= 0)
+            QualitySettings.SetQualityLevel(highestQuality, true);
+
+        QualitySettings.masterTextureLimit = 0;
+        QualitySettings.antiAliasing = 4;
+        QualitySettings.anisotropicFiltering = AnisotropicFiltering.Enable;
+        QualitySettings.lodBias = 2f;
+    }
+
+    static void ApplyHighResolution()
+    {
+#if UNITY_EDITOR || UNITY_STANDALONE
+        Screen.SetResolution(3840, 2160, false);
+#endif
     }
 
     public static void Clear()

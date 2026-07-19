@@ -68,7 +68,7 @@ public class ElectronicField : RepeatSkill, ITickable
 
         foreach(var monster in keys)
         {
-            if(!monster.IsValid())
+            if(!monster.IsValid() || !monster.IsInsideCameraView())
             {
                 targets.Remove(monster);
                 continue;
@@ -93,6 +93,7 @@ public class ElectronicField : RepeatSkill, ITickable
     {
         MonsterController cc = collision.GetComponent<MonsterController>();
         if (cc == null || !cc.IsValid() || !cc.IsMonster()) return;
+        if (!cc.IsInsideCameraView()) return;
 
         if(!targets.ContainsKey(cc))
             targets.Add(cc, Time.time - attackInterval);

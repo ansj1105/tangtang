@@ -39,6 +39,11 @@ public class MonsterController : CreatureController, ITickable
     private Vector2 moveDir;
     private float pullForce = 0f;
     private float originalSpeed;
+    private bool invertSpriteFacing;
+    private const int MonsterSortingOrder = 201;
+    private const int MonsterShadowSortingOrder = 149;
+    protected virtual float MonsterScale => 1.22f;
+    protected bool isRedTintedMonster;
     #endregion
 
     #region Unity 기본
@@ -59,7 +64,8 @@ public class MonsterController : CreatureController, ITickable
         isInContactWithPlayer = false;
 
         originalSpeed = Speed;
-        transform.localScale = Vector3.one;
+        transform.localScale = Vector3.one * MonsterScale;
+        ApplyMonsterSortingOrder();
 
         
         
@@ -78,10 +84,22 @@ public class MonsterController : CreatureController, ITickable
         objType = ObjectType.Monster;
         CreatureState = CreatureState.Moving;
         Rigid.simulated = true;
+        transform.localScale = Vector3.one * MonsterScale;
+        ApplyMonsterSortingOrder();
         
 
         
         return true;
+    }
+
+    public override void SetInfo(int _dataID)
+    {
+        base.SetInfo(_dataID);
+        invertSpriteFacing = creatureData.prefabName == "NH_SaengseonPpyeoByeong";
+        isRedTintedMonster =
+            creatureData.Type == ObjectType.EliteMonster ||
+            creatureData.Type == ObjectType.Boss ||
+            IsRedTintedSprite();
     }
 
     #endregion
@@ -93,6 +111,11 @@ public class MonsterController : CreatureController, ITickable
         base.Tick(_deltaTime);
 
         if (isDead || !Manager.GameM.player.IsValid()) return;
+
+        if (isInZone && !IsInsideCameraView())
+        {
+            StopSkillZone(activeSkillInZone);
+        }
 
         // Skill Zone 데미지 Tick
         if (isInZone && activeSkillInZone != null && Time.time >= skillZoneTickTime)
@@ -127,10 +150,11 @@ public class MonsterController : CreatureController, ITickable
 
         Rigid.velocity = isInGravityZone ? moveDir * pullForce : moveDir * Speed;
 
-        CreatureSprite.flipX = moveDir.x < 0;
+        if (Mathf.Abs(moveDir.x) > 0.01f)
+            CreatureSprite.flipX = invertSpriteFacing ? moveDir.x > 0 : moveDir.x < 0;
 
         // 플레이어 접촉 시 DOT 데미지
-        if (isInContactWithPlayer && contactPlayer != null && Time.time >= nextDotDamageTime)
+        if (isInContactWithPlayer && contactPlayer != null && IsInsideCameraView() && Time.time >= nextDotDamageTime)
         {
             contactPlayer.OnDamaged(this, null, Attack);
             nextDotDamageTime = Time.time + 0.5f;
@@ -145,6 +169,7 @@ public class MonsterController : CreatureController, ITickable
     {
         PlayerController player = collision.gameObject.GetComponent<PlayerController>();
         if (player == null || !player.IsValid()) return;
+        if (!IsInsideCameraView()) return;
 
         contactPlayer = player;
         isInContactWithPlayer = true;
@@ -169,6 +194,9 @@ public class MonsterController : CreatureController, ITickable
 
     public override void OnDamaged(BaseController _attacker, SkillBase _skill = null, float _damage = 0)
     {
+        if ((_attacker is PlayerController || _skill != null) && !IsInsideCameraView())
+            return;
+
         if (_skill != null)
         {
             Manager.SoundM.Play(Sound.Effect, _skill.SkillDatas.HitSoundLabel);
@@ -190,6 +218,7 @@ public class MonsterController : CreatureController, ITickable
     public override void OnDead()
     {
         base.OnDead();
+        transform.localScale = Vector3.one * MonsterScale;
         InvokeMonsterData();
         Manager.GameM.player.KillCount++;
         Manager.GameM.TotalMonsterKillCount++;
@@ -198,7 +227,7 @@ public class MonsterController : CreatureController, ITickable
         if (objType == ObjectType.Monster && UnityEngine.Random.value >= Manager.GameM.CurrentWaveData.NonDropRate)
         {
             GemController gem = Manager.ObjectM.Spawn<GemController>(transform.position, _prefabName: Define.DROPITEMNAME);
-            gem.SetInfo(Manager.GameM.GetGemInfo());
+            gem.SetInfo(isRedTintedMonster ? Manager.GameM.GetEpicRedGemInfo() : Manager.GameM.GetGemInfo());
         }
 
         DOTween.Sequence()
@@ -299,6 +328,30 @@ public class MonsterController : CreatureController, ITickable
         {
             MonsterInfoUpdate?.Invoke(this);
         }
+    }
+
+    private void ApplyMonsterSortingOrder()
+    {
+        SpriteRenderer[] renderers = GetComponentsInChildren<SpriteRenderer>(true);
+        foreach (SpriteRenderer renderer in renderers)
+        {
+            bool isShadow = renderer.gameObject.name.IndexOf("Shadow", StringComparison.OrdinalIgnoreCase) >= 0;
+            renderer.sortingOrder = isShadow ? MonsterShadowSortingOrder : MonsterSortingOrder;
+        }
+    }
+
+    public bool IsInsideCameraView()
+    {
+        return Utils.IsInsideMobileGameplayFrame(transform.position);
+    }
+
+    private bool IsRedTintedSprite()
+    {
+        if (CreatureSprite == null)
+            return false;
+
+        Color color = CreatureSprite.color;
+        return color.r > 0.9f && color.g < 0.75f && color.b < 0.75f;
     }
 
     #endregion

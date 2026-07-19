@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: JiUk
-  productName: SlimeSurvivor
+  productName: NYAON_HUNTERS
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -155,10 +155,10 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.Jiuk.SlimeSurvivor
+    Android: com.korion_NYAON_HUNTER
     Lumin: com.DefaultCompany.com.unity.template.mobile2D
     Standalone: com.DefaultCompany.com.unity.template.mobile2D
-    iPhone: com.Jiuk.SlimeSurvivor
+    iPhone: com.korion_NYAON_HUNTER
     tvOS: com.DefaultCompany.com.unity.template.mobile2D
   buildNumber:
     Standalone: 0
@@ -254,8 +254,8 @@ PlayerSettings:
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: '{inproject}: SlimeSurvivor_Key.keystore'
-  AndroidKeyaliasName: slimesurvivor
+  AndroidKeystoreName: '{inproject}: NYAON_HUNTERS_Key.keystore'
+  AndroidKeyaliasName: nyaon_hunters
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0
   AndroidIsGame: 1
@@ -834,14 +834,14 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: LikeTangTang
+  metroPackageName: NYAON_HUNTERS
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: LikeTangTang
+  metroApplicationDescription: NYAON_HUNTERS
   wsaImages: {}
   metroTileShortName: 
   metroTileShowName: 0

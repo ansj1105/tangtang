@@ -201,7 +201,8 @@ public class PlayerController : CreatureController, ITickable
         get => Manager.GameM.ContinueDatas.SpecialSkillHealCount;
         set => Manager.GameM.ContinueDatas.SpecialSkillHealCount = value;
     }
-     float GetDropItemDist = 2f;
+     float GetDropItemDist = 4.5f;
+     const float DefaultDropItemCollectDist = 2f;
 
     #endregion
 
@@ -368,29 +369,53 @@ public class PlayerController : CreatureController, ITickable
    
     void CollectDropItem()
     {
+        if (Manager.GameM?.CurrentMap?.Grid == null)
+            return;
 
         var FindDropItem = Manager.GameM.CurrentMap.Grid.GetObjects(transform.position, GetDropItemDist);
+        if (FindDropItem == null)
+            return;
 
-        float sqrtDist = GetDropItemDist * GetDropItemDist;
+        float sqrtDist = DefaultDropItemCollectDist * DefaultDropItemCollectDist;
         foreach (DropItemController dropItem in FindDropItem)
         {
-            Vector3 dir = dropItem.transform.position - transform.position;
-            switch (dropItem.itemType)
-            {
-                case Define.ItemType.Gem:
-                    float dist = dropItem.CollectDist * Manager.GameM.ContinueDatas.CollectDistBonus;
-                    if (dir.sqrMagnitude <= dist * dist)
-                        dropItem.GetItem();
-                    break;
+            TryCollectDropItem(dropItem, sqrtDist);
+        }
 
-                case Define.ItemType.Bomb:
-                case Define.ItemType.Magnet:
-                case Define.ItemType.Potion:
-                case Define.ItemType.DropBox:
-                    if (dir.sqrMagnitude <= sqrtDist)
-                        dropItem.GetItem();
-                    break;
-            }
+        if (Manager.ObjectM?.gemSet == null)
+            return;
+
+        List<GemController> gemSnapshot = new List<GemController>(Manager.ObjectM.gemSet);
+        foreach (GemController dropItem in gemSnapshot)
+        {
+            TryCollectDropItem(dropItem, sqrtDist);
+        }
+    }
+
+    void TryCollectDropItem(DropItemController dropItem, float normalItemSqrDist)
+    {
+        if (dropItem == null || !dropItem.IsValid())
+            return;
+
+        Vector3 dir = dropItem.transform.position - transform.position;
+        if (dropItem is GemController gem)
+        {
+            float collectBonus = Mathf.Max(1f, Manager.GameM.ContinueDatas.CollectDistBonus);
+            float gemDist = dropItem.CollectDist * collectBonus;
+            if (dir.sqrMagnitude <= gemDist * gemDist)
+                gem.CollectByPlayer();
+            return;
+        }
+
+        switch (dropItem.itemType)
+        {
+            case Define.ItemType.Bomb:
+            case Define.ItemType.Magnet:
+            case Define.ItemType.Potion:
+            case Define.ItemType.DropBox:
+                if (dir.sqrMagnitude <= normalItemSqrDist)
+                    dropItem.GetItem();
+                break;
         }
     }
 
@@ -417,6 +442,7 @@ public class PlayerController : CreatureController, ITickable
     public override void SetInfo(int _dataID)
     {
         base.SetInfo(_dataID);
+        EnsureLevelExpData();
 
         if (Manager.GameM.ContinueDatas.isContinue)
             LoadSkil();
@@ -427,6 +453,21 @@ public class PlayerController : CreatureController, ITickable
             CreatureAnim.runtimeAnimatorController =
                 Manager.ResourceM.Load<RuntimeAnimatorController>(creatureData.CreatureAnimName);
         Manager.GameM.SaveGame();
+    }
+
+    void EnsureLevelExpData()
+    {
+        if (Level <= 0)
+            Level = 1;
+
+        if (ExpBounsRate <= 0f)
+            ExpBounsRate = 1f;
+
+        if (CollectDistBonus <= 0f)
+            CollectDistBonus = 1f;
+
+        if (Manager.DataM.LevelDic.TryGetValue(Level, out var levelData))
+            TotalExp = levelData.TotalExp;
     }
 
     bool isFirst = true;

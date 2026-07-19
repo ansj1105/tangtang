@@ -3,16 +3,9 @@ using UnityEngine;
 
 public class NHBasicAlienMonsterController : MonsterController
 {
-    private static readonly int SpeedHash = Animator.StringToHash("Speed");
-    private static readonly int AttackHash = Animator.StringToHash("Attack");
-    private static readonly int HitHash = Animator.StringToHash("Hit");
     private static readonly int DeadHash = Animator.StringToHash("Dead");
-    private static readonly int SpawnDoneHash = Animator.StringToHash("SpawnDone");
 
-    private const float AttackAnimInterval = 0.5f;
-    private const float SpawnClipDuration = 0.34f;
-    private const float DeathClipDuration = 0.65f;
-    private float nextAttackAnimTime;
+    private const float DeathClipDuration = 1.4f;
 
     public override bool Init()
     {
@@ -20,47 +13,10 @@ public class NHBasicAlienMonsterController : MonsterController
         if (CreatureAnim != null)
         {
             CreatureAnim.SetBool(DeadHash, false);
-            CreatureAnim.ResetTrigger(AttackHash);
-            CreatureAnim.ResetTrigger(HitHash);
-            CreatureAnim.SetBool(SpawnDoneHash, false);
-            CreatureAnim.Play("Spawn", 0, 0f);
-            StartCoroutine(CoFinishSpawn());
+            CreatureAnim.Play("Move", 0, 0f);
         }
 
         return result;
-    }
-
-    public override void Tick(float deltaTime)
-    {
-        base.Tick(deltaTime);
-
-        if (CreatureAnim != null && Rigid != null)
-            CreatureAnim.SetFloat(SpeedHash, Rigid.velocity.sqrMagnitude);
-    }
-
-    public override void OnCollisionEnter2D(Collision2D collision)
-    {
-        PlayAttackAnim();
-        base.OnCollisionEnter2D(collision);
-    }
-
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.gameObject.GetComponent<PlayerController>() == null)
-            return;
-
-        PlayAttackAnim();
-    }
-
-    public override void OnDamaged(BaseController attacker, SkillBase skill = null, float damage = 0)
-    {
-        if (CreatureAnim != null && Hp > 0)
-        {
-            CreatureAnim.ResetTrigger(HitHash);
-            CreatureAnim.SetTrigger(HitHash);
-        }
-
-        base.OnDamaged(attacker, skill, damage);
     }
 
     public override void OnDead()
@@ -68,6 +24,7 @@ public class NHBasicAlienMonsterController : MonsterController
         CreatureState = Define.CreatureState.Dead;
         isStartDamageAnim = false;
         StopAllCoroutines();
+        transform.localScale = Vector3.one * MonsterScale;
 
         if (Rigid != null)
         {
@@ -77,7 +34,6 @@ public class NHBasicAlienMonsterController : MonsterController
 
         if (CreatureAnim != null)
         {
-            CreatureAnim.ResetTrigger(HitHash);
             CreatureAnim.SetBool(DeadHash, true);
         }
 
@@ -88,7 +44,7 @@ public class NHBasicAlienMonsterController : MonsterController
         if (objType == Define.ObjectType.Monster && UnityEngine.Random.value >= Manager.GameM.CurrentWaveData.NonDropRate)
         {
             GemController gem = Manager.ObjectM.Spawn<GemController>(transform.position, _prefabName: Define.DROPITEMNAME);
-            gem.SetInfo(Manager.GameM.GetGemInfo());
+            gem.SetInfo(isRedTintedMonster ? Manager.GameM.GetEpicRedGemInfo() : Manager.GameM.GetGemInfo());
         }
 
         StartCoroutine(CoDespawnAfterDeath());
@@ -98,22 +54,5 @@ public class NHBasicAlienMonsterController : MonsterController
     {
         yield return new WaitForSeconds(DeathClipDuration);
         Manager.ObjectM.DeSpawn(this);
-    }
-
-    private IEnumerator CoFinishSpawn()
-    {
-        yield return new WaitForSeconds(SpawnClipDuration);
-        if (CreatureAnim != null)
-            CreatureAnim.SetBool(SpawnDoneHash, true);
-    }
-
-    private void PlayAttackAnim()
-    {
-        if (CreatureAnim == null || Hp <= 0 || Time.time < nextAttackAnimTime)
-            return;
-
-        nextAttackAnimTime = Time.time + AttackAnimInterval;
-        CreatureAnim.ResetTrigger(AttackHash);
-        CreatureAnim.SetTrigger(AttackHash);
     }
 }

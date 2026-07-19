@@ -40,6 +40,7 @@ public class TimeStopBombZone : SkillZone
 
         if(!mc.IsValid() || skill?.SkillDatas == null) return;
         if(!mc.IsMonster()) return;
+        if(!mc.IsInsideCameraView()) return;
 
 
         mc.StartSKillZone(owner, skill, this);

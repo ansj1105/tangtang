@@ -8,12 +8,14 @@ using UnityEngine;
 public class EliteMonsterController : MonsterController
 {
     List<int> dropList;
+    protected override float MonsterScale => 2.44f;
+
     protected override void OnEnable()
     {
         base.OnEnable();
         Init();
         InvokeMonsterData();
-        transform.localScale = new Vector3(2f, 2f, 2f);
+        transform.localScale = Vector3.one * MonsterScale;
     }
     public override bool Init()
     {
@@ -21,7 +23,7 @@ public class EliteMonsterController : MonsterController
         CreatureState = Define.CreatureState.Moving;
 
         Rigid.simulated = true;
-        transform.localScale = new Vector3(2f, 2f, 2f);
+        transform.localScale = Vector3.one * MonsterScale;
         
         Skills = gameObject.GetOrAddComponent<SkillComponent>();
         objType = Define.ObjectType.EliteMonster;
@@ -42,6 +44,9 @@ public class EliteMonsterController : MonsterController
             mission.Progress++;
         
         Manager.GameM.TotalEliteMonsterKillCount++;
+
+        GemController gem = Manager.ObjectM.Spawn<GemController>(transform.position, _prefabName: Define.DROPITEMNAME);
+        gem.SetInfo(Manager.GameM.GetEpicRedGemInfo());
 
         DropItem();
     }

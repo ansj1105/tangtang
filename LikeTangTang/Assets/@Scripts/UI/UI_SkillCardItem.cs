@@ -3,9 +3,15 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class UI_SkillCardItem : UI_Base
 {
+    const string PremiumStarGlowName = "PremiumStarGlow";
+    static readonly Color StarOnColor = new Color(0.982f, 1f, 0f, 1f);
+    static readonly Color PremiumStarColor = new Color(1f, 0.95f, 0.28f, 1f);
+    static readonly Color PremiumStarHotColor = new Color(1f, 0.58f, 0.05f, 1f);
+    static readonly Color PremiumGlowColor = new Color(1f, 0.72f, 0.08f, 0.55f);
 
     /*[x] : 어떤 스킬?, 몇 레벨?, 데이트 시트, Set, ClickItem
     */
@@ -47,6 +53,7 @@ public class UI_SkillCardItem : UI_Base
     public int templateID;
     public Data.SkillData skillData;
     GameManager gm;
+    readonly List<Tween> premiumStarTweens = new List<Tween>();
     public override bool Init()
     {
         if(!base.Init()) return false;
@@ -64,6 +71,7 @@ public class UI_SkillCardItem : UI_Base
 
         GetObject(gameObjectsType, (int)GameObjects.EvoSkillInfoObject).SetActive(false);
         GetObject(gameObjectsType, (int)GameObjects.NewIImageObject).gameObject.SetActive(false);
+        StopPremiumStarEffect();
 
         for(int i =0; i<Define.MAX_SKILL_LEVEL; i++)
         {
@@ -76,6 +84,7 @@ public class UI_SkillCardItem : UI_Base
         transform.localScale = Vector3.one;
 
         skill = null;
+        evolutionItemID = 0;
         return true;
     }
 
@@ -93,7 +102,9 @@ public class UI_SkillCardItem : UI_Base
     int evolutionItemID;
     public void SetInfo(SkillBase _skill = null, int _evolutionItemID = 0)
     {
+        StopPremiumStarEffect();
         skill = null;
+        evolutionItemID = 0;
         if (_skill != null)
         {
             skill = _skill;
@@ -124,6 +135,8 @@ public class UI_SkillCardItem : UI_Base
             {
                 GetObject(gameObjectsType, (int)GameObjects.StarOn_0 + i).SetActive(true);
             }
+
+            StartPremiumStarEffect(skill.SkillLevel);
         }
         else if(_evolutionItemID != 0)
         {
@@ -143,6 +156,120 @@ public class UI_SkillCardItem : UI_Base
                 GetObject(gameObjectsType, (int)GameObjects.StarOff_0 + i).SetActive(false);
             }
         }
+    }
+
+    void StartPremiumStarEffect(int nextStarIndex)
+    {
+        if (nextStarIndex < 0 || nextStarIndex >= Define.MAX_SKILL_LEVEL)
+            return;
+
+        GameObject starOn = GetObject(gameObjectsType, (int)GameObjects.StarOn_0 + nextStarIndex);
+        GameObject starOff = GetObject(gameObjectsType, (int)GameObjects.StarOff_0 + nextStarIndex);
+        if (starOn == null)
+            return;
+
+        starOff?.SetActive(true);
+        starOn.SetActive(true);
+
+        Image starImage = starOn.GetComponent<Image>();
+        if (starImage != null)
+        {
+            starImage.color = PremiumStarColor;
+            premiumStarTweens.Add(starImage.DOColor(PremiumStarHotColor, 0.42f)
+                .SetLoops(-1, LoopType.Yoyo)
+                .SetEase(Ease.InOutSine)
+                .SetUpdate(true));
+        }
+
+        Transform starTransform = starOn.transform;
+        Vector3 baseScale = Vector3.one;
+        starTransform.localScale = baseScale;
+        starTransform.localRotation = Quaternion.identity;
+
+        premiumStarTweens.Add(starTransform.DOScale(baseScale * 1.34f, 0.42f)
+            .SetLoops(-1, LoopType.Yoyo)
+            .SetEase(Ease.InOutSine)
+            .SetUpdate(true));
+
+        premiumStarTweens.Add(starTransform.DOLocalRotate(new Vector3(0f, 0f, 8f), 0.56f)
+            .SetLoops(-1, LoopType.Yoyo)
+            .SetEase(Ease.InOutSine)
+            .SetUpdate(true));
+
+        CreatePremiumStarGlow(starOn, starImage);
+    }
+
+    void CreatePremiumStarGlow(GameObject starOn, Image sourceImage)
+    {
+        if (sourceImage == null)
+            return;
+
+        Transform oldGlow = starOn.transform.Find(PremiumStarGlowName);
+        if (oldGlow != null)
+            Destroy(oldGlow.gameObject);
+
+        GameObject glowObject = new GameObject(PremiumStarGlowName, typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
+        glowObject.transform.SetParent(starOn.transform, false);
+
+        RectTransform sourceRect = starOn.GetComponent<RectTransform>();
+        RectTransform glowRect = glowObject.GetComponent<RectTransform>();
+        glowRect.anchorMin = new Vector2(0.5f, 0.5f);
+        glowRect.anchorMax = new Vector2(0.5f, 0.5f);
+        glowRect.pivot = new Vector2(0.5f, 0.5f);
+        glowRect.anchoredPosition = Vector2.zero;
+        glowRect.sizeDelta = sourceRect != null ? sourceRect.sizeDelta * 1.95f : new Vector2(80f, 80f);
+
+        Image glowImage = glowObject.GetComponent<Image>();
+        glowImage.raycastTarget = false;
+        glowImage.sprite = sourceImage.sprite;
+        glowImage.preserveAspect = true;
+        glowImage.color = PremiumGlowColor;
+
+        premiumStarTweens.Add(glowImage.DOFade(0.12f, 0.42f)
+            .SetLoops(-1, LoopType.Yoyo)
+            .SetEase(Ease.InOutSine)
+            .SetUpdate(true));
+
+        premiumStarTweens.Add(glowObject.transform.DOScale(Vector3.one * 1.25f, 0.42f)
+            .SetLoops(-1, LoopType.Yoyo)
+            .SetEase(Ease.InOutSine)
+            .SetUpdate(true));
+    }
+
+    void StopPremiumStarEffect()
+    {
+        for (int i = 0; i < premiumStarTweens.Count; i++)
+        {
+            if (premiumStarTweens[i] != null && premiumStarTweens[i].IsActive())
+                premiumStarTweens[i].Kill();
+        }
+        premiumStarTweens.Clear();
+
+        if (gameObjectsType == null)
+            return;
+
+        for (int i = 0; i < Define.MAX_SKILL_LEVEL; i++)
+        {
+            GameObject starOn = GetObject(gameObjectsType, (int)GameObjects.StarOn_0 + i);
+            if (starOn == null)
+                continue;
+
+            starOn.transform.localScale = Vector3.one;
+            starOn.transform.localRotation = Quaternion.identity;
+
+            Image starImage = starOn.GetComponent<Image>();
+            if (starImage != null)
+                starImage.color = StarOnColor;
+
+            Transform glow = starOn.transform.Find(PremiumStarGlowName);
+            if (glow != null)
+                Destroy(glow.gameObject);
+        }
+    }
+
+    void OnDisable()
+    {
+        StopPremiumStarEffect();
     }
 
     public void OnClickItem()

@@ -91,7 +91,7 @@ public class SpectralSlash : RepeatSkill
     {
         
 
-        if(collision.TryGetComponent<MonsterController>(out MonsterController mc) && mc.IsValid())
+        if(collision.TryGetComponent<MonsterController>(out MonsterController mc) && mc.IsValid() && mc.IsInsideCameraView())
         {
             mc.OnDamaged(Manager.GameM.player, this);
         }

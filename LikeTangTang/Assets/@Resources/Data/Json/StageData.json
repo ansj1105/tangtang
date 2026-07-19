@@ -1,1385 +1,1529 @@
-{
-  "stages": [
-    {
-      "StageIndex": 1,
-      "StageName": "1 스테이지",
-      "StageLevel": 1,
-      "MapName": "Map_01",
-      "StageKill": 0,
-      "FirstWaveCountValue": 3,
-      "FirstWaveClearRewardItemID": 60000,
-      "FirstWaveClearRewardItemValue": 1000,
-      "SecondWaveCountValue": 6,
-      "SecondWaveClearRewardItemID": 63000,
-      "SecondWaveClearRewardItemValue": 10,
-      "ThirdWaveCountValue": 10,
-      "ThirdWaveClearRewardItemID": 60001,
-      "ThirdWaveClearRewardItemValue": 50,
-      "ClearGold": 1000,
-      "ClearExp": 5,
-      "StageImage": "MapSprite_01.sprite",
-      "SpawnMonsterNum": [
-        10000,
-        10001,
-        10002,
-        10003,
-        10004,
-        10005,
-        11000,
-        11001,
-        12000
-      ],
-      "WaveArray": [
-        {
-          "StageIndex": 1,
-          "WaveIndex": 1,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 3,
-          "MonsterID": [
-            10000
-          ],
-          "EleteMonsterID": [],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 1.0,
-          "HpIncreaseRate": 0.5,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.73,
-          "GreenGemDropRate": 0.27,
-          "BlueGemDropRate": 0.0,
-          "YellowGemDropRate": 0.0,
-          "EliteDropItemId": []
-        },
-        {
-          "StageIndex": 1,
-          "WaveIndex": 2,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 13,
-          "MonsterID": [
-            10000,
-            10001
-          ],
-          "EleteMonsterID": [],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 0.7,
-          "HpIncreaseRate": 1.0,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.73,
-          "GreenGemDropRate": 0.27,
-          "BlueGemDropRate": 0.0,
-          "YellowGemDropRate": 0.0,
-          "EliteDropItemId": []
-        },
-        {
-          "StageIndex": 1,
-          "WaveIndex": 3,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 23,
-          "MonsterID": [
-            10002
-          ],
-          "EleteMonsterID": [
-            11000
-          ],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 1.0,
-          "HpIncreaseRate": 1.5,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.73,
-          "GreenGemDropRate": 0.27,
-          "BlueGemDropRate": 0.0,
-          "YellowGemDropRate": 0.0,
-          "EliteDropItemId": [
-            30000,
-            30001,
-            30002,
-            30005,
-            30006,
-            30007
-          ]
-        },
-        {
-          "StageIndex": 1,
-          "WaveIndex": 4,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 33,
-          "MonsterID": [
-            10002
-          ],
-          "EleteMonsterID": [],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 1.0,
-          "HpIncreaseRate": 2.5,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.0,
-          "GreenGemDropRate": 0.73,
-          "BlueGemDropRate": 0.27,
-          "YellowGemDropRate": 0.0,
-          "EliteDropItemId": []
-        },
-        {
-          "StageIndex": 1,
-          "WaveIndex": 5,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 43,
-          "MonsterID": [
-            10002,
-            10003
-          ],
-          "EleteMonsterID": [],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 0.7,
-          "HpIncreaseRate": 3.5,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.0,
-          "GreenGemDropRate": 0.73,
-          "BlueGemDropRate": 0.27,
-          "YellowGemDropRate": 0.0,
-          "EliteDropItemId": []
-        },
-        {
-          "StageIndex": 1,
-          "WaveIndex": 6,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 53,
-          "MonsterID": [
-            10003
-          ],
-          "EleteMonsterID": [
-            11000
-          ],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 1.0,
-          "HpIncreaseRate": 4.6,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.0,
-          "GreenGemDropRate": 0.73,
-          "BlueGemDropRate": 0.27,
-          "YellowGemDropRate": 0.0,
-          "EliteDropItemId": [
-            30000,
-            30001,
-            30002,
-            30005,
-            30006,
-            30007
-          ]
-        },
-        {
-          "StageIndex": 1,
-          "WaveIndex": 7,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 63,
-          "MonsterID": [
-            10004
-          ],
-          "EleteMonsterID": [],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 1.0,
-          "HpIncreaseRate": 5.7,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.0,
-          "GreenGemDropRate": 0.0,
-          "BlueGemDropRate": 0.73,
-          "YellowGemDropRate": 0.27,
-          "EliteDropItemId": []
-        },
-        {
-          "StageIndex": 1,
-          "WaveIndex": 8,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 73,
-          "MonsterID": [
-            10004,
-            10005
-          ],
-          "EleteMonsterID": [],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 0.7,
-          "HpIncreaseRate": 6.8,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.0,
-          "GreenGemDropRate": 0.0,
-          "BlueGemDropRate": 0.73,
-          "YellowGemDropRate": 0.27,
-          "EliteDropItemId": []
-        },
-        {
-          "StageIndex": 1,
-          "WaveIndex": 9,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 83,
-          "MonsterID": [
-            10005
-          ],
-          "EleteMonsterID": [
-            11001
-          ],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 1.0,
-          "HpIncreaseRate": 7.9,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.0,
-          "GreenGemDropRate": 0.0,
-          "BlueGemDropRate": 0.73,
-          "YellowGemDropRate": 0.27,
-          "EliteDropItemId": [
-            30000,
-            30001,
-            30002,
-            30005,
-            30006,
-            30007
-          ]
-        },
-        {
-          "StageIndex": 1,
-          "WaveIndex": 10,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 30,
-          "MonsterID": [
-            10005
-          ],
-          "EleteMonsterID": [],
-          "BossMonsterID": [
-            12000
-          ],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 1.0,
-          "HpIncreaseRate": 9.0,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.0,
-          "GreenGemDropRate": 0.0,
-          "BlueGemDropRate": 0.27,
-          "YellowGemDropRate": 0.73,
-          "EliteDropItemId": [
-            30006,
-            30007
-          ]
-        }
-      ]
-    },
-    {
-      "StageIndex": 2,
-      "StageName": "2 스테이지",
-      "StageLevel": 2,
-      "MapName": "Map_02",
-      "StageKill": 0,
-      "FirstWaveCountValue": 3,
-      "FirstWaveClearRewardItemID": 60000,
-      "FirstWaveClearRewardItemValue": 1000,
-      "SecondWaveCountValue": 6,
-      "SecondWaveClearRewardItemID": 63000,
-      "SecondWaveClearRewardItemValue": 10,
-      "ThirdWaveCountValue": 10,
-      "ThirdWaveClearRewardItemID": 60001,
-      "ThirdWaveClearRewardItemValue": 50,
-      "ClearGold": 5000,
-      "ClearExp": 5,
-      "StageImage": "MapSprite_02.sprite",
-      "SpawnMonsterNum": [
-        10006,
-        10007,
-        10008,
-        10009,
-        10010,
-        11001,
-        11002,
-        12001
-      ],
-      "WaveArray": [
-        {
-          "StageIndex": 2,
-          "WaveIndex": 1,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 3,
-          "MonsterID": [
-            10006
-          ],
-          "EleteMonsterID": [],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 1.0,
-          "HpIncreaseRate": 0.5,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.73,
-          "GreenGemDropRate": 0.27,
-          "BlueGemDropRate": 0.0,
-          "YellowGemDropRate": 0.0,
-          "EliteDropItemId": []
-        },
-        {
-          "StageIndex": 2,
-          "WaveIndex": 2,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 13,
-          "MonsterID": [
-            10006,
-            10007
-          ],
-          "EleteMonsterID": [],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 0.7,
-          "HpIncreaseRate": 1.0,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.73,
-          "GreenGemDropRate": 0.27,
-          "BlueGemDropRate": 0.0,
-          "YellowGemDropRate": 0.0,
-          "EliteDropItemId": []
-        },
-        {
-          "StageIndex": 2,
-          "WaveIndex": 3,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 23,
-          "MonsterID": [
-            10007
-          ],
-          "EleteMonsterID": [
-            11001
-          ],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 1.0,
-          "HpIncreaseRate": 1.5,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.73,
-          "GreenGemDropRate": 0.27,
-          "BlueGemDropRate": 0.0,
-          "YellowGemDropRate": 0.0,
-          "EliteDropItemId": [
-            30000,
-            30001,
-            30002,
-            30005,
-            30006,
-            30007
-          ]
-        },
-        {
-          "StageIndex": 2,
-          "WaveIndex": 4,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 33,
-          "MonsterID": [
-            10007
-          ],
-          "EleteMonsterID": [],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 1.0,
-          "HpIncreaseRate": 2.5,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.0,
-          "GreenGemDropRate": 0.73,
-          "BlueGemDropRate": 0.27,
-          "YellowGemDropRate": 0.0,
-          "EliteDropItemId": []
-        },
-        {
-          "StageIndex": 2,
-          "WaveIndex": 5,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 43,
-          "MonsterID": [
-            10007,
-            10008
-          ],
-          "EleteMonsterID": [],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 0.7,
-          "HpIncreaseRate": 3.5,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.0,
-          "GreenGemDropRate": 0.73,
-          "BlueGemDropRate": 0.27,
-          "YellowGemDropRate": 0.0,
-          "EliteDropItemId": []
-        },
-        {
-          "StageIndex": 2,
-          "WaveIndex": 6,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 53,
-          "MonsterID": [
-            10008
-          ],
-          "EleteMonsterID": [
-            11002
-          ],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 1.0,
-          "HpIncreaseRate": 4.6,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.0,
-          "GreenGemDropRate": 0.73,
-          "BlueGemDropRate": 0.27,
-          "YellowGemDropRate": 0.0,
-          "EliteDropItemId": [
-            30000,
-            30001,
-            30002,
-            30005,
-            30006,
-            30007
-          ]
-        },
-        {
-          "StageIndex": 2,
-          "WaveIndex": 7,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 63,
-          "MonsterID": [
-            10008
-          ],
-          "EleteMonsterID": [],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 1.0,
-          "HpIncreaseRate": 5.7,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.0,
-          "GreenGemDropRate": 0.0,
-          "BlueGemDropRate": 0.73,
-          "YellowGemDropRate": 0.27,
-          "EliteDropItemId": []
-        },
-        {
-          "StageIndex": 2,
-          "WaveIndex": 8,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 73,
-          "MonsterID": [
-            10008,
-            10009
-          ],
-          "EleteMonsterID": [],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 0.7,
-          "HpIncreaseRate": 6.8,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.0,
-          "GreenGemDropRate": 0.0,
-          "BlueGemDropRate": 0.73,
-          "YellowGemDropRate": 0.27,
-          "EliteDropItemId": []
-        },
-        {
-          "StageIndex": 2,
-          "WaveIndex": 9,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 83,
-          "MonsterID": [
-            10010
-          ],
-          "EleteMonsterID": [
-            11002
-          ],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 1.0,
-          "HpIncreaseRate": 7.9,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.0,
-          "GreenGemDropRate": 0.0,
-          "BlueGemDropRate": 0.73,
-          "YellowGemDropRate": 0.27,
-          "EliteDropItemId": [
-            30000,
-            30001,
-            30002,
-            30005,
-            30006,
-            30007
-          ]
-        },
-        {
-          "StageIndex": 2,
-          "WaveIndex": 10,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 30,
-          "MonsterID": [
-            10010
-          ],
-          "EleteMonsterID": [],
-          "BossMonsterID": [
-            12001
-          ],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 1.0,
-          "HpIncreaseRate": 9.0,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.0,
-          "GreenGemDropRate": 0.0,
-          "BlueGemDropRate": 0.27,
-          "YellowGemDropRate": 0.73,
-          "EliteDropItemId": [
-            30006,
-            30007
-          ]
-        }
-      ]
-    },
-    {
-      "StageIndex": 3,
-      "StageName": "3 스테이지",
-      "StageLevel": 3,
-      "MapName": "Map_03",
-      "StageKill": 0,
-      "FirstWaveCountValue": 3,
-      "FirstWaveClearRewardItemID": 60000,
-      "FirstWaveClearRewardItemValue": 1000,
-      "SecondWaveCountValue": 6,
-      "SecondWaveClearRewardItemID": 63000,
-      "SecondWaveClearRewardItemValue": 10,
-      "ThirdWaveCountValue": 10,
-      "ThirdWaveClearRewardItemID": 60001,
-      "ThirdWaveClearRewardItemValue": 50,
-      "ClearGold": 10000,
-      "ClearExp": 5,
-      "StageImage": "MapSprite_03.sprite",
-      "SpawnMonsterNum": [
-        10011,
-        10012,
-        10013,
-        10014,
-        10015,
-        11003,
-        11004,
-        12002
-      ],
-      "WaveArray": [
-        {
-          "StageIndex": 3,
-          "WaveIndex": 1,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 3,
-          "MonsterID": [
-            10011
-          ],
-          "EleteMonsterID": [],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 1.0,
-          "HpIncreaseRate": 0.5,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.73,
-          "GreenGemDropRate": 0.27,
-          "BlueGemDropRate": 0.0,
-          "YellowGemDropRate": 0.0,
-          "EliteDropItemId": []
-        },
-        {
-          "StageIndex": 3,
-          "WaveIndex": 2,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 13,
-          "MonsterID": [
-            10011,
-            10012
-          ],
-          "EleteMonsterID": [],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 0.7,
-          "HpIncreaseRate": 1.0,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.73,
-          "GreenGemDropRate": 0.27,
-          "BlueGemDropRate": 0.0,
-          "YellowGemDropRate": 0.0,
-          "EliteDropItemId": []
-        },
-        {
-          "StageIndex": 3,
-          "WaveIndex": 3,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 23,
-          "MonsterID": [
-            10012
-          ],
-          "EleteMonsterID": [
-            11003
-          ],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 1.0,
-          "HpIncreaseRate": 1.5,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.73,
-          "GreenGemDropRate": 0.27,
-          "BlueGemDropRate": 0.0,
-          "YellowGemDropRate": 0.0,
-          "EliteDropItemId": [
-            30000,
-            30001,
-            30002,
-            30005,
-            30006,
-            30007
-          ]
-        },
-        {
-          "StageIndex": 3,
-          "WaveIndex": 4,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 33,
-          "MonsterID": [
-            10012
-          ],
-          "EleteMonsterID": [],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 1.0,
-          "HpIncreaseRate": 2.5,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.0,
-          "GreenGemDropRate": 0.73,
-          "BlueGemDropRate": 0.27,
-          "YellowGemDropRate": 0.0,
-          "EliteDropItemId": []
-        },
-        {
-          "StageIndex": 3,
-          "WaveIndex": 5,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 43,
-          "MonsterID": [
-            10012,
-            10013
-          ],
-          "EleteMonsterID": [],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 0.7,
-          "HpIncreaseRate": 3.5,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.0,
-          "GreenGemDropRate": 0.73,
-          "BlueGemDropRate": 0.27,
-          "YellowGemDropRate": 0.0,
-          "EliteDropItemId": []
-        },
-        {
-          "StageIndex": 3,
-          "WaveIndex": 6,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 53,
-          "MonsterID": [
-            10013
-          ],
-          "EleteMonsterID": [
-            11003
-          ],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 1.0,
-          "HpIncreaseRate": 4.6,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.0,
-          "GreenGemDropRate": 0.73,
-          "BlueGemDropRate": 0.27,
-          "YellowGemDropRate": 0.0,
-          "EliteDropItemId": [
-            30000,
-            30001,
-            30002,
-            30005,
-            30006,
-            30007
-          ]
-        },
-        {
-          "StageIndex": 3,
-          "WaveIndex": 7,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 63,
-          "MonsterID": [
-            10013
-          ],
-          "EleteMonsterID": [],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 1.0,
-          "HpIncreaseRate": 5.7,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.0,
-          "GreenGemDropRate": 0.0,
-          "BlueGemDropRate": 0.73,
-          "YellowGemDropRate": 0.27,
-          "EliteDropItemId": []
-        },
-        {
-          "StageIndex": 3,
-          "WaveIndex": 8,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 73,
-          "MonsterID": [
-            10013,
-            10014
-          ],
-          "EleteMonsterID": [],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 0.7,
-          "HpIncreaseRate": 6.8,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.0,
-          "GreenGemDropRate": 0.0,
-          "BlueGemDropRate": 0.73,
-          "YellowGemDropRate": 0.27,
-          "EliteDropItemId": []
-        },
-        {
-          "StageIndex": 3,
-          "WaveIndex": 9,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 83,
-          "MonsterID": [
-            10014
-          ],
-          "EleteMonsterID": [
-            11004
-          ],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 1.0,
-          "HpIncreaseRate": 7.9,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.0,
-          "GreenGemDropRate": 0.0,
-          "BlueGemDropRate": 0.73,
-          "YellowGemDropRate": 0.27,
-          "EliteDropItemId": [
-            30000,
-            30001,
-            30002,
-            30005,
-            30006,
-            30007
-          ]
-        },
-        {
-          "StageIndex": 3,
-          "WaveIndex": 10,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 30,
-          "MonsterID": [
-            10015
-          ],
-          "EleteMonsterID": [],
-          "BossMonsterID": [
-            12002
-          ],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 1.0,
-          "HpIncreaseRate": 9.0,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.0,
-          "GreenGemDropRate": 0.0,
-          "BlueGemDropRate": 0.27,
-          "YellowGemDropRate": 0.73,
-          "EliteDropItemId": [
-            30006,
-            30007
-          ]
-        }
-      ]
-    },
-    {
-      "StageIndex": 4,
-      "StageName": "4 스테이지",
-      "StageLevel": 4,
-      "MapName": "Map_04",
-      "StageKill": 0,
-      "FirstWaveCountValue": 3,
-      "FirstWaveClearRewardItemID": 60000,
-      "FirstWaveClearRewardItemValue": 1000,
-      "SecondWaveCountValue": 6,
-      "SecondWaveClearRewardItemID": 63000,
-      "SecondWaveClearRewardItemValue": 10,
-      "ThirdWaveCountValue": 10,
-      "ThirdWaveClearRewardItemID": 60001,
-      "ThirdWaveClearRewardItemValue": 50,
-      "ClearGold": 15000,
-      "ClearExp": 5,
-      "StageImage": "MapSprite_04.sprite",
-      "SpawnMonsterNum": [
-        10016,
-        10017,
-        10018,
-        10019,
-        10020,
-        11004,
-        11005,
-        12003
-      ],
-      "WaveArray": [
-        {
-          "StageIndex": 4,
-          "WaveIndex": 1,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 3,
-          "MonsterID": [
-            10016
-          ],
-          "EleteMonsterID": [],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 1.0,
-          "HpIncreaseRate": 0.5,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.73,
-          "GreenGemDropRate": 0.27,
-          "BlueGemDropRate": 0.0,
-          "YellowGemDropRate": 0.0,
-          "EliteDropItemId": []
-        },
-        {
-          "StageIndex": 4,
-          "WaveIndex": 2,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 13,
-          "MonsterID": [
-            10016,
-            10017
-          ],
-          "EleteMonsterID": [],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 0.7,
-          "HpIncreaseRate": 1.0,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.73,
-          "GreenGemDropRate": 0.27,
-          "BlueGemDropRate": 0.0,
-          "YellowGemDropRate": 0.0,
-          "EliteDropItemId": []
-        },
-        {
-          "StageIndex": 4,
-          "WaveIndex": 3,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 23,
-          "MonsterID": [
-            10017
-          ],
-          "EleteMonsterID": [
-            11004
-          ],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 1.0,
-          "HpIncreaseRate": 1.5,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.73,
-          "GreenGemDropRate": 0.27,
-          "BlueGemDropRate": 0.0,
-          "YellowGemDropRate": 0.0,
-          "EliteDropItemId": [
-            30000,
-            30001,
-            30002,
-            30005,
-            30006,
-            30007
-          ]
-        },
-        {
-          "StageIndex": 4,
-          "WaveIndex": 4,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 33,
-          "MonsterID": [
-            10017
-          ],
-          "EleteMonsterID": [],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 1.0,
-          "HpIncreaseRate": 2.5,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.0,
-          "GreenGemDropRate": 0.73,
-          "BlueGemDropRate": 0.27,
-          "YellowGemDropRate": 0.0,
-          "EliteDropItemId": []
-        },
-        {
-          "StageIndex": 4,
-          "WaveIndex": 5,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 43,
-          "MonsterID": [
-            10017,
-            10018
-          ],
-          "EleteMonsterID": [],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 0.7,
-          "HpIncreaseRate": 3.5,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.0,
-          "GreenGemDropRate": 0.73,
-          "BlueGemDropRate": 0.27,
-          "YellowGemDropRate": 0.0,
-          "EliteDropItemId": []
-        },
-        {
-          "StageIndex": 4,
-          "WaveIndex": 6,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 53,
-          "MonsterID": [
-            10018
-          ],
-          "EleteMonsterID": [
-            11005
-          ],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 1.0,
-          "HpIncreaseRate": 4.6,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.0,
-          "GreenGemDropRate": 0.73,
-          "BlueGemDropRate": 0.27,
-          "YellowGemDropRate": 0.0,
-          "EliteDropItemId": [
-            30000,
-            30001,
-            30002,
-            30005,
-            30006,
-            30007
-          ]
-        },
-        {
-          "StageIndex": 4,
-          "WaveIndex": 7,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 63,
-          "MonsterID": [
-            10018
-          ],
-          "EleteMonsterID": [],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 1.0,
-          "HpIncreaseRate": 5.7,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.0,
-          "GreenGemDropRate": 0.0,
-          "BlueGemDropRate": 0.73,
-          "YellowGemDropRate": 0.27,
-          "EliteDropItemId": []
-        },
-        {
-          "StageIndex": 4,
-          "WaveIndex": 8,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 73,
-          "MonsterID": [
-            10018,
-            10019
-          ],
-          "EleteMonsterID": [],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 0.7,
-          "HpIncreaseRate": 6.8,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.0,
-          "GreenGemDropRate": 0.0,
-          "BlueGemDropRate": 0.73,
-          "YellowGemDropRate": 0.27,
-          "EliteDropItemId": []
-        },
-        {
-          "StageIndex": 4,
-          "WaveIndex": 9,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 83,
-          "MonsterID": [
-            10019
-          ],
-          "EleteMonsterID": [
-            11005
-          ],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 1.0,
-          "HpIncreaseRate": 7.9,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.0,
-          "GreenGemDropRate": 0.0,
-          "BlueGemDropRate": 0.73,
-          "YellowGemDropRate": 0.27,
-          "EliteDropItemId": [
-            30000,
-            30001,
-            30002,
-            30005,
-            30006,
-            30007
-          ]
-        },
-        {
-          "StageIndex": 4,
-          "WaveIndex": 10,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 30,
-          "MonsterID": [
-            10020
-          ],
-          "EleteMonsterID": [],
-          "BossMonsterID": [
-            12003
-          ],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 1.0,
-          "HpIncreaseRate": 9.0,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.0,
-          "GreenGemDropRate": 0.0,
-          "BlueGemDropRate": 0.27,
-          "YellowGemDropRate": 0.73,
-          "EliteDropItemId": [
-            30006,
-            30007
-          ]
-        }
-      ]
-    },
-    {
-      "StageIndex": 5,
-      "StageName": "5 스테이지",
-      "StageLevel": 5,
-      "MapName": "Map_05",
-      "StageKill": 0,
-      "FirstWaveCountValue": 3,
-      "FirstWaveClearRewardItemID": 60000,
-      "FirstWaveClearRewardItemValue": 1000,
-      "SecondWaveCountValue": 6,
-      "SecondWaveClearRewardItemID": 63000,
-      "SecondWaveClearRewardItemValue": 10,
-      "ThirdWaveCountValue": 10,
-      "ThirdWaveClearRewardItemID": 60001,
-      "ThirdWaveClearRewardItemValue": 50,
-      "ClearGold": 20000,
-      "ClearExp": 5,
-      "StageImage": "MapSprite_05.sprite",
-      "SpawnMonsterNum": [
-        10021,
-        10022,
-        10023,
-        10024,
-        10025,
-        11006,
-        11007,
-        12004
-      ],
-      "WaveArray": [
-        {
-          "StageIndex": 5,
-          "WaveIndex": 1,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 3,
-          "MonsterID": [
-            10021
-          ],
-          "EleteMonsterID": [],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 1.0,
-          "HpIncreaseRate": 0.5,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.73,
-          "GreenGemDropRate": 0.27,
-          "BlueGemDropRate": 0.0,
-          "YellowGemDropRate": 0.0,
-          "EliteDropItemId": []
-        },
-        {
-          "StageIndex": 5,
-          "WaveIndex": 2,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 13,
-          "MonsterID": [
-            10021,
-            10022
-          ],
-          "EleteMonsterID": [],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 0.7,
-          "HpIncreaseRate": 1.0,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.73,
-          "GreenGemDropRate": 0.27,
-          "BlueGemDropRate": 0.0,
-          "YellowGemDropRate": 0.0,
-          "EliteDropItemId": []
-        },
-        {
-          "StageIndex": 5,
-          "WaveIndex": 3,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 23,
-          "MonsterID": [
-            10022
-          ],
-          "EleteMonsterID": [
-            11006
-          ],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 1.0,
-          "HpIncreaseRate": 1.5,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.73,
-          "GreenGemDropRate": 0.27,
-          "BlueGemDropRate": 0.0,
-          "YellowGemDropRate": 0.0,
-          "EliteDropItemId": [
-            30000,
-            30001,
-            30002,
-            30005,
-            30006,
-            30007
-          ]
-        },
-        {
-          "StageIndex": 5,
-          "WaveIndex": 4,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 33,
-          "MonsterID": [
-            10022
-          ],
-          "EleteMonsterID": [],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 1.0,
-          "HpIncreaseRate": 2.5,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.0,
-          "GreenGemDropRate": 0.73,
-          "BlueGemDropRate": 0.27,
-          "YellowGemDropRate": 0.0,
-          "EliteDropItemId": []
-        },
-        {
-          "StageIndex": 5,
-          "WaveIndex": 5,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 43,
-          "MonsterID": [
-            10022,
-            10023
-          ],
-          "EleteMonsterID": [],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 0.7,
-          "HpIncreaseRate": 3.5,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.0,
-          "GreenGemDropRate": 0.73,
-          "BlueGemDropRate": 0.27,
-          "YellowGemDropRate": 0.0,
-          "EliteDropItemId": []
-        },
-        {
-          "StageIndex": 5,
-          "WaveIndex": 6,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 53,
-          "MonsterID": [
-            10023
-          ],
-          "EleteMonsterID": [
-            11006
-          ],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 1.0,
-          "HpIncreaseRate": 4.6,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.0,
-          "GreenGemDropRate": 0.73,
-          "BlueGemDropRate": 0.27,
-          "YellowGemDropRate": 0.0,
-          "EliteDropItemId": [
-            30000,
-            30001,
-            30002,
-            30005,
-            30006,
-            30007
-          ]
-        },
-        {
-          "StageIndex": 5,
-          "WaveIndex": 7,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 63,
-          "MonsterID": [
-            10023
-          ],
-          "EleteMonsterID": [],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 1.0,
-          "HpIncreaseRate": 5.7,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.0,
-          "GreenGemDropRate": 0.0,
-          "BlueGemDropRate": 0.73,
-          "YellowGemDropRate": 0.27,
-          "EliteDropItemId": []
-        },
-        {
-          "StageIndex": 5,
-          "WaveIndex": 8,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 73,
-          "MonsterID": [
-            10023,
-            10024
-          ],
-          "EleteMonsterID": [],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 0.7,
-          "HpIncreaseRate": 6.8,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.0,
-          "GreenGemDropRate": 0.0,
-          "BlueGemDropRate": 0.73,
-          "YellowGemDropRate": 0.27,
-          "EliteDropItemId": []
-        },
-        {
-          "StageIndex": 5,
-          "WaveIndex": 9,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 83,
-          "MonsterID": [
-            10024
-          ],
-          "EleteMonsterID": [
-            11007
-          ],
-          "BossMonsterID": [],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 1.0,
-          "HpIncreaseRate": 7.9,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.0,
-          "GreenGemDropRate": 0.0,
-          "BlueGemDropRate": 0.73,
-          "YellowGemDropRate": 0.27,
-          "EliteDropItemId": [
-            30000,
-            30001,
-            30002,
-            30005,
-            30006,
-            30007
-          ]
-        },
-        {
-          "StageIndex": 5,
-          "WaveIndex": 10,
-          "SpawnInterval": 3,
-          "OnceSpawnCount": 30,
-          "MonsterID": [
-            10025
-          ],
-          "EleteMonsterID": [],
-          "BossMonsterID": [
-            12004
-          ],
-          "RemainsTime": 60,
-          "WaveType": 0,
-          "FirstMonsterSpawnRate": 1.0,
-          "HpIncreaseRate": 9.0,
-          "NonDropRate": 0.25,
-          "SmallGemDropRate": 0.0,
-          "GreenGemDropRate": 0.0,
-          "BlueGemDropRate": 0.27,
-          "YellowGemDropRate": 0.73,
-          "EliteDropItemId": [
-            30006,
-            30007
-          ]
-        }
-      ]
-    }
-  ]
+﻿{
+    "stages":  [
+                   {
+                       "StageIndex":  1,
+                       "StageName":  "1 스테이지",
+                       "StageLevel":  1,
+                       "MapName":  "Map_01",
+                       "StageKill":  0,
+                       "FirstWaveCountValue":  3,
+                       "FirstWaveClearRewardItemID":  60000,
+                       "FirstWaveClearRewardItemValue":  1000,
+                       "SecondWaveCountValue":  6,
+                       "SecondWaveClearRewardItemID":  63000,
+                       "SecondWaveClearRewardItemValue":  10,
+                       "ThirdWaveCountValue":  10,
+                       "ThirdWaveClearRewardItemID":  60001,
+                       "ThirdWaveClearRewardItemValue":  50,
+                       "ClearGold":  1000,
+                       "ClearExp":  5,
+                       "StageImage":  "MapSprite_01.sprite",
+                       "SpawnMonsterNum":  [
+                                               10000,
+                                               10001,
+                                               10002,
+                                               10006,
+                                               10007,
+                                               10008
+                                           ],
+                       "WaveArray":  [
+                                         {
+                                             "StageIndex":  1,
+                                             "WaveIndex":  1,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  3,
+                                             "MonsterID":  [
+                                                               10000
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  1,
+                                             "HpIncreaseRate":  0.5,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0.73,
+                                             "GreenGemDropRate":  0.27,
+                                             "BlueGemDropRate":  0,
+                                             "YellowGemDropRate":  0,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  1,
+                                             "WaveIndex":  2,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  13,
+                                             "MonsterID":  [
+                                                               10001,
+                                                               10002
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  0.7,
+                                             "HpIncreaseRate":  1,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0.73,
+                                             "GreenGemDropRate":  0.27,
+                                             "BlueGemDropRate":  0,
+                                             "YellowGemDropRate":  0,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  1,
+                                             "WaveIndex":  3,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  23,
+                                             "MonsterID":  [
+                                                               10002,
+                                                               10006
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  1,
+                                             "HpIncreaseRate":  1.5,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0.73,
+                                             "GreenGemDropRate":  0.27,
+                                             "BlueGemDropRate":  0,
+                                             "YellowGemDropRate":  0,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  1,
+                                             "WaveIndex":  4,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  33,
+                                             "MonsterID":  [
+                                                               10006
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  1,
+                                             "HpIncreaseRate":  2.5,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0,
+                                             "GreenGemDropRate":  0.73,
+                                             "BlueGemDropRate":  0.27,
+                                             "YellowGemDropRate":  0,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  1,
+                                             "WaveIndex":  5,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  43,
+                                             "MonsterID":  [
+                                                               10007,
+                                                               10008
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  0.7,
+                                             "HpIncreaseRate":  3.5,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0,
+                                             "GreenGemDropRate":  0.73,
+                                             "BlueGemDropRate":  0.27,
+                                             "YellowGemDropRate":  0,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  1,
+                                             "WaveIndex":  6,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  53,
+                                             "MonsterID":  [
+                                                               10008,
+                                                               10000
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  1,
+                                             "HpIncreaseRate":  4.6,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0,
+                                             "GreenGemDropRate":  0.73,
+                                             "BlueGemDropRate":  0.27,
+                                             "YellowGemDropRate":  0,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  1,
+                                             "WaveIndex":  7,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  63,
+                                             "MonsterID":  [
+                                                               10000
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  1,
+                                             "HpIncreaseRate":  5.7,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0,
+                                             "GreenGemDropRate":  0,
+                                             "BlueGemDropRate":  0.73,
+                                             "YellowGemDropRate":  0.27,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  1,
+                                             "WaveIndex":  8,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  73,
+                                             "MonsterID":  [
+                                                               10001,
+                                                               10002
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  0.7,
+                                             "HpIncreaseRate":  6.8,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0,
+                                             "GreenGemDropRate":  0,
+                                             "BlueGemDropRate":  0.73,
+                                             "YellowGemDropRate":  0.27,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  1,
+                                             "WaveIndex":  9,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  83,
+                                             "MonsterID":  [
+                                                               10002,
+                                                               10006
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  1,
+                                             "HpIncreaseRate":  7.9,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0,
+                                             "GreenGemDropRate":  0,
+                                             "BlueGemDropRate":  0.73,
+                                             "YellowGemDropRate":  0.27,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  1,
+                                             "WaveIndex":  10,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  30,
+                                             "MonsterID":  [
+                                                               10006
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  1,
+                                             "HpIncreaseRate":  9,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0,
+                                             "GreenGemDropRate":  0,
+                                             "BlueGemDropRate":  0.27,
+                                             "YellowGemDropRate":  0.73,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         }
+                                     ]
+                   },
+                   {
+                       "StageIndex":  2,
+                       "StageName":  "2 스테이지",
+                       "StageLevel":  2,
+                       "MapName":  "Map_02",
+                       "StageKill":  0,
+                       "FirstWaveCountValue":  3,
+                       "FirstWaveClearRewardItemID":  60000,
+                       "FirstWaveClearRewardItemValue":  1000,
+                       "SecondWaveCountValue":  6,
+                       "SecondWaveClearRewardItemID":  63000,
+                       "SecondWaveClearRewardItemValue":  10,
+                       "ThirdWaveCountValue":  10,
+                       "ThirdWaveClearRewardItemID":  60001,
+                       "ThirdWaveClearRewardItemValue":  50,
+                       "ClearGold":  5000,
+                       "ClearExp":  5,
+                       "StageImage":  "MapSprite_02.sprite",
+                       "SpawnMonsterNum":  [
+                                               10000,
+                                               10001,
+                                               10002,
+                                               10006,
+                                               10007,
+                                               10008
+                                           ],
+                       "WaveArray":  [
+                                         {
+                                             "StageIndex":  2,
+                                             "WaveIndex":  1,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  3,
+                                             "MonsterID":  [
+                                                               10000
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  1,
+                                             "HpIncreaseRate":  0.5,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0.73,
+                                             "GreenGemDropRate":  0.27,
+                                             "BlueGemDropRate":  0,
+                                             "YellowGemDropRate":  0,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  2,
+                                             "WaveIndex":  2,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  13,
+                                             "MonsterID":  [
+                                                               10001,
+                                                               10002
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  0.7,
+                                             "HpIncreaseRate":  1,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0.73,
+                                             "GreenGemDropRate":  0.27,
+                                             "BlueGemDropRate":  0,
+                                             "YellowGemDropRate":  0,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  2,
+                                             "WaveIndex":  3,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  23,
+                                             "MonsterID":  [
+                                                               10002,
+                                                               10006
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  1,
+                                             "HpIncreaseRate":  1.5,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0.73,
+                                             "GreenGemDropRate":  0.27,
+                                             "BlueGemDropRate":  0,
+                                             "YellowGemDropRate":  0,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  2,
+                                             "WaveIndex":  4,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  33,
+                                             "MonsterID":  [
+                                                               10006
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  1,
+                                             "HpIncreaseRate":  2.5,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0,
+                                             "GreenGemDropRate":  0.73,
+                                             "BlueGemDropRate":  0.27,
+                                             "YellowGemDropRate":  0,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  2,
+                                             "WaveIndex":  5,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  43,
+                                             "MonsterID":  [
+                                                               10007,
+                                                               10008
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  0.7,
+                                             "HpIncreaseRate":  3.5,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0,
+                                             "GreenGemDropRate":  0.73,
+                                             "BlueGemDropRate":  0.27,
+                                             "YellowGemDropRate":  0,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  2,
+                                             "WaveIndex":  6,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  53,
+                                             "MonsterID":  [
+                                                               10008,
+                                                               10000
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  1,
+                                             "HpIncreaseRate":  4.6,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0,
+                                             "GreenGemDropRate":  0.73,
+                                             "BlueGemDropRate":  0.27,
+                                             "YellowGemDropRate":  0,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  2,
+                                             "WaveIndex":  7,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  63,
+                                             "MonsterID":  [
+                                                               10000
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  1,
+                                             "HpIncreaseRate":  5.7,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0,
+                                             "GreenGemDropRate":  0,
+                                             "BlueGemDropRate":  0.73,
+                                             "YellowGemDropRate":  0.27,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  2,
+                                             "WaveIndex":  8,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  73,
+                                             "MonsterID":  [
+                                                               10001,
+                                                               10002
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  0.7,
+                                             "HpIncreaseRate":  6.8,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0,
+                                             "GreenGemDropRate":  0,
+                                             "BlueGemDropRate":  0.73,
+                                             "YellowGemDropRate":  0.27,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  2,
+                                             "WaveIndex":  9,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  83,
+                                             "MonsterID":  [
+                                                               10002,
+                                                               10006
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  1,
+                                             "HpIncreaseRate":  7.9,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0,
+                                             "GreenGemDropRate":  0,
+                                             "BlueGemDropRate":  0.73,
+                                             "YellowGemDropRate":  0.27,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  2,
+                                             "WaveIndex":  10,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  30,
+                                             "MonsterID":  [
+                                                               10006
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  1,
+                                             "HpIncreaseRate":  9,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0,
+                                             "GreenGemDropRate":  0,
+                                             "BlueGemDropRate":  0.27,
+                                             "YellowGemDropRate":  0.73,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         }
+                                     ]
+                   },
+                   {
+                       "StageIndex":  3,
+                       "StageName":  "3 스테이지",
+                       "StageLevel":  3,
+                       "MapName":  "Map_03",
+                       "StageKill":  0,
+                       "FirstWaveCountValue":  3,
+                       "FirstWaveClearRewardItemID":  60000,
+                       "FirstWaveClearRewardItemValue":  1000,
+                       "SecondWaveCountValue":  6,
+                       "SecondWaveClearRewardItemID":  63000,
+                       "SecondWaveClearRewardItemValue":  10,
+                       "ThirdWaveCountValue":  10,
+                       "ThirdWaveClearRewardItemID":  60001,
+                       "ThirdWaveClearRewardItemValue":  50,
+                       "ClearGold":  10000,
+                       "ClearExp":  5,
+                       "StageImage":  "MapSprite_03.sprite",
+                       "SpawnMonsterNum":  [
+                                               10000,
+                                               10001,
+                                               10002,
+                                               10006,
+                                               10007,
+                                               10008
+                                           ],
+                       "WaveArray":  [
+                                         {
+                                             "StageIndex":  3,
+                                             "WaveIndex":  1,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  3,
+                                             "MonsterID":  [
+                                                               10000
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  1,
+                                             "HpIncreaseRate":  0.5,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0.73,
+                                             "GreenGemDropRate":  0.27,
+                                             "BlueGemDropRate":  0,
+                                             "YellowGemDropRate":  0,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  3,
+                                             "WaveIndex":  2,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  13,
+                                             "MonsterID":  [
+                                                               10001,
+                                                               10002
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  0.7,
+                                             "HpIncreaseRate":  1,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0.73,
+                                             "GreenGemDropRate":  0.27,
+                                             "BlueGemDropRate":  0,
+                                             "YellowGemDropRate":  0,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  3,
+                                             "WaveIndex":  3,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  23,
+                                             "MonsterID":  [
+                                                               10002,
+                                                               10006
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  1,
+                                             "HpIncreaseRate":  1.5,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0.73,
+                                             "GreenGemDropRate":  0.27,
+                                             "BlueGemDropRate":  0,
+                                             "YellowGemDropRate":  0,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  3,
+                                             "WaveIndex":  4,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  33,
+                                             "MonsterID":  [
+                                                               10006
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  1,
+                                             "HpIncreaseRate":  2.5,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0,
+                                             "GreenGemDropRate":  0.73,
+                                             "BlueGemDropRate":  0.27,
+                                             "YellowGemDropRate":  0,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  3,
+                                             "WaveIndex":  5,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  43,
+                                             "MonsterID":  [
+                                                               10007,
+                                                               10008
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  0.7,
+                                             "HpIncreaseRate":  3.5,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0,
+                                             "GreenGemDropRate":  0.73,
+                                             "BlueGemDropRate":  0.27,
+                                             "YellowGemDropRate":  0,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  3,
+                                             "WaveIndex":  6,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  53,
+                                             "MonsterID":  [
+                                                               10008,
+                                                               10000
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  1,
+                                             "HpIncreaseRate":  4.6,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0,
+                                             "GreenGemDropRate":  0.73,
+                                             "BlueGemDropRate":  0.27,
+                                             "YellowGemDropRate":  0,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  3,
+                                             "WaveIndex":  7,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  63,
+                                             "MonsterID":  [
+                                                               10000
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  1,
+                                             "HpIncreaseRate":  5.7,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0,
+                                             "GreenGemDropRate":  0,
+                                             "BlueGemDropRate":  0.73,
+                                             "YellowGemDropRate":  0.27,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  3,
+                                             "WaveIndex":  8,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  73,
+                                             "MonsterID":  [
+                                                               10001,
+                                                               10002
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  0.7,
+                                             "HpIncreaseRate":  6.8,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0,
+                                             "GreenGemDropRate":  0,
+                                             "BlueGemDropRate":  0.73,
+                                             "YellowGemDropRate":  0.27,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  3,
+                                             "WaveIndex":  9,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  83,
+                                             "MonsterID":  [
+                                                               10002,
+                                                               10006
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  1,
+                                             "HpIncreaseRate":  7.9,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0,
+                                             "GreenGemDropRate":  0,
+                                             "BlueGemDropRate":  0.73,
+                                             "YellowGemDropRate":  0.27,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  3,
+                                             "WaveIndex":  10,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  30,
+                                             "MonsterID":  [
+                                                               10006
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  1,
+                                             "HpIncreaseRate":  9,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0,
+                                             "GreenGemDropRate":  0,
+                                             "BlueGemDropRate":  0.27,
+                                             "YellowGemDropRate":  0.73,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         }
+                                     ]
+                   },
+                   {
+                       "StageIndex":  4,
+                       "StageName":  "4 스테이지",
+                       "StageLevel":  4,
+                       "MapName":  "Map_04",
+                       "StageKill":  0,
+                       "FirstWaveCountValue":  3,
+                       "FirstWaveClearRewardItemID":  60000,
+                       "FirstWaveClearRewardItemValue":  1000,
+                       "SecondWaveCountValue":  6,
+                       "SecondWaveClearRewardItemID":  63000,
+                       "SecondWaveClearRewardItemValue":  10,
+                       "ThirdWaveCountValue":  10,
+                       "ThirdWaveClearRewardItemID":  60001,
+                       "ThirdWaveClearRewardItemValue":  50,
+                       "ClearGold":  15000,
+                       "ClearExp":  5,
+                       "StageImage":  "MapSprite_04.sprite",
+                       "SpawnMonsterNum":  [
+                                               10000,
+                                               10001,
+                                               10002,
+                                               10006,
+                                               10007,
+                                               10008
+                                           ],
+                       "WaveArray":  [
+                                         {
+                                             "StageIndex":  4,
+                                             "WaveIndex":  1,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  3,
+                                             "MonsterID":  [
+                                                               10000
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  1,
+                                             "HpIncreaseRate":  0.5,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0.73,
+                                             "GreenGemDropRate":  0.27,
+                                             "BlueGemDropRate":  0,
+                                             "YellowGemDropRate":  0,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  4,
+                                             "WaveIndex":  2,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  13,
+                                             "MonsterID":  [
+                                                               10001,
+                                                               10002
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  0.7,
+                                             "HpIncreaseRate":  1,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0.73,
+                                             "GreenGemDropRate":  0.27,
+                                             "BlueGemDropRate":  0,
+                                             "YellowGemDropRate":  0,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  4,
+                                             "WaveIndex":  3,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  23,
+                                             "MonsterID":  [
+                                                               10002,
+                                                               10006
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  1,
+                                             "HpIncreaseRate":  1.5,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0.73,
+                                             "GreenGemDropRate":  0.27,
+                                             "BlueGemDropRate":  0,
+                                             "YellowGemDropRate":  0,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  4,
+                                             "WaveIndex":  4,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  33,
+                                             "MonsterID":  [
+                                                               10006
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  1,
+                                             "HpIncreaseRate":  2.5,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0,
+                                             "GreenGemDropRate":  0.73,
+                                             "BlueGemDropRate":  0.27,
+                                             "YellowGemDropRate":  0,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  4,
+                                             "WaveIndex":  5,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  43,
+                                             "MonsterID":  [
+                                                               10007,
+                                                               10008
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  0.7,
+                                             "HpIncreaseRate":  3.5,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0,
+                                             "GreenGemDropRate":  0.73,
+                                             "BlueGemDropRate":  0.27,
+                                             "YellowGemDropRate":  0,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  4,
+                                             "WaveIndex":  6,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  53,
+                                             "MonsterID":  [
+                                                               10008,
+                                                               10000
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  1,
+                                             "HpIncreaseRate":  4.6,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0,
+                                             "GreenGemDropRate":  0.73,
+                                             "BlueGemDropRate":  0.27,
+                                             "YellowGemDropRate":  0,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  4,
+                                             "WaveIndex":  7,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  63,
+                                             "MonsterID":  [
+                                                               10000
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  1,
+                                             "HpIncreaseRate":  5.7,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0,
+                                             "GreenGemDropRate":  0,
+                                             "BlueGemDropRate":  0.73,
+                                             "YellowGemDropRate":  0.27,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  4,
+                                             "WaveIndex":  8,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  73,
+                                             "MonsterID":  [
+                                                               10001,
+                                                               10002
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  0.7,
+                                             "HpIncreaseRate":  6.8,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0,
+                                             "GreenGemDropRate":  0,
+                                             "BlueGemDropRate":  0.73,
+                                             "YellowGemDropRate":  0.27,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  4,
+                                             "WaveIndex":  9,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  83,
+                                             "MonsterID":  [
+                                                               10002,
+                                                               10006
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  1,
+                                             "HpIncreaseRate":  7.9,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0,
+                                             "GreenGemDropRate":  0,
+                                             "BlueGemDropRate":  0.73,
+                                             "YellowGemDropRate":  0.27,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  4,
+                                             "WaveIndex":  10,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  30,
+                                             "MonsterID":  [
+                                                               10006
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  1,
+                                             "HpIncreaseRate":  9,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0,
+                                             "GreenGemDropRate":  0,
+                                             "BlueGemDropRate":  0.27,
+                                             "YellowGemDropRate":  0.73,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         }
+                                     ]
+                   },
+                   {
+                       "StageIndex":  5,
+                       "StageName":  "5 스테이지",
+                       "StageLevel":  5,
+                       "MapName":  "Map_05",
+                       "StageKill":  0,
+                       "FirstWaveCountValue":  3,
+                       "FirstWaveClearRewardItemID":  60000,
+                       "FirstWaveClearRewardItemValue":  1000,
+                       "SecondWaveCountValue":  6,
+                       "SecondWaveClearRewardItemID":  63000,
+                       "SecondWaveClearRewardItemValue":  10,
+                       "ThirdWaveCountValue":  10,
+                       "ThirdWaveClearRewardItemID":  60001,
+                       "ThirdWaveClearRewardItemValue":  50,
+                       "ClearGold":  20000,
+                       "ClearExp":  5,
+                       "StageImage":  "MapSprite_05.sprite",
+                       "SpawnMonsterNum":  [
+                                               10000,
+                                               10001,
+                                               10002,
+                                               10006,
+                                               10007,
+                                               10008
+                                           ],
+                       "WaveArray":  [
+                                         {
+                                             "StageIndex":  5,
+                                             "WaveIndex":  1,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  3,
+                                             "MonsterID":  [
+                                                               10000
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  1,
+                                             "HpIncreaseRate":  0.5,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0.73,
+                                             "GreenGemDropRate":  0.27,
+                                             "BlueGemDropRate":  0,
+                                             "YellowGemDropRate":  0,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  5,
+                                             "WaveIndex":  2,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  13,
+                                             "MonsterID":  [
+                                                               10001,
+                                                               10002
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  0.7,
+                                             "HpIncreaseRate":  1,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0.73,
+                                             "GreenGemDropRate":  0.27,
+                                             "BlueGemDropRate":  0,
+                                             "YellowGemDropRate":  0,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  5,
+                                             "WaveIndex":  3,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  23,
+                                             "MonsterID":  [
+                                                               10002,
+                                                               10006
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  1,
+                                             "HpIncreaseRate":  1.5,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0.73,
+                                             "GreenGemDropRate":  0.27,
+                                             "BlueGemDropRate":  0,
+                                             "YellowGemDropRate":  0,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  5,
+                                             "WaveIndex":  4,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  33,
+                                             "MonsterID":  [
+                                                               10006
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  1,
+                                             "HpIncreaseRate":  2.5,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0,
+                                             "GreenGemDropRate":  0.73,
+                                             "BlueGemDropRate":  0.27,
+                                             "YellowGemDropRate":  0,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  5,
+                                             "WaveIndex":  5,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  43,
+                                             "MonsterID":  [
+                                                               10007,
+                                                               10008
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  0.7,
+                                             "HpIncreaseRate":  3.5,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0,
+                                             "GreenGemDropRate":  0.73,
+                                             "BlueGemDropRate":  0.27,
+                                             "YellowGemDropRate":  0,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  5,
+                                             "WaveIndex":  6,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  53,
+                                             "MonsterID":  [
+                                                               10008,
+                                                               10000
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  1,
+                                             "HpIncreaseRate":  4.6,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0,
+                                             "GreenGemDropRate":  0.73,
+                                             "BlueGemDropRate":  0.27,
+                                             "YellowGemDropRate":  0,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  5,
+                                             "WaveIndex":  7,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  63,
+                                             "MonsterID":  [
+                                                               10000
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  1,
+                                             "HpIncreaseRate":  5.7,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0,
+                                             "GreenGemDropRate":  0,
+                                             "BlueGemDropRate":  0.73,
+                                             "YellowGemDropRate":  0.27,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  5,
+                                             "WaveIndex":  8,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  73,
+                                             "MonsterID":  [
+                                                               10001,
+                                                               10002
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  0.7,
+                                             "HpIncreaseRate":  6.8,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0,
+                                             "GreenGemDropRate":  0,
+                                             "BlueGemDropRate":  0.73,
+                                             "YellowGemDropRate":  0.27,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  5,
+                                             "WaveIndex":  9,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  83,
+                                             "MonsterID":  [
+                                                               10002,
+                                                               10006
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  1,
+                                             "HpIncreaseRate":  7.9,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0,
+                                             "GreenGemDropRate":  0,
+                                             "BlueGemDropRate":  0.73,
+                                             "YellowGemDropRate":  0.27,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         },
+                                         {
+                                             "StageIndex":  5,
+                                             "WaveIndex":  10,
+                                             "SpawnInterval":  3,
+                                             "OnceSpawnCount":  30,
+                                             "MonsterID":  [
+                                                               10006
+                                                           ],
+                                             "EleteMonsterID":  [
+
+                                                                ],
+                                             "BossMonsterID":  [
+
+                                                               ],
+                                             "RemainsTime":  60,
+                                             "WaveType":  0,
+                                             "FirstMonsterSpawnRate":  1,
+                                             "HpIncreaseRate":  9,
+                                             "NonDropRate":  0.25,
+                                             "SmallGemDropRate":  0,
+                                             "GreenGemDropRate":  0,
+                                             "BlueGemDropRate":  0.27,
+                                             "YellowGemDropRate":  0.73,
+                                             "EliteDropItemId":  [
+
+                                                                 ]
+                                         }
+                                     ]
+                   }
+               ]
 }

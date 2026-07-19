@@ -1,10 +1,11 @@
-# likeTangTang Agent Memo
+# NYAON_HUNTERS Agent Memo
 
 ## Android APK Build Path
 
 - Use Unity `2021.3.19f1` from `C:\work\Unity\Hub\Editor\2021.3.19f1\Editor\Unity.exe`.
 - Windows build source is `C:\work\likeTangTang-build-src\LikeTangTang`; final copied APK is `C:\work\LikeTangTang.apk`.
 - Keep the Windows Unity `Library/` cache. First IL2CPP builds are slow; cached rebuilds are much faster.
+- For source replacement from downloaded Unity folders, use incremental sync that skips unchanged files and excludes `Library/`, `Temp/`, `Logs/`, `Builds/`, `UserSettings/`, and `ServerData/`.
 - Do not send Telegram artifacts unless the latest user message explicitly requests it.
 
 ## APK Asset Invariants
@@ -26,6 +27,6 @@
 ## Runtime Validation
 
 - Use Windows ADB for installed APK logs and screenshots.
-- Verify `mCurrentFocus` is `com.Jiuk.SlimeSurvivor/com.unity3d.player.UnityPlayerActivity` before trusting screenshots.
+- Verify `mCurrentFocus` is `com.korion_NYAON_HUNTER/com.unity3d.player.UnityPlayerActivity` before trusting screenshots.
 - Logcat should be checked for `InvalidKeyException`, `Missing sprite`, `missing animator`, and `E/Unity` before claiming the APK is clean.
 - For Android hit effects, prefer `SpriteRenderer` color flash. Do not swap to a custom damaged material unless shader/material inclusion is verified in the APK.
