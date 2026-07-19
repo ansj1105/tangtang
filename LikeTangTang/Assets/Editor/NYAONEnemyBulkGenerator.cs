@@ -29,7 +29,7 @@ public static class NYAONEnemyBulkGenerator
         EditorApplication.delayCall += GenerateIfNeeded;
     }
 
-    [MenuItem("NYAON_HUNTERS/Generate Bulk Enemy Assets")]
+    [MenuItem("NYAON_HUNTER/Generate Bulk Enemy Assets")]
     public static void Generate()
     {
         AssetDatabase.Refresh();

@@ -16,7 +16,7 @@ public static class NHBasicAlienSizeNormalizer
         EditorApplication.delayCall += NormalizeIfNeeded;
     }
 
-    [MenuItem("NYAON_HUNTERS/Normalize NH Basic Alien Size")]
+    [MenuItem("NYAON_HUNTER/Normalize NH Basic Alien Size")]
     public static void Normalize()
     {
         AssetDatabase.Refresh();

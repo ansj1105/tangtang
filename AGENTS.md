@@ -1,4 +1,4 @@
-# NYAON_HUNTERS Agent Memo
+# NYAON_HUNTER Agent Memo
 
 ## Android APK Build Path
 

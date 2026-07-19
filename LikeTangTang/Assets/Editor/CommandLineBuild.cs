@@ -24,7 +24,7 @@ public static class CommandLineBuild
         var outputPath = GetArg("-buildOutput");
         if (string.IsNullOrWhiteSpace(outputPath))
         {
-            outputPath = "Builds/Android/NYAON_HUNTERS.apk";
+            outputPath = "Builds/Android/NYAON_HUNTER.apk";
         }
 
         ConfigureAndroidTools();

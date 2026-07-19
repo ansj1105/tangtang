@@ -18,7 +18,7 @@ public static class NHBasicAlienAssetGenerator
         EditorApplication.delayCall += GenerateIfNeeded;
     }
 
-    [MenuItem("NYAON_HUNTERS/Generate NH Basic Alien Assets")]
+    [MenuItem("NYAON_HUNTER/Generate NH Basic Alien Assets")]
     public static void Generate()
     {
         AssetDatabase.Refresh();
